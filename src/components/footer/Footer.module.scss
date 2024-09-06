@@ -1,0 +1,99 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/container.scss';
+
+.footer {
+  display: flex;
+  gap: 80px;
+  flex-direction: column;
+
+  &__main_section {
+    @include flexSpaceBetween();
+    padding-bottom: 38px;
+    border-bottom: 1px solid #19191b;
+  }
+
+  &__down_section {
+    @include flexSpaceBetween();
+  }
+
+  &__contactInfo {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    &_column {
+      gap: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+      color: $text-color-grey;
+    }
+  }
+
+  &__logo {
+    width: 500px;
+  }
+
+  &__contacts {
+    width: 33%;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__policy {
+    @include flex();
+    gap: 40px;
+  }
+
+  &__policyText {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: $main-font-text-color;
+
+    @include hover(color, $text-link-grey-hover);
+  }
+  &__copyright {
+    color: $main-font-text-color;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+  }
+  &__help {
+    width: 33%;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__explore {
+    width: 33%;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__contactLink {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+    color: $main-font-text-color;
+    overflow-wrap: break-word;
+
+    @include hover(color, $text-link-grey-hover);
+  }
+}

@@ -1,0 +1,36 @@
+@import './variables.scss';
+
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexSpaceBetween() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin fontSize($fs: 14px, $fw: 400px, $lh: 14px) {
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh / $fs;
+}
+
+@mixin hover($property, $value) {
+  transition: #{$property} $transition-time ease;
+  &:hover {
+    #{$property}: $value;
+  }
+}
+@mixin onDesktop {
+  @media (min-width: $min-screen-size-desktop) {
+    @content;
+  }
+}
