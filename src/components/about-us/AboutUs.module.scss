@@ -1,0 +1,132 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/container.scss';
+
+.aboutUs {
+  &__container {
+    margin-bottom: 104px;
+  }
+
+  &__artickle {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  &__artickle2 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    padding-right: 30px;
+  }
+
+  &__title {
+    margin-bottom: 48px;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 62.4px;
+    text-align: right;
+  }
+
+  &__logo {
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 86.4px;
+    text-align: left;
+  }
+
+  &__mainInfo {
+    display: flex;
+    gap: 142px;
+    flex-direction: column;
+  }
+
+  &__firstSection_artickles {
+    display: flex;
+    gap: 170px;
+    flex-direction: column;
+    width: 283px;
+    padding-left: 175px;
+  }
+
+  &__firstSection {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__firstSection__articlesLogo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__secondSection {
+    position: relative;
+  }
+
+  &__chair {
+    @include mediaMaxQuery(1270px) {
+      content: url('/about-us/chair-small.png');
+    }
+  }
+
+  &__vase {
+    width: 248px;
+    height: 323px;
+    position: absolute;
+    right: 88px;
+    bottom: 137px;
+
+    @include mediaMaxQuery(1270px) {
+      right: 88px;
+      bottom: 50px;
+    }
+  }
+
+  &__secondSection_artickle {
+    position: absolute;
+    top: 118px;
+    left: 616px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    width: 251px;
+  }
+
+  &__painting {
+    @include mediaMaxQuery(1270px) {
+      content: url('/about-us/painting-small.png');
+    }
+  }
+
+  &__secondSection_title1 {
+    font-size: 160px;
+    font-weight: 600;
+    line-height: 160px;
+    text-align: left;
+    position: absolute;
+    left: 280px;
+    bottom: 201px;
+
+    @include mediaMaxQuery(1270px) {
+      left: 117px;
+    }
+  }
+
+  &__secondSection_title2 {
+    position: absolute;
+    font-size: 160px;
+    font-weight: 600;
+    line-height: 160px;
+    text-align: left;
+    left: 460px;
+    bottom: 41px;
+
+    @include mediaMaxQuery(1270px) {
+      left: 312px;
+    }
+  }
+}
