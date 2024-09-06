@@ -34,3 +34,9 @@
     @content;
   }
 }
+
+@mixin mediaMaxQuery($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
