@@ -5,4 +5,8 @@ $text-link-grey-hover: #7d7d7d;
 
 $transition-time: 0.3s;
 
-$min-screen-size-desktop: 1024px;
+$min-screen-size-desktop: 1023px;
+$min-screen-size-tablet: 640px;
+$max-screen-size-tablet: 1024px;
+$min-screen-size-phone: 320px;
+$max-screen-size-phone: 639px;
