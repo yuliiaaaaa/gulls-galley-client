@@ -35,6 +35,18 @@
   }
 }
 
+@mixin onPhone {
+  @media (max-width: $max-screen-size-phone) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $min-screen-size-tablet) and (max-width: $max-screen-size-tablet) {
+    @content;
+  }
+}
+
 @mixin mediaMaxQuery($breakpoint) {
   @media (max-width: $breakpoint) {
     @content;

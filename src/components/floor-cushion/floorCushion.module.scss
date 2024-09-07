@@ -1,0 +1,76 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/container.scss';
+
+.cushion {
+  &__container {
+    margin-bottom: 104px;
+    display: flex;
+    gap: 48px;
+    flex-direction: column;
+  }
+
+  &__explore_section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__exploreBtn {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-right: 16px;
+    justify-content: end;
+  }
+
+  &__title {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 60px;
+    text-align: right;
+  }
+
+  &__exploreBtnText {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  @include onPhone {
+    &__container {
+      margin-bottom: 80px;
+      display: flex;
+      gap: 24px;
+      flex-direction: column;
+    }
+
+    &__explore_section {
+      gap: 8px;
+    }
+
+    &__title {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    &__exploreBtnText {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 18px;
+    }
+
+    &__explore_btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid $main-font-text-color;
+    }
+
+    &__explore_icon {
+      width: 13px;
+      height: 13px;
+    }
+  }
+}

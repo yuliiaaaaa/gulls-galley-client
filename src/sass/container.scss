@@ -7,4 +7,12 @@
   @include onDesktop {
     padding-inline: 24px;
   }
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+
+  @include onPhone {
+    padding-inline: 16px;
+  }
 }
