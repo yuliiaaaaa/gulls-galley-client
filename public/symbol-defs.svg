@@ -1,7 +1,17 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
+
   <symbol id="arrow-right" viewBox="0 0 16 14">
   <path d="M9.05724 1.71116L14.3457 6.99962M14.3457 6.99962L9.05724 12.2881M14.3457 6.99962H1.6534" stroke="#19191B" stroke-width="1.53846" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+
+  <symbol id="heart" viewBox="0 0 24 24">
+  <path d="M3.21688 12.1999C1.05354 9.26649 1.77465 4.86642 5.38022 3.39973C8.98579 1.93305 11.1491 4.86642 11.8702 6.33311C12.5914 4.86642 15.4758 1.93305 19.0814 3.39973C22.687 4.86642 22.687 9.26649 20.5236 12.1999C18.3603 15.1332 11.8702 21 11.8702 21C11.8702 21 5.38022 15.1332 3.21688 12.1999Z" stroke="#19191B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="heart-filled" viewBox="0 0 24 24">
+  <path d="M3.21688 12.1999C1.05354 9.26649 1.77465 4.86642 5.38022 3.39973C8.98579 1.93305 11.1491 4.86642 11.8702 6.33311C12.5914 4.86642 15.4758 1.93305 19.0814 3.39973C22.687 4.86642 22.687 9.26649 20.5236 12.1999C18.3603 15.1332 11.8702 21 11.8702 21C11.8702 21 5.38022 15.1332 3.21688 12.1999Z" stroke="#19191B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
 </defs>
 </svg>
