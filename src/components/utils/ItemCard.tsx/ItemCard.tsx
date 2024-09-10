@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import SvgIcon from '../svg-icon/SvgIcon';
 import { AppRoute } from '../../../libs/enum/app-route-enum';
 import { getProductLabel } from '../../../libs/helpers/getProductLabelHelper';
-import { ProductsType } from '../../../libs/enum/labels-enum';
 
 type Props = {
   item: Item;
