@@ -6,7 +6,7 @@ export const Layout = () => {
     <>
       <h1>Header</h1>
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
