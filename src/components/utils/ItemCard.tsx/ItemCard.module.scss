@@ -13,10 +13,12 @@
   &__img_wrapper {
     position: relative;
     margin-bottom: 12px;
+    width: 336px;
   }
 
   &__img {
     height: 350px;
+    width: 336px;
   }
 
   &__heart {
@@ -56,6 +58,24 @@
     top: 16px;
   }
 
+  &__price_block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__price_discount {
+    @include font(24px, 2vw, 24px, 300, 30px);
+    color: $price-discount-color-red;
+    text-align: left;
+  }
+
+  &__price_discount_style {
+    text-decoration: line-through;
+    @include font(20px, 2vw, 20px, 300, 26px);
+    text-align: left;
+  }
+
   @include onTablet {
     width: 187px;
 
@@ -91,6 +111,21 @@
 
     &__img_wrapper {
       height: 212px;
+      width: 187px;
+    }
+
+    &__price_block {
+      gap: 8px;
+    }
+
+    &__price_discount {
+      @include font(18px, 2vw, 18px, 300, 23px);
+      color: $price-discount-color-red;
+      text-align: left;
+    }
+
+    &__price_discount_style {
+      @include font(16px, 2vw, 16px, 300, 20px);
     }
   }
 
@@ -104,6 +139,21 @@
 
     &__img_wrapper {
       height: 212px;
+      width: 167px;
+    }
+
+    &__price_block {
+      gap: 8px;
+    }
+
+    &__price_discount {
+      @include font(18px, 2vw, 18px, 300, 23px);
+      color: $price-discount-color-red;
+      text-align: left;
+    }
+
+    &__price_discount_style {
+      @include font(16px, 2vw, 16px, 300, 20px);
     }
   }
 }

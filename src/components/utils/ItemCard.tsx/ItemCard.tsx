@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SvgIcon from '../svg-icon/SvgIcon';
 import { AppRoute } from '../../../libs/enum/app-route-enum';
 import { getProductLabel } from '../../../libs/helpers/getProductLabelHelper';
+import { ProductsType } from '../../../libs/enum/labels-enum';
 
 type Props = {
   item: Item;
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export const ItemCard: FC<Props> = ({ item, productType }) => {
+  const isDiscounted = productType === ProductsType.SALE;
   return (
     <div className={s.card}>
       <Link to={`${AppRoute.CATALOG}/${item.id}`} className={s.card__link}>
@@ -22,7 +24,14 @@ export const ItemCard: FC<Props> = ({ item, productType }) => {
         </div>
         <p className={s.card__title}>{item.title}</p>
         <p className={s.card__description}>{item.description}</p>
-        <p className={s.card__price}>{item.price}</p>
+        {isDiscounted ? (
+          <div className={s.card__price_block}>
+            <p className={s.card__price_discount}>{`${item.discounted_price} €`}</p>
+            <p className={`${s.card__price} ${s.card__price_discount_style}`}>{`${item.price} €`}</p>
+          </div>
+        ) : (
+          <p className={s.card__price}>{`${item.price} €`}</p>
+        )}
       </Link>
     </div>
   );
