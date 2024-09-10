@@ -129,4 +129,141 @@
       left: 312px;
     }
   }
+
+  @include onTablet {
+    &__container {
+      margin-bottom: 88px;
+    }
+
+    &__artickle {
+      @include font(20px, 2vw, 20px, 500, 24px);
+    }
+
+    &__logo {
+      @include font(56px, 2vw, 56px, 500, 67px);
+    }
+
+    &__mainInfo {
+      display: flex;
+      gap: 142px;
+      flex-direction: column;
+    }
+
+    &__firstSection_artickles {
+      gap: 58px;
+      width: 253px;
+      padding-left: 90px;
+    }
+
+    &__chair {
+      content: url('/about-us/chair-tablet.png');
+    }
+
+    &__vase {
+      width: 146px;
+      height: 140px;
+      bottom: 110px;
+      right: 24px;
+      content: url('/about-us/vase-tablet.png');
+    }
+
+    &__secondSection_artickle {
+      top: 29px;
+      left: 346px;
+      width: 184px;
+    }
+
+    &__painting {
+      width: 339px;
+      height: 518px;
+    }
+
+    &__secondSection_title1 {
+      @include font(64px, 2vw, 64px, 600, 64px);
+      left: 231px;
+      bottom: 142px;
+    }
+
+    &__secondSection_title2 {
+      @include font(64px, 2vw, 64px, 600, 64px);
+      right: 10px;
+      bottom: 78px;
+    }
+  }
+
+  @include onPhone {
+    &__container {
+      margin-bottom: 80px;
+    }
+
+    &__artickle2 {
+      margin-bottom: 48px;
+    }
+
+    &__artickle {
+      @include font(24px, 2vw, 24px, 400, 24px);
+    }
+
+    &__logo {
+      @include font(56px, 2vw, 56px, 500, 61px);
+    }
+
+    &__mainInfo {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+    }
+
+    &__firstSection_artickles {
+      gap: 56px;
+      padding: 0;
+      width: 100%;
+    }
+
+    &__firstSection {
+      display: block;
+    }
+
+    &__chair {
+      content: url('/about-us/chair-phone.png');
+      width: 100%;
+    }
+
+    &__vase {
+      width: 248px;
+      height: 323px;
+      position: unset;
+    }
+
+    &__secondSection_artickle {
+      position: unset;
+      width: calc(100% - 88px);
+      padding-left: 88px;
+      margin-bottom: 101px;
+    }
+
+    &__painting {
+      width: 100%;
+      height: 466px;
+      margin-bottom: 48px;
+    }
+
+    &__secondSection_title1 {
+      @include font(64px, 2vw, 64px, 600, 64px);
+      left: 0;
+      bottom: 335px;
+    }
+
+    &__secondSection_title2 {
+      @include font(64px, 2vw, 64px, 600, 64px);
+      left: 92px;
+      bottom: 262px;
+    }
+
+    &__title {
+      @include font(32px, 2vw, 32px, 300, 41px);
+      text-align: left;
+      margin-bottom: 32px;
+    }
+  }
 }
