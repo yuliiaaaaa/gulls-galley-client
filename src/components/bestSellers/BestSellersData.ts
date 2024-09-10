@@ -1,0 +1,58 @@
+export const bestSellersData = [
+  {
+    id: 0,
+    title: 'Wood Nightstand',
+    description: 'Simple, elegant wooden bedside table.',
+    price: '120 €',
+    imageUrl: '/best-sellers/item1.png',
+  },
+  {
+    id: 1,
+    title: 'White Nightstand',
+    description: 'Classic white bedside table.',
+    price: '110 €',
+    imageUrl: '/best-sellers/item2.png',
+  },
+  {
+    id: 2,
+    title: 'Whale Tail Figurines',
+    description: 'Decorative whale tail sculptures.',
+    price: '45 €',
+    imageUrl: '/best-sellers/item3.png',
+  },
+  {
+    id: 3,
+    title: 'Whale Tail Art Set',
+    description: 'Art featuring whale tail designs.',
+    price: '85 €',
+    imageUrl: '/best-sellers/item4.png',
+  },
+  {
+    id: 4,
+    title: 'Blue Ocean Waves Vase',
+    description: 'A handcrafted clay vase in a serene blue, inspired by the gentle waves of the ocean.',
+    price: '35 €',
+    imageUrl: '/best-sellers/item5.png',
+  },
+  {
+    id: 5,
+    title: 'Table and Chairs Set',
+    description: 'Matching table and chairs set.',
+    price: '350 €',
+    imageUrl: '/best-sellers/item6.png',
+  },
+  {
+    id: 6,
+    title: 'Decorative Corals',
+    description: 'Artistic coral-themed decorations.',
+    price: '60 €',
+    imageUrl: '/best-sellers/item7.png',
+  },
+  {
+    id: 7,
+    title: 'Decorative Corals',
+    description: 'Artistic coral-themed decorations.',
+    price: '60 €',
+    imageUrl: '/best-sellers/item8.png',
+  },
+];

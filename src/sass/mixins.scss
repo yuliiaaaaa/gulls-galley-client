@@ -23,12 +23,23 @@
   line-height: $lh / $fs;
 }
 
-@mixin hover($property, $value) {
-  transition: #{$property} $transition-time ease;
+@mixin font($fsMin: 14px, $fsPreferred: 2vw, $fsMax: 24px, $fw: 400, $lh: 14px) {
+  font-size: clamp($fsMin, $fsPreferred, $fsMax);
+  font-weight: $fw;
+  line-height: $lh;
+}
+
+@mixin hover($properties) {
+  @each $property, $value in $properties {
+    transition: #{$property} $transition-time ease-in-out;
+  }
   &:hover {
-    #{$property}: $value;
+    @each $property, $value in $properties {
+      #{$property}: $value;
+    }
   }
 }
+
 @mixin onDesktop {
   @media (min-width: $min-screen-size-desktop) {
     @content;

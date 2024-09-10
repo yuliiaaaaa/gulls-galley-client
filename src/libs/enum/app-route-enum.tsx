@@ -5,6 +5,8 @@ const AppRoute = {
   OTHER: '/products/other',
   ACCESSORIES: '/products/accessories',
   LIGHTNING: '/products/lighting',
+  CATALOG: '/products',
+  PRODUCT: '/products/:id',
 } as const;
 
 export { AppRoute };
