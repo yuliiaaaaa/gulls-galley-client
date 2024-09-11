@@ -7,6 +7,7 @@ const AppRoute = {
   LIGHTNING: '/products/lighting',
   CATALOG: '/products',
   PRODUCT: '/products/:id',
+  EXPLORE: '#best-sellers',
 } as const;
 
 export { AppRoute };

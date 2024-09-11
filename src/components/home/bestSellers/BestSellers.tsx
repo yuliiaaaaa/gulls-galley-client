@@ -14,6 +14,7 @@ export const BestSellers = () => {
       title="Best Sellers"
       text="Discover our most loved pieces!"
       indexTextSection={0}
+      id='best-sellers'
     />
   );
 };
