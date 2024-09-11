@@ -1,4 +1,5 @@
-import { Logo } from '../logo/Logo';
+
+import { Logo } from '../../logo/Logo';
 import s from './AboutUs.module.scss';
 
 export const AboutUs = () => {

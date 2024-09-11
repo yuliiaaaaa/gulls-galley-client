@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ExploreButton } from '../utils/explore-button/ExploreButton';
 import s from './Candle.module.scss';
+import { ExploreButton } from '../../utils/explore-button/ExploreButton';
 
 export const Candle = () => {
   return (

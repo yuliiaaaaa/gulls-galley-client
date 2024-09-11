@@ -4,7 +4,7 @@ export const SalesData = [
     title: 'Hanging Planter',
     description: 'Elegant ceramic and rope plant hanger.',
     price: 65,
-    discounted_discounted_price: 40,
+    discounted_price: 40,
     imageUrl: '/sales/item16.png',
   },
   {

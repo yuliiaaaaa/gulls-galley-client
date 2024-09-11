@@ -1,6 +1,7 @@
-import { AppRoute } from '../../libs/enum/app-route-enum';
-import { ProductsType } from '../../libs/enum/labels-enum';
-import { ProductSection } from '../utils/products-section/ProductSection';
+
+import { AppRoute } from '../../../libs/enum/app-route-enum';
+import { ProductsType } from '../../../libs/enum/labels-enum';
+import { ProductSection } from '../../utils/products-section/ProductSection';
 import { SalesData } from './SalesData';
 
 export const SalesSection = () => {

@@ -1,9 +1,10 @@
-import { AboutUs } from '../../components/about-us/AboutUs';
-import { BestSellers } from '../../components/bestSellers/BestSellers';
-import { Candle } from '../../components/candle/Candle';
-import { FloorCushion } from '../../components/floor-cushion/FloorCusgion';
-import { NewArrivals } from '../../components/new-arrivals/NewArrivals';
-import { SalesSection } from '../../components/sales/SalesSection';
+import { AboutUs } from "../../components/home/about-us/AboutUs";
+import { BestSellers } from "../../components/home/bestSellers/BestSellers";
+import { Candle } from "../../components/home/candle/Candle";
+import { FloorCushion } from "../../components/home/floor-cushion/FloorCusgion";
+import { NewArrivals } from "../../components/home/new-arrivals/NewArrivals";
+import { SalesSection } from "../../components/home/sales/SalesSection";
+
 
 export const HomePage = () => {
   return (
