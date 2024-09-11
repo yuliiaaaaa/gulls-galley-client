@@ -5,12 +5,21 @@ type Props = {
   children: React.ReactNode;
   to: string;
   className?: string;
+  router?: boolean;
 };
 
-export const LinkComponent: FC<Props> = ({ children, to, className }) => {
+export const LinkComponent: FC<Props> = ({ children, to= '', className, router = false }) => {
   return (
-    <Link to={to} className={className}>
-      {children}
-    </Link>
+    <>
+      {router ? (
+        <Link to={to} className={className}>
+          {children}
+        </Link>
+      ) : (
+        <a href={to} className={className}>
+          {children}
+        </a>
+      )}
+    </>
   );
 };
