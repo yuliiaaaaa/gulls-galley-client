@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ExploreButton } from '../utils/explore-button/ExploreButton';
+import { ExploreButton } from '../../utils/explore-button/ExploreButton';
 import s from './floorCushion.module.scss';
 
 export const FloorCushion = () => {

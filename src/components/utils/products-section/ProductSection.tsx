@@ -1,6 +1,6 @@
 import { ItemsList } from '../items-list/ItemsList';
 import { LinkComponent } from '../link/Link';
-import s from '../../bestSellers/BestSellers.module.scss';
+import s from '../../home/bestSellers/BestSellers.module.scss';
 import { useMediaQuery } from '../../../libs/hooks/useMediaQuery';
 import { FC } from 'react';
 import { Item } from '../../../libs/types/Item';

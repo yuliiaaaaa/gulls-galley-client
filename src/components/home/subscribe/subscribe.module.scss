@@ -1,0 +1,137 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.subscribe {
+  &__container {
+    margin-bottom: 104px;
+  }
+
+  &__info {
+    @include flexCenter();
+    gap: 24px;
+    flex-direction: column;
+    margin-bottom: 56px;
+  }
+  &__title {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    text-align: center;
+  }
+
+  &__text {
+    @include font(40px, 2vw, 40px, 300, 52px);
+    text-align: center;
+    width: 470px;
+  }
+
+  &__checkbox {
+    width: 24px;
+    height: 24px;
+    appearance: none;
+    border: 1.38px solid $main-font-text-color;
+    cursor: pointer;
+
+    @include hover(
+      (
+        color: $main-font-text-color,
+      )
+    );
+
+    &:checked {
+      background-repeat: no-repeat;
+      object-fit: cover;
+      background-size: 10px 8px;
+      background-position: center;
+      background-color: $main-font-text-color;
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 11" fill="none"><path d="M11.5003 1.33301L4.44199 9.39967L1.41699 6.37467" stroke="white" stroke-width="1.375" stroke-miterlimit="10" stroke-linecap="square"/></svg>');
+    }
+  }
+
+  &__input {
+    border: none;
+    border-bottom: 1px solid #19191b;
+    width: 470px;
+    padding-block: 16px;
+    outline: none;
+
+    &::placeholder {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 26px;
+      text-align: left;
+      color: $placeholder-text-color;
+    }
+  }
+
+  &__agreement {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 56px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__agreement_text {
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    border: 1px solid $main-font-text-color;
+    background-color: white;
+    @include font(16px, 2vw, 16px, 400, 24px);
+    padding: 19px 174px;
+    outline: none;
+    cursor: pointer;
+
+    @include hover(
+      (
+        background-color: $main-font-text-color,
+        color: white,
+      )
+    );
+  }
+
+  &__button_container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 29px;
+  }
+
+  &__input_container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+}
+
+// .imageGallery {
+//   display: flex;
+//   gap: 32px;
+
+//   &__item5 {
+//     margin-top: 312px;
+//     width: 512px;
+//     height: 627px;
+//   }
+// }
+
+// .img__container {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 32px;
+
+//   &1 {
+//     margin-top: 85px;
+//   }
+//   &2 {
+//     margin-top: 223px;
+//   }
+//   &3 {
+//     margin-top: 120px;
+//   }
+//   &4 {
+//     margin-top: 85px;
+//   }
+// }
