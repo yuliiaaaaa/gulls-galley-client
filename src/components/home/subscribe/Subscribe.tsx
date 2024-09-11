@@ -21,7 +21,7 @@ export const SubscribeSection = () => {
       <div className={s.subscribe__button_container}>
         <Button className={s.subscribe__button} title="JOIN THE CREW" isDisabled={false} />
       </div>
-
+{/* 
       <div className={s.imageGallery}>
         <div className={`${s.img__container1} ${s.img__container}`}>
           <img src="/subscribe/1.png" className={s.imageGallery__item} alt="gallery-item-1" />
@@ -44,7 +44,7 @@ export const SubscribeSection = () => {
           <img src="/subscribe/8.png" className={s.imageGallery__item} alt="gallery-item-8" />
           <img src="/subscribe/9.png" className={s.imageGallery__item} alt="gallery-item-9" />
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
