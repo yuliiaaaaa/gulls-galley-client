@@ -104,6 +104,61 @@
     justify-content: center;
     margin-bottom: 32px;
   }
+
+  @include onTablet {
+    &__text {
+      @include font(32px, 2vw, 32px, 300, 41px);
+      text-align: center;
+      width: 394px;
+    }
+
+    &__input {
+      width: 394px;
+    }
+
+    &__button {
+      padding: 16px 136px;
+    }
+
+    &__button_container {
+      margin-bottom: 9px;
+    }
+  }
+
+  @include onPhone {
+    &__title {
+      @include font(14px, 2vw, 14px, 300, 18px);
+    }
+
+    &__text {
+      @include font(24px, 2vw, 24px, 300, 31px);
+      width: 343px;
+    }
+
+    &__input {
+      width: 343px;
+    }
+
+    &__agreement {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 56px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__agreement_text {
+      @include font(14px, 2vw, 14px, 400, 21px);
+    }
+
+    &__button {
+      padding: 16px 110px;
+    }
+
+    &__button_container {
+      margin-bottom: 68px;
+    }
+  }
 }
 
 // .imageGallery {

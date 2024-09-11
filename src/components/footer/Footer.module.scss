@@ -225,7 +225,7 @@
     }
 
     &__contacts {
-      width: 33%;
+      width: fit-content;
       gap: 32px;
       display: flex;
       flex-direction: column;
