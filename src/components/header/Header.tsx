@@ -8,22 +8,24 @@ import cn from 'classnames';
 import { useEffect, useState } from 'react';
 
 export const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+  const [isSearchBarOpened,setIsSearchBarOpened]=useState(false);
+
   const scrollingUp = useScrollingUp();
 
   const handleOpenMenu = () => {
-    setIsOpen((prev) => !prev);
+    setIsMenuOpened((prev) => !prev);
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (isMenuOpened) {
       document.body.classList.add('no-scroll');
     } else {
       document.body.classList.remove('no-scroll');
     }
-  }, [isOpen]);
+  }, [isMenuOpened]);
 
-  const burgerIcon = isOpen ? 'close' : 'burger-menu';
+  const burgerIcon = isMenuOpened ? 'close' : 'burger-menu';
 
   return (
     <section className={cn(s.header, { [s.header__sticky]: scrollingUp })}>
@@ -54,10 +56,10 @@ export const Header = () => {
           </ul>
         </nav>
 
-        <Logo className={cn(s.header__logo, { [s.header__logo_sticky]: scrollingUp || isOpen })} />
+        <Logo className={cn(s.header__logo, { [s.header__logo_sticky]: scrollingUp || isMenuOpened })} />
 
         <div className={s.header__icons}>
-          <SvgIcon className={cn(s.header__icon, { [s.header__icon_sticky]: scrollingUp || isOpen })} id="search" />
+          <SvgIcon className={cn(s.header__icon, { [s.header__icon_sticky]: scrollingUp || isMenuOpened })} id="search" />
 
           <LinkComponent
             children={
@@ -72,7 +74,7 @@ export const Header = () => {
           <LinkComponent
             children={
               <SvgIcon
-                className={cn(s.header__icon, s.header__account, { [s.header__icon_sticky]: scrollingUp || isOpen })}
+                className={cn(s.header__icon, s.header__account, { [s.header__icon_sticky]: scrollingUp || isMenuOpened })}
                 id="account"
               />
             }
@@ -81,19 +83,20 @@ export const Header = () => {
 
           <LinkComponent
             children={
-              <SvgIcon className={cn(s.header__icon, { [s.header__icon_sticky]: scrollingUp || isOpen })} id="cart" />
+              <SvgIcon className={cn(s.header__icon, { [s.header__icon_sticky]: scrollingUp || isMenuOpened })} id="cart" />
             }
             to={AppRoute.CART}
           />
 
           <SvgIcon
-            className={cn(s.header__icon, s.header__burger_menu, { [s.header__icon_sticky]: scrollingUp || isOpen })}
+            className={cn(s.header__icon, s.header__burger_menu, { [s.header__icon_sticky]: scrollingUp || isMenuOpened })}
             id={burgerIcon}
             onClick={handleOpenMenu}
           />
         </div>
       </div>
-      -<div className={cn(s.side_menu, { [s.side_menu_open]: isOpen || isOpen })}></div>
+      <div className={cn(s.search, { [s.search_open]: isSearchBarOpened})}></div>
+      <div className={cn(s.side_menu, { [s.side_menu_open]: isMenuOpened })}></div>
       {/* <div className={s.menu}>
         <ul>
           <li>
