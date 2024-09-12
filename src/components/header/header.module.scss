@@ -1,0 +1,127 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/container.scss';
+
+.header {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  &__sticky {
+    position: fixed;
+    background-color: #fff;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 110px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 4px;
+    padding-left: 228px;
+  }
+
+  &__icon {
+    padding: 16px;
+    cursor: pointer;
+
+    &_sticky {
+      stroke: $main-font-text-color;
+    }
+  }
+
+  &__logo {
+    color: #fff;
+    @include font(24px, 2vw, 24px, 700, 19px);
+    width: 80px;
+    justify-content: center;
+    display: flex;
+
+    &_sticky {
+      color: $main-font-text-color;
+    }
+  }
+
+  &__burger_menu {
+    display: none;
+  }
+
+  @include onTablet {
+    &__heart {
+      display: none;
+    }
+
+    &__account {
+      display: none;
+    }
+
+    &__burger_menu {
+      display: block;
+      z-index: 1000;
+    }
+
+    &__icon {
+      padding: 8px;
+      z-index: 1000;
+    }
+
+    &__logo {
+      z-index: 1000;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+  }
+
+  &__item {
+    text-decoration: none;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #fff;
+    padding: 24px;
+
+    &_sticky {
+      color: $main-font-text-color;
+    }
+
+    &_catalog {
+    }
+  }
+
+  @include onTablet {
+    display: none;
+  }
+}
+
+.side_menu {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  &_open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+}

@@ -8,6 +8,11 @@ const AppRoute = {
   CATALOG: '/products',
   PRODUCT: '/products/:id',
   EXPLORE: '#best-sellers',
+  CONTACTS: '#contacts',
+  ABOUT_US: '#about-us',
+  ACCOUNT: '/account',
+  CART: '/cart',
+  FAVORITES: '/favorites',
 } as const;
 
 export { AppRoute };

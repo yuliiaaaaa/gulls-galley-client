@@ -6,7 +6,7 @@ import { EMAIL, PHONE_NUMBER } from '../../libs/consts/app';
 
 export const Footer = () => {
   return (
-    <div className={s.container}>
+    <div id="contacts" className={s.container}>
       <section className={s.footer}>
         <div className={s.footer__main_section}>
           <div className={s.footer__logo}>

@@ -1,10 +1,10 @@
-
+import { AppRoute } from '../../../libs/enum/app-route-enum';
 import { Logo } from '../../logo/Logo';
 import s from './AboutUs.module.scss';
 
 export const AboutUs = () => {
   return (
-    <section className={s.aboutUs}>
+    <section id="about-us" className={s.aboutUs}>
       <div className={`${s.container} ${s.aboutUs__container}`}>
         <h4 className={s.aboutUs__title}>About Us</h4>
         <div className={s.aboutUs__mainInfo}>
