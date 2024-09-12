@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const scrollingUp = useScrollingUp();
-  
+
   const handleOpenMenu = () => {
     setIsOpen((prev) => !prev);
   };
@@ -72,7 +72,7 @@ export const Header = () => {
           <LinkComponent
             children={
               <SvgIcon
-                className={cn(s.header__icon, s.header__account, { [s.header__icon_sticky]: scrollingUp })}
+                className={cn(s.header__icon, s.header__account, { [s.header__icon_sticky]: scrollingUp || isOpen })}
                 id="account"
               />
             }
@@ -87,15 +87,13 @@ export const Header = () => {
           />
 
           <SvgIcon
-            className={cn(s.header__icon, s.header__burger_menu, { [s.header__icon_sticky]: scrollingUp })}
+            className={cn(s.header__icon, s.header__burger_menu, { [s.header__icon_sticky]: scrollingUp || isOpen })}
             id={burgerIcon}
             onClick={handleOpenMenu}
           />
         </div>
       </div>
-
-      {isOpen && <div className={cn(s.side_menu, { [s.side_menu_open]: isOpen })}></div>}
-
+      -<div className={cn(s.side_menu, { [s.side_menu_open]: isOpen || isOpen })}></div>
       {/* <div className={s.menu}>
         <ul>
           <li>
