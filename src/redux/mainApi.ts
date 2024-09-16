@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './store';
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = 'https://gulls-galley-server-production.up.railway.app';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: baseUrl,

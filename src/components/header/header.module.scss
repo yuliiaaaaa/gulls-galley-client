@@ -11,6 +11,7 @@
 
   &__sticky {
     position: fixed;
+    height: 110px;
     background-color: #fff;
   }
 
@@ -25,15 +26,12 @@
     display: flex;
     gap: 4px;
     padding-left: 228px;
+    z-index: 1100;
   }
 
   &__icon {
     padding: 16px;
     cursor: pointer;
-  }
-
-  &__icon_sticky {
-    stroke: $main-font-text-color;
   }
 
   &__logo {
@@ -46,6 +44,16 @@
     &_sticky {
       color: $main-font-text-color;
     }
+  }
+
+  &__logo_searchBarStyle {
+    color: $main-font-text-color;
+  }
+
+  &__searchBarStyle {
+    position: fixed;
+    height: 110px;
+    background-color: #fff;
   }
 
   &__burger_menu {
@@ -76,6 +84,10 @@
 
     &__logo {
       z-index: 1000;
+
+      &_sticky {
+        color: $main-font-text-color;
+      }
     }
 
     &__container {
@@ -119,7 +131,6 @@
     display: flex;
     gap: 40px;
   }
-
   &__item {
     text-decoration: none;
   }
@@ -133,7 +144,12 @@
       color: $main-font-text-color;
     }
 
+    &_searchBarStyle {
+      color: $main-font-text-color;
+    }
+
     &_catalog {
+      padding-bottom: 44px;
     }
   }
 
@@ -164,4 +180,205 @@
     pointer-events: all;
     transform: translateX(0);
   }
+}
+
+.search {
+  opacity: 0;
+  transform: translateY(-200%);
+  height: 78px;
+  background-color: #fff;
+  padding-inline: 24px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 16px;
+  gap: 16px;
+  transition: all 0.2s;
+
+  &__open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &__input {
+    height: 62px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #19191b;
+    outline: none;
+    background: url(/public/header/search.png) no-repeat scroll;
+    padding: 0 0 0 36px;
+    background-position: left center;
+    background-size: 20px 20px;
+    @include font(24px, 2vw, 24px, 500, 24px);
+
+    &::placeholder {
+      @include font(24px, 2vw, 24px, 500, 24px);
+      text-align: left;
+      text-transform: uppercase;
+      color: $placeholder-text-color;
+      align-items: center;
+    }
+  }
+
+  &__close {
+    cursor: pointer;
+  }
+
+  @include onTablet {
+    &__input {
+      height: 56px;
+      @include font(16px, 2vw, 16px, 400, 24px);
+
+      &::placeholder {
+        @include font(16px, 2vw, 16px, 400, 24px);
+        text-transform: none;
+      }
+    }
+  }
+
+  @include onPhone {
+    &__input {
+      height: 56px;
+      @include font(16px, 2vw, 16px, 400, 24px);
+
+      &::placeholder {
+        @include font(16px, 2vw, 16px, 400, 24px);
+        text-transform: none;
+      }
+    }
+  }
+}
+
+.result {
+  height: 100vh;
+  background-color: #fff;
+  padding-inline: 24px;
+  padding-block: 40px;
+  display: flex;
+  gap: 16px;
+  overflow-y: auto;
+
+  &__items {
+    height: 100%;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__not_found {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__error {
+    @include font(16px, 2vw, 16px, 700, 24px);
+  }
+
+  &__error2 {
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  &__text {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    min-width: 336px;
+  }
+
+  &__title {
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  @include onTablet {
+    height: 100vh;
+    padding-inline: 24px;
+    padding-block: 16px;
+    flex-direction: column;
+    gap: 40px;
+    background-color: #fff;
+
+    &__not_found {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__error {
+      @include font(16px, 2vw, 16px, 700, 24px);
+    }
+
+    &__error2 {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      width: 100%;
+    }
+
+    &__text {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__title {
+      @include font(16px, 2vw, 16px, 400, 24px);
+    }
+  }
+
+  @include onPhone {
+    height: 100vh;
+    padding-inline: 16px;
+    padding-block: 24px;
+    flex-direction: column;
+    gap: 40px;
+    background-color: #fff;
+
+    &__items {
+      gap: 8px;
+    }
+
+    &__not_found {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__error {
+      @include font(16px, 2vw, 16px, 700, 24px);
+    }
+
+    &__error2 {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      width: 100%;
+    }
+
+    &__text {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__title {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      color: $main-font-text-color;
+    }
+  }
+}
+
+.categories {
+  display: flex;
+  gap: 72px;
+}
+
+.menu {
+  background-color: #fff;
+  padding-block: 40px;
+  padding-inline: 48px;
+  position: absolute;
+  top: 110px;
+  left: 0;
+  right: 0;
 }

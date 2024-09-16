@@ -3,6 +3,7 @@ import storage from 'redux-persist/lib/storage';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist';
 import { mainApi } from './mainApi';
 import { authReducer } from './auth/authSlice';
+import { productsApi } from './products/productsApi';
 
 const persistConfig = {
   key: 'root',
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   [mainApi.reducerPath]: mainApi.reducer,
+  [productsApi.reducerPath]: productsApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

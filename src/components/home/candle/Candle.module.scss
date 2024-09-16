@@ -41,6 +41,7 @@
     align-items: center;
     color: $main-font-text-color;
     display: flex;
+    
     &:hover {
       .candle__exploreBtnText::after {
         transform: scaleX(1);

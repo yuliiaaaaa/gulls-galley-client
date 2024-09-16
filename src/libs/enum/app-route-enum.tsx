@@ -13,6 +13,8 @@ const AppRoute = {
   ACCOUNT: '/account',
   CART: '/cart',
   FAVORITES: '/favorites',
+  CATEGORIES: '/categories',
+  
 } as const;
 
 export { AppRoute };

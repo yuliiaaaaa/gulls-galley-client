@@ -25,9 +25,11 @@ export const ProductSection: FC<Props> = ({ to, data, productType, title, text, 
         <h1 className={s.sellers__title} id={id}>
           {title}
         </h1>
+
         <div className={s.sellers__list}>
           <ItemsList data={displayedData} indexTextSection={indexTextSection} text={text} productType={productType} />
         </div>
+        
         <div className={s.sellers__btn_wrapper}>
           <LinkComponent to={to} className={s.sellers__btn}>
             Show more
