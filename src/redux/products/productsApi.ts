@@ -1,3 +1,4 @@
+import { Category } from '../../libs/types/Category';
 import { Product } from '../../libs/types/Product';
 import { mainApi } from '../mainApi';
 

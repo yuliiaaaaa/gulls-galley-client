@@ -14,7 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   [mainApi.reducerPath]: mainApi.reducer,
-  [productsApi.reducerPath]: productsApi.reducer,
+  products: productsApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -26,7 +26,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(mainApi.middleware),
+    }).concat(mainApi.middleware, productsApi.middleware),
 });
 
 export const persistor = persistStore(store);

@@ -4,10 +4,11 @@ import s from '../../home/bestSellers/BestSellers.module.scss';
 import { useMediaQuery } from '../../../libs/hooks/useMediaQuery';
 import { FC } from 'react';
 import { Item } from '../../../libs/types/Item';
+import { Product } from '../../../libs/types/Product';
 
 type Props = {
   to: string;
-  data: Item[];
+  data: Product[];
   productType: string;
   title: string;
   text: string;
