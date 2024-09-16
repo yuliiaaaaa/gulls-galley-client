@@ -1,9 +1,9 @@
 export type Item = {
   id: number;
-  title: string;
-  description: string;
+  name: string;
+  short_description?: string | null;
   price: number;
   discounted_price?: number;
-  imageUrl: string;
+  main_image_url: string;
   discount?: string;
 };

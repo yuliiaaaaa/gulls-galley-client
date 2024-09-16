@@ -2,9 +2,10 @@ import { FC } from 'react';
 import { Item } from '../../../libs/types/Item';
 import { ItemCard } from '../ItemCard.tsx/ItemCard';
 import s from './ItemList.module.scss';
+import { Product } from '../../../libs/types/Product';
 
 type Props = {
-  data: Item[];
+  data: Product[];
   indexTextSection: number;
   text: string;
   productType?: string | undefined;

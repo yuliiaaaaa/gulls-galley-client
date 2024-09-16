@@ -10,7 +10,38 @@
   </symbol>
 
   <symbol id="heart" viewBox="0 0 25 24" >
-  <path xmlns="http://www.w3.org/2000/svg" d="M3.89937 12.1999C1.73603 9.26649 2.45715 4.86642 6.06272 3.39973C9.66828 1.93305 11.8316 4.86642 12.5527 6.33311C13.2739 4.86642 16.1583 1.93305 19.7639 3.39973C23.3694 4.86642 23.3694 9.26649 21.2061 12.1999C19.0428 15.1332 12.5527 21 12.5527 21C12.5527 21 6.06272 15.1332 3.89937 12.1999Z" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path xmlns="http://www.w3.org/2000/svg" d="M3.89937 12.1999C1.73603 9.26649 2.45715 4.86642 6.06272 3.39973C9.66828 1.93305 11.8316 4.86642 12.5527 6.33311C13.2739 4.86642 16.1583 1.93305 19.7639 3.39973C23.3694 4.86642 23.3694 9.26649 21.2061 12.1999C19.0428 15.1332 12.5527 21 12.5527 21C12.5527 21 6.06272 15.1332 3.89937 12.1999Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="account" viewBox="0 0 24 24">
+  <path d="M4 21V20C4 16.69 6.69 14 10 14H14C17.31 14 20 16.69 20 20V21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M12 11C9.79 11 8 9.21 8 7C8 4.79 9.79 3 12 3C14.21 3 16 4.79 16 7C16 9.21 14.21 11 12 11Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+
+  <symbol id="search" viewBox="0 0 24 24">
+  <path d="M16.92 16.92L20 20M19.111 11.581C19.111 15.768 15.728 19.162 11.556 19.162C7.383 19.162 4 15.768 4 11.582C4 7.393 7.383 4 11.555 4C15.728 4 19.111 7.394 19.111 11.581Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+
+  <symbol id="cart" viewBox="0 0 24 24">
+  <path d="M3.75019 20.555C4.95019 22 7.18219 22 11.6482 22H12.3682C16.8342 22 19.0672 22 20.2672 20.555M3.75019 20.555C2.55019 19.109 2.96219 16.915 3.78519 12.525C4.37019 9.405 4.66219 7.844 5.77319 6.922M20.2672 20.555C21.4672 19.109 21.0552 16.915 20.2322 12.525C19.6472 9.405 19.3542 7.844 18.2432 6.922M18.2432 6.922C17.1332 6 15.5442 6 12.3692 6H11.6472C8.47219 6 6.88419 6 5.77319 6.922" stroke="currentColor" stroke-width="1.7" fill="none"/>
+  <path d="M9.00781 6V5C9.00781 4.20435 9.32388 3.44129 9.88649 2.87868C10.4491 2.31607 11.2122 2 12.0078 2C12.8035 2 13.5665 2.31607 14.1291 2.87868C14.6917 3.44129 15.0078 4.20435 15.0078 5V6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+  </symbol>
+
+  <symbol id="burger-menu" viewBox="0 0 40 40">
+  <path d="M8 16H32M8 24H32" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="close"  viewBox="0 0 24 24">
+  <path d="M19.9999 5L5.1634 19.8619" stroke="#19191B" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M4.99997 5L19.8365 19.8619" stroke="#19191B" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="arrow-right-category" viewBox="0 0 24 24">
+  <path d="M9 5L16 11.5L9 18" stroke="#19191B" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol  id="arrow-left-category" viewBox="0 0 24 24">
+  <path d="M15 5L8 11.5L15 18" stroke="#19191B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill='none'/>
   </symbol>
 
 </defs>

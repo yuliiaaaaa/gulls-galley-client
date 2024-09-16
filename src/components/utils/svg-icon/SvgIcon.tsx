@@ -5,12 +5,13 @@ interface IconProps {
   width?: number;
   height?: number;
   className?: string;
+  color?: string;
   onClick?: () => void;
 }
 
-const SvgIcon: React.FC<IconProps> = ({ id, width = 24, height = 24, className, onClick }) => {
+const SvgIcon: React.FC<IconProps> = ({ id, width = 24, height = 24, className, onClick, color = 'white' }) => {
   return (
-    <svg width={width} height={height} className={className} onClick={onClick}>
+    <svg width={width} height={height} className={className} onClick={onClick} style={{ color }}>
       <use href={`/symbol-defs.svg#${id}`} />
     </svg>
   );

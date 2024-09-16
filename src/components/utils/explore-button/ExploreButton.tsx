@@ -13,13 +13,8 @@ interface IconProps {
 
 export const ExploreButton: FC<IconProps> = ({ width, height, classNameIcon, className }) => {
   return (
-    <Link className={`${s.explore} ${className}`} to="#">
-      <SvgIcon
-        className={`${s.explore__icon} ${classNameIcon}`}
-        width={width}
-        height={height}
-        id="arrow-right"
-      ></SvgIcon>
-    </Link>
+    <div className={`${s.explore} ${className}`}>
+      <SvgIcon className={`${s.explore__icon} ${classNameIcon}`} width={width} height={height} id="arrow-right" />
+    </div>
   );
 };
