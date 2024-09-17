@@ -7,7 +7,7 @@ import { EMAIL, PHONE_NUMBER } from '../../libs/consts/app';
 export const Footer = () => {
   return (
     <div id="contacts" className={s.container}>
-      <section className={s.footer}>
+      <footer className={s.footer}>
         <div className={s.footer__main_section}>
           <div className={s.footer__logo}>
             <Logo />
@@ -62,7 +62,7 @@ export const Footer = () => {
           </div>
           <h6 className={s.footer__copywright}>© 2024 Gulls&Galley</h6>
         </div>
-      </section>
+      </footer>
     </div>
   );
 };
