@@ -6,3 +6,9 @@
 .productPage {
   margin-top: calc(110px + 8px);
 }
+
+.products {
+  &__similar {
+    margin-bottom: 104px;
+  }
+}

@@ -1,0 +1,31 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixins.scss';
+@import '../../../../sass/container.scss';
+
+.card {
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include hover(
+      (
+        transform: scale(1.03),
+      )
+    );
+  }
+
+  &__img {
+    width: 453.33px;
+    height: 430px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-font-text-color;
+  }
+
+  &__title {
+    @include font(20px, 2vw, 20px, 500, 30px);
+  }
+}
