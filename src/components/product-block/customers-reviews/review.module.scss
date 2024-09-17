@@ -2,4 +2,44 @@
 @import '../../../sass/mixins.scss';
 @import '../../../sass/container.scss';
 
+.title {
+  margin-bottom: 56px;
+  @include font(48px, 2vw, 48px, 300, 62px);
+  text-transform: uppercase;
+}
 
+.reviews {
+  margin-bottom: 104px;
+}
+
+.link {
+  @include font(24px, 2vw, 24px, 500, 24px);
+  text-decoration: none;
+  color: $main-font-text-color;
+  position: relative;
+  padding-block: 10px;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $main-font-text-color;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform $transition-time ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
