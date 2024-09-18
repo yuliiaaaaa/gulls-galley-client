@@ -5,4 +5,25 @@
 .list {
   display: flex;
   gap: 16px;
+  justify-content: center;
+}
+
+@include mediaMaxQuery(640px) {
+  .list {
+    gap: 8px;
+    overflow-x: scroll;
+    justify-content: start;
+  }
+}
+
+@include onSmallDesktop {
+  .list {
+    gap: 16px;
+    overflow-x: auto;
+    justify-content: start;
+  }
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }

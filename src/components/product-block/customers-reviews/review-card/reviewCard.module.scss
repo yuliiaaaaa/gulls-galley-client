@@ -39,4 +39,34 @@
     @include font(16px, 2vw, 16px, 400, 24px);
     color: $review-text-gray-color;
   }
+
+  @include mediaMaxQuery(640px) {
+    flex-direction: column;
+    gap: 8px;
+
+    &__add_info {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    &__main_info {
+      width: 100%;
+    }
+
+    &__date {
+      @include font(12px, 2vw, 12px, 400, 18px);
+      color: $review-text-gray-color;
+    }
+
+    &__title {
+      margin-bottom: 4px;
+      @include font(16px, 2vw, 16px, 500, 24px);
+    }
+
+    &__name {
+      @include font(16px, 2vw, 16px, 700, 24px);
+    }
+  }
 }

@@ -11,4 +11,9 @@
   &__similar {
     margin-bottom: 104px;
   }
+  @include mediaMaxQuery(640px) {
+    &__similar {
+      margin-bottom: 80px;
+    }
+  }
 }

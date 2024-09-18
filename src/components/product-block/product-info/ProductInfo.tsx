@@ -18,7 +18,7 @@ export const ProductInfo: React.FC<Props> = ({ id }) => {
       <div className={s.productInfo__header}>
         <div className={s.productInfo__fav}>
           <h3 className={s.productInfo__title}>{product?.name}</h3>
-          <SvgIcon id="heart" color="#19191B" />
+          <SvgIcon id="heart" color="#19191B"/>
         </div>
 
         <p className={s.productInfo__shorDescription}>{product?.short_description}</p>

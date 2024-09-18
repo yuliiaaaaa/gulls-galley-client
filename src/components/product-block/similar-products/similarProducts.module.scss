@@ -7,3 +7,10 @@
   text-transform: uppercase;
   margin-bottom: 40px;
 }
+
+@include mediaMaxQuery(640px) {
+  .title {
+    @include font(32px, 2vw, 32px, 300, 41px);
+    margin-bottom: 32px;
+  }
+}

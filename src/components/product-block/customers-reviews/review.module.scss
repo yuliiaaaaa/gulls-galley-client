@@ -43,3 +43,19 @@
     align-items: center;
   }
 }
+
+@include mediaMaxQuery(640px) {
+  .title {
+    margin-bottom: 32px;
+    @include font(32px, 2vw, 32px, 300, 41px);
+    text-align: center;
+  }
+
+  .reviews {
+    margin-bottom: 80px;
+  }
+
+  .link {
+    @include font(20px, 2vw, 20px, 500, 30px);
+  }
+}
