@@ -11,6 +11,7 @@ import { Product } from '../../libs/types/Product';
 import { ItemCard } from '../utils/ItemCard.tsx/ItemCard';
 import { CategoriesComponent } from './categoriesComponent';
 import { CategoriesComponentTablet } from './categoriesComponentTablet';
+import { useIsProductPage } from '../../libs/hooks/useIsProductPage';
 
 export const Header = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -18,8 +19,9 @@ export const Header = () => {
   const [isCategoriesMenuOpened, setIsCategoriesMenuOpened] = useState(false);
   const [query, setQuery] = useState('');
   const scrollingUp = useScrollingUp();
+  const isProductPage = useIsProductPage();
 
-  const isIconBlack = isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened;
+  const isIconBlack = isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage;
   const iconColor = isIconBlack ? '#19191b' : 'white';
 
   const handleOpenMenu = () => {
@@ -81,7 +83,7 @@ export const Header = () => {
               <LinkComponent
                 className={cn(s.nav__link, s.nav__link_catalog, {
                   [s.nav__link_sticky]: scrollingUp,
-                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened,
+                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
                 })}
                 children="Catalog"
                 to={AppRoute.CATALOG}
@@ -91,7 +93,7 @@ export const Header = () => {
               <LinkComponent
                 className={cn(s.nav__link, {
                   [s.nav__link_sticky]: scrollingUp,
-                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened,
+                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
                 })}
                 children="About us"
                 to={AppRoute.ABOUT_US}
@@ -101,7 +103,7 @@ export const Header = () => {
               <LinkComponent
                 className={cn(s.nav__link, {
                   [s.nav__link_sticky]: scrollingUp,
-                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened,
+                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
                 })}
                 children="Contacts"
                 to={AppRoute.CONTACTS}
@@ -113,7 +115,7 @@ export const Header = () => {
         <Logo
           className={cn(s.header__logo, {
             [s.header__logo_sticky]: scrollingUp || isMenuOpened,
-            [s.header__logo_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened,
+            [s.header__logo_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
           })}
         />
 

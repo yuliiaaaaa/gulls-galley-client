@@ -1,0 +1,26 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.images {
+  &__main {
+    width: 776px;
+    height: 589px;
+    object-fit: cover;
+    cursor: pointer;
+    object-position: center;
+    margin-bottom: 16px;
+  }
+
+  &__small {
+    display: flex;
+    gap: 16px;
+    object-position: center;
+    cursor: pointer;
+  }
+
+  &__small_img {
+    width: 248px;
+    height: 196px;
+  }
+}

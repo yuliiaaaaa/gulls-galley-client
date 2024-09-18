@@ -63,3 +63,9 @@
     @content;
   }
 }
+
+@mixin onSmallDesktop {
+  @media (min-width: $min-screen-size-desktop) and (max-width: $max-screen-size-small-desktop) {
+    @content;
+  }
+}

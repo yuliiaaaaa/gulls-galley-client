@@ -1,3 +1,4 @@
+import { AppRoute } from '../../libs/enum/app-route-enum';
 import { Category } from '../../libs/types/Category';
 import { Product } from '../../libs/types/Product';
 import { mainApi } from '../mainApi';
@@ -25,7 +26,14 @@ export const productsApi = mainApi.injectEndpoints({
         return response.data || [];
       },
     }),
+
+    getProductById: builder.query<Product, number>({
+      query: (id: number) => ({
+        url: `api/v1/catalog/products/${id}/`,
+      }),
+      transformResponse: (response: { data: Product }) => response.data,
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductCategoriesQuery } = productsApi;
+export const { useGetProductsQuery, useGetProductCategoriesQuery, useGetProductByIdQuery } = productsApi;

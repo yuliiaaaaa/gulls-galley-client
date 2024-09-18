@@ -7,6 +7,10 @@
   gap: 80px;
   flex-direction: column;
 
+  &__wrapper {
+    padding-top: 104px;
+  }
+
   &__main_section {
     @include flexSpaceBetween();
     padding-bottom: 38px;
@@ -244,4 +248,16 @@
       @include font(20px, 2vw, 20px, 400, 30px);
     }
   }
+}
+
+.blackBackground {
+  background-color: $main-font-text-color;
+}
+
+.whiteText {
+  color: #fff;
+}
+
+.whiteBorder {
+  border-color: #fff;
 }

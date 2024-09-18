@@ -1,0 +1,136 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.productInfo {
+  width: 424px;
+  &__title {
+    @include font(60px, 2vw, 60px, 500, 60px);
+    text-transform: uppercase;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__shorDescription {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    color: $review-text-gray-color;
+  }
+
+  &__reviews {
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  &__countPrice {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__price {
+    @include font(40px, 2vw, 40px, 300, 52px);
+  }
+
+  &__fav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__rate {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__descroption {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &_text {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      color: $review-text-gray-color;
+    }
+  }
+
+  &__button {
+    &_add {
+      height: 62px;
+      background-color: #fff;
+      color: $main-font-text-color;
+      border: none;
+      box-sizing: border-box;
+      @include font(20px, 2vw, 20px, 500, 30px);
+      cursor: pointer;
+
+      &:hover {
+        border: 2px solid #19191b;
+      }
+    }
+
+    &_buy {
+      height: 62px;
+      background-color: $main-font-text-color;
+      color: #fff;
+      @include font(20px, 2vw, 20px, 500, 30px);
+      cursor: pointer;
+      box-sizing: border-box;
+
+      @include hover(
+        (
+          background-color: #fff,
+          color: $main-font-text-color,
+        )
+      );
+    }
+  }
+
+  &__quantity {
+    @include font(20px, 2vw, 20px, 300, 26px);
+   text-align: center;
+  }
+
+  &__count {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__quantity_buttons {
+    display: flex;
+    height: 50px;
+    border: 1px solid $review-text-gray-color;
+  }
+
+  &__button_minus {
+    width: 50px;
+    background-color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  &__button_plus {
+    width: 50px;
+    background-color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  &__count_text {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    display: flex;
+    align-items: center;
+  }
+}
