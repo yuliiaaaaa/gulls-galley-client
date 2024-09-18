@@ -63,3 +63,15 @@
     @content;
   }
 }
+
+@mixin onSmallDesktop {
+  @media (min-width: $min-screen-size-small-desktop) and (max-width: $max-screen-size-tablet) {
+    @content;
+  }
+}
+
+@mixin onMedianDesktop {
+  @media (min-width: $min-screen-size-median-desktop) and (max-width: $max-screen-size-small-desktop) {
+    @content;
+  }
+}

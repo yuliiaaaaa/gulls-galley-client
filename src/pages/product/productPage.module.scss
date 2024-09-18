@@ -1,0 +1,19 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/normalize.scss';
+@import '../../sass/container.scss';
+
+.productPage {
+  margin-top: calc(110px + 8px);
+}
+
+.products {
+  &__similar {
+    margin-bottom: 104px;
+  }
+  @include mediaMaxQuery(640px) {
+    &__similar {
+      margin-bottom: 80px;
+    }
+  }
+}

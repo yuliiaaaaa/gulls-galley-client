@@ -1,0 +1,9 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/container.scss';
+
+.description {
+  margin-bottom: 104px;
+  display: flex;
+  justify-content: space-between;
+}
