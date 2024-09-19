@@ -8,7 +8,7 @@ type Props = {
   data: Product[];
   indexTextSection: number;
   text: string;
-  productType?: string | undefined;
+  productType?: string[] | undefined;
 };
 
 export const ItemsList: FC<Props> = ({ data, indexTextSection, text, productType }) => {

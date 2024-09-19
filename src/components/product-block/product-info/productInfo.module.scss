@@ -6,7 +6,6 @@
   width: 424px;
   &__title {
     @include font(60px, 2vw, 60px, 500, 60px);
-    text-transform: uppercase;
   }
 
   &__header {
@@ -29,12 +28,19 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 48px;
+    align-items: end;
+  }
+
+  &__icon {
+    padding: 15px;
+    cursor: pointer;
   }
 
   &__buttons {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 48px;
   }
 
   &__price {
@@ -52,7 +58,7 @@
     align-items: center;
   }
 
-  &__descroption {
+  &__description {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -60,6 +66,12 @@
     &_text {
       @include font(16px, 2vw, 16px, 400, 24px);
       color: $review-text-gray-color;
+    }
+
+    &_material {
+      @include font(20px, 2vw, 20px, 300, 26px);
+      margin-bottom: 24px;
+      color: $main-font-text-color;
     }
   }
 
@@ -97,7 +109,7 @@
 
   &__quantity {
     @include font(20px, 2vw, 20px, 300, 26px);
-   text-align: center;
+    text-align: center;
   }
 
   &__count {

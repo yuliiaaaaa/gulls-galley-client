@@ -9,7 +9,7 @@ import { Product } from '../../../libs/types/Product';
 type Props = {
   to: string;
   data: Product[];
-  productType: string;
+  productType: string[];
   title: string;
   text: string;
   indexTextSection: number;
