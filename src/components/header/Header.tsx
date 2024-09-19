@@ -135,7 +135,12 @@ export const Header = () => {
             to={AppRoute.CART}
           />
 
-          <SvgIcon className={cn(s.header__icon, s.header__burger_menu)} id={burgerIcon} onClick={handleOpenMenu} />
+          <SvgIcon
+            className={cn(s.header__icon, s.header__burger_menu)}
+            color={iconColor}
+            id={burgerIcon}
+            onClick={handleOpenMenu}
+          />
         </div>
       </div>
 

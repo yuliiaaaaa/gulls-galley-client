@@ -3,6 +3,7 @@
 @import '../../sass/container.scss';
 
 .header {
+  height: 108px;
   background: transparent;
   position: absolute;
   top: 0;
@@ -61,11 +62,15 @@
   }
 
   @include onTablet {
+    height: 76px;
+
     &__container {
-      padding-top: 56px;
-      height: 108px;
+      padding-top: 24px;
+      height: 76px;
       box-sizing: border-box;
+      padding-bottom: 14px;
     }
+
     &__icons {
       padding-left: 0;
     }
@@ -89,18 +94,18 @@
         color: $main-font-text-color;
       }
     }
-
-    &__container {
-      height: 108px;
-    }
   }
 
   @include onPhone {
+    height: 76px;
+
     &__container {
-      padding-top: 56px;
-      height: 108px;
+      padding-top: 24px;
+      height: 76px;
       box-sizing: border-box;
+      padding-bottom: 14px;
     }
+
     &__icons {
       padding-left: 0;
     }
@@ -117,10 +122,6 @@
 
     &__logo {
       z-index: 1000;
-    }
-
-    &__container {
-      height: 108px;
     }
   }
 }
