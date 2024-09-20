@@ -12,6 +12,7 @@ import { ItemCard } from '../utils/ItemCard.tsx/ItemCard';
 import { CategoriesComponent } from './categoriesComponent';
 import { CategoriesComponentTablet } from './categoriesComponentTablet';
 import { useIsProductPage } from '../../libs/hooks/useIsProductPage';
+import { useScrollToHash } from '../../libs/hooks/useScrollToHash';
 
 export const Header = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -23,6 +24,8 @@ export const Header = () => {
 
   const isIconBlack = isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage;
   const iconColor = isIconBlack ? '#19191b' : 'white';
+
+  useScrollToHash('about-us');
 
   const handleOpenMenu = () => {
     setIsMenuOpened((prev) => !prev);
@@ -96,7 +99,7 @@ export const Header = () => {
                   [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
                 })}
                 children="About us"
-                to={AppRoute.ABOUT_US}
+                to={`${AppRoute.ROOT}#about-us`}
               />
             </li>
             <li className={s.nav__item}>
