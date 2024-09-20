@@ -6,7 +6,7 @@ import ScrollToTop from '../../../libs/helpers/scrollTop';
 export const Layout = () => {
   return (
     <>
-      <ScrollToTop />,
+      <ScrollToTop />
       <Header />
       <main>
         <Outlet />

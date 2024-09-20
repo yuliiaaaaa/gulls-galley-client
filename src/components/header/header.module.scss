@@ -8,6 +8,9 @@
   top: 0;
   width: 100%;
   z-index: 1000;
+  transition:
+    top $transition-time ease-in-out,
+    background-color 0.4s ease-in-out;
 
   &__sticky {
     position: fixed;

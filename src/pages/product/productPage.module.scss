@@ -5,6 +5,22 @@
 
 .productPage {
   margin-top: calc(110px + 8px);
+
+  &__crumbs {
+    margin-bottom: 16px;
+  }
+
+  @include mediaMaxQuery(640px) {
+    &__crumbs {
+      margin-bottom: 8px;
+    }
+  }
+
+  @include onTablet {
+    &__crumbs {
+      margin-bottom: 8px;
+    }
+  }
 }
 
 .products {
