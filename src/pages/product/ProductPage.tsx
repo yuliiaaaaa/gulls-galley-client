@@ -2,7 +2,6 @@ import { useParams } from 'react-router';
 import { Review } from '../../components/product-block/customers-reviews/Review';
 import s from './productPage.module.scss';
 import { SimilarProducts } from '../../components/product-block/similar-products/SimilarProducts';
-import { ProductsPicture } from '../../components/product-block/product-pictures/ProductsPictures';
 import { ProductsDescription } from '../../components/product-block/ProductDescription';
 import { BreadCrumbs } from '../../components/utils/breadcrumbs/BreadCrumbs';
 

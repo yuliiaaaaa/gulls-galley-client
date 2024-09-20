@@ -1,0 +1,10 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/normalize.scss';
+@import '../../sass/container.scss';
+
+.login {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+}
