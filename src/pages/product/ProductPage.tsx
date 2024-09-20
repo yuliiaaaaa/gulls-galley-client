@@ -4,13 +4,17 @@ import s from './productPage.module.scss';
 import { SimilarProducts } from '../../components/product-block/similar-products/SimilarProducts';
 import { ProductsPicture } from '../../components/product-block/product-pictures/ProductsPictures';
 import { ProductsDescription } from '../../components/product-block/ProductDescription';
+import { BreadCrumbs } from '../../components/utils/breadcrumbs/BreadCrumbs';
 
 export const ProductPage = () => {
   const { id } = useParams();
   return (
     <div className={`${s.productPage} ${s.container}`}>
-      <h1>Product #{id}</h1>
-      <ProductsDescription/>
+      {/* <h1>Product #{id}</h1> */}
+      <div className={s.productPage__crumbs}>
+        <BreadCrumbs />
+      </div>
+      <ProductsDescription />
       <div className={s.products__similar}>
         <SimilarProducts />
       </div>

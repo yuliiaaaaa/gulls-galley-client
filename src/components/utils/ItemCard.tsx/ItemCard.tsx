@@ -10,11 +10,11 @@ import { Product } from '../../../libs/types/Product';
 
 type Props = {
   item: Product;
-  productType?: string | undefined;
+  productType?: string[] | undefined;
 };
 
 export const ItemCard: FC<Props> = ({ item, productType }) => {
-  const isDiscounted = productType === FiltersProductType.SALE;
+  const isDiscounted = productType?.includes(FiltersProductType.SALE);
   return (
     <div className={s.card}>
       <Link to={`${AppRoute.CATALOG}/${item.id}`} className={s.card__link}>

@@ -6,7 +6,6 @@
   width: 424px;
   &__title {
     @include font(60px, 2vw, 60px, 500, 60px);
-    text-transform: uppercase;
   }
 
   &__header {
@@ -29,12 +28,19 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 48px;
+    align-items: end;
+  }
+
+  &__icon {
+    padding: 15px;
+    cursor: pointer;
   }
 
   &__buttons {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 48px;
   }
 
   &__price {
@@ -52,7 +58,7 @@
     align-items: center;
   }
 
-  &__descroption {
+  &__description {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -60,6 +66,12 @@
     &_text {
       @include font(16px, 2vw, 16px, 400, 24px);
       color: $review-text-gray-color;
+    }
+
+    &_material {
+      @include font(20px, 2vw, 20px, 300, 26px);
+      margin-bottom: 24px;
+      color: $main-font-text-color;
     }
   }
 
@@ -97,7 +109,7 @@
 
   &__quantity {
     @include font(20px, 2vw, 20px, 300, 26px);
-   text-align: center;
+    text-align: center;
   }
 
   &__count {
@@ -132,5 +144,180 @@
     @include font(20px, 2vw, 20px, 300, 26px);
     display: flex;
     align-items: center;
+  }
+
+  @include onSmallDesktop {
+    width: 340px;
+    &__title {
+      @include font(60px, 2vw, 60px, 500, 60px);
+    }
+
+    &__header {
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    &__shorDescription {
+      @include font(20px, 2vw, 20px, 300, 26px);
+    }
+
+    &__reviews {
+      @include font(16px, 2vw, 16px, 400, 24px);
+    }
+
+    &__countPrice {
+      margin-bottom: 48px;
+    }
+
+    &__icon {
+      padding: 15px;
+      width: 20;
+      height: 18;
+    }
+
+    &__buttons {
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    &__price {
+      @include font(40px, 2vw, 40px, 300, 52px);
+    }
+
+    &__rate {
+      gap: 16px;
+    }
+
+    &__description {
+      gap: 24px;
+
+      &_text {
+        @include font(16px, 2vw, 16px, 400, 24px);
+      }
+
+      &_material {
+        @include font(20px, 2vw, 20px, 300, 26px);
+        margin-bottom: 24px;
+      }
+    }
+
+    &__button {
+      &_add {
+        height: 62px;
+        @include font(20px, 2vw, 20px, 500, 30px);
+      }
+
+      &_buy {
+        height: 62px;
+        @include font(20px, 2vw, 20px, 500, 30px);
+      }
+    }
+
+    &__quantity {
+      @include font(20px, 2vw, 20px, 300, 26px);
+    }
+
+    &__count {
+      gap: 8px;
+    }
+
+    &__quantity_buttons {
+      height: 50px;
+    }
+
+    &__button_minus {
+      width: 50px;
+    }
+
+    &__button_plus {
+      width: 50px;
+    }
+
+    &__count_text {
+      @include font(20px, 2vw, 20px, 300, 26px);
+    }
+  }
+
+  @include mediaMaxQuery(950px) {
+    width: 100%;
+    &__title {
+      @include font(32px, 2vw, 32px, 500, 32px);
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    &__shorDescription {
+      @include font(16px, 2vw, 16px, 300, 24px);
+    }
+
+    &__reviews {
+      @include font(12px, 2vw, 12px, 400, 18px);
+    }
+
+    &__countPrice {
+      margin-bottom: 24px;
+    }
+
+    &__icon {
+      padding: 15px;
+      cursor: pointer;
+    }
+
+    &__buttons {
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    &__price {
+      @include font(24px, 2vw, 24px, 300, 31px);
+    }
+
+    &__fav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__rate {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    &__button {
+      &_add {
+        height: 56px;
+      }
+
+      &_buy {
+        height: 56px;
+      }
+    }
+
+    &__quantity {
+      display: none;
+    }
+
+    &__quantity_buttons {
+      height: 44px;
+    }
+
+    &__button_minus {
+      width: 44px;
+      font-size: 20px;
+    }
+
+    &__button_plus {
+      width: 44px;
+      font-size: 20px;
+    }
+
+    &__count_text {
+      @include font(16px, 2vw, 16px, 300, 24px);
+    }
   }
 }

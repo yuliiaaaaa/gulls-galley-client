@@ -18,7 +18,11 @@ function App() {
     { path: AppRoute.ANY, element: <NotFoundPage /> },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;

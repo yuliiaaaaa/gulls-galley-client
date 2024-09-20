@@ -1,4 +1,5 @@
 import { AppRoute } from '../../libs/enum/app-route-enum';
+import { RTKMethods } from '../../libs/enum/rtk-queries-methods';
 import { Category } from '../../libs/types/Category';
 import { Product } from '../../libs/types/Product';
 import { mainApi } from '../mainApi';
@@ -19,6 +20,10 @@ export const productsApi = mainApi.injectEndpoints({
       transformResponse: (response: { data: { results: Product[] } }) => {
         return response.data.results || [];
       },
+      providesTags: (result, error, arg) =>
+        result
+          ? [{ type: 'Product' as const, id: 'LIST' }, ...result.map(({ id }) => ({ type: 'Product' as const, id }))]
+          : [{ type: 'Product' as const, id: 'LIST' }],
     }),
     getProductCategories: builder.query<Category[], void>({
       query: () => `api/v1/catalog/categories/tree/`,
@@ -33,7 +38,27 @@ export const productsApi = mainApi.injectEndpoints({
       }),
       transformResponse: (response: { data: Product }) => response.data,
     }),
+    addProductToFavorites: builder.mutation({
+      query: (id: number) => ({
+        url: `/api/v1/catalog/favorites/add/`,
+        method: RTKMethods.POST,
+        body: { id },
+      }),
+      invalidatesTags: [{ type: 'Product', id: 'LIST' }],
+    }),
+    removeFavoritesProduct: builder.mutation({
+      query: (id: number) => ({
+        url: `/api/v1/catalog/favorites/${id}/remove/`,
+        method: RTKMethods.DELETE,
+      }),
+      invalidatesTags: [{ type: 'Product', id: 'LIST' }],
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductCategoriesQuery, useGetProductByIdQuery } = productsApi;
+export const {
+  useGetProductsQuery,
+  useGetProductCategoriesQuery,
+  useGetProductByIdQuery,
+  useAddProductToFavoritesMutation,
+} = productsApi;

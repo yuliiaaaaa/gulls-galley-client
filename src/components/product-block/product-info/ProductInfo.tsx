@@ -12,13 +12,23 @@ type Props = {
 export const ProductInfo: React.FC<Props> = ({ id }) => {
   const { data: product, isLoading, error } = useGetProductByIdQuery(id);
   const [count, setCount] = useState(1);
+  const handlePlusCount = () => {
+    setCount((prev) => prev + 1);
+  };
+  const handleMinusCount = () => {
+    setCount((prev) => prev - 1);
+  };
+
+  const handleAddToFavorites=()=>{
+    
+  }
 
   return (
     <div className={s.productInfo}>
       <div className={s.productInfo__header}>
         <div className={s.productInfo__fav}>
           <h3 className={s.productInfo__title}>{product?.name}</h3>
-          <SvgIcon id="heart" color="#19191B"/>
+          <SvgIcon width={20} height={18} id="heart" color="#19191B" className={s.productInfo__icon} />
         </div>
 
         <p className={s.productInfo__shorDescription}>{product?.short_description}</p>
@@ -35,9 +45,9 @@ export const ProductInfo: React.FC<Props> = ({ id }) => {
         <div className={s.productInfo__count}>
           <p className={s.productInfo__quantity}>Quantity</p>
           <div className={s.productInfo__quantity_buttons}>
-            <Button className={s.productInfo__button_minus} isDisabled={false} title="-" />
+            <Button className={s.productInfo__button_minus} onClick={handleMinusCount} isDisabled={count <= 1} title="-" />
             <p className={s.productInfo__count_text}>{count}</p>
-            <Button className={s.productInfo__button_plus} isDisabled={false} title="+" />
+            <Button className={s.productInfo__button_plus} onClick={handlePlusCount} isDisabled={false} title="+" />
           </div>
         </div>
       </div>
@@ -48,7 +58,7 @@ export const ProductInfo: React.FC<Props> = ({ id }) => {
       </div>
 
       <div className={s.productInfo__description}>
-        <p>{product?.description}</p>
+        <p className={s.productInfo__description_material}>{`MATERIAL:  ${product?.short_description}`}</p>
         <p className={s.productInfo__description_text}>{product?.description}</p>
       </div>
     </div>

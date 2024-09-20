@@ -3,6 +3,9 @@ import { useGetProductByIdQuery } from '../../../redux/products/productsApi';
 import ImageViewer from 'react-simple-image-viewer';
 import s from './productsPictures.module.scss';
 import { Image } from '../../../libs/types/Image';
+import { getProductLabel } from '../../../libs/helpers/getProductLabelHelper';
+import { getProductType } from '../../../libs/helpers/getProductType';
+import { Product } from '../../../libs/types/Product';
 
 type Props = {
   id: number;
@@ -38,12 +41,16 @@ export const ProductsPicture: React.FC<Props> = ({ id }) => {
   return (
     <div className={s.images}>
       <div className={s.images__container}>
-        <img
-          src={mainImage}
-          onClick={() => openImageViewer(currentImage)}
-          alt="Main product"
-          className={s.images__main}
-        />
+        <div className={s.images__mainImg}>
+          <img
+            src={mainImage}
+            onClick={() => openImageViewer(currentImage)}
+            alt="Main product"
+            className={s.images__main}
+          />
+          {getProductLabel(getProductType(product as Product), s.images__label)}
+        </div>
+
         <div className={s.images__small}>
           {smallImages.map((image, index: number) => (
             <img
