@@ -1,0 +1,36 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.signup {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__title {
+    @include font(48px, 2vw, 48px, 300, 62px);
+    text-transform: uppercase;
+  }
+
+  &__tip {
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+
+  &__tip_footer {
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+
+  &__link {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    color: $review-text-gray-color;
+    text-decoration: none;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 8px;
+  }
+}
