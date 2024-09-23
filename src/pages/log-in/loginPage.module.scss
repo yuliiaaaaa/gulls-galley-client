@@ -4,7 +4,17 @@
 @import '../../sass/container.scss';
 
 .login {
-  margin-block: 200px;
+  margin-block: 259px;
   display: flex;
   justify-content: center;
+
+  @include onTablet {
+    margin-bottom: 347px;
+    margin-top: 247px;
+  }
+
+  @include onPhone {
+    margin-bottom: 132px;
+    margin-top: 138px;
+  }
 }
