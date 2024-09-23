@@ -32,6 +32,12 @@
     color: $review-text-gray-color;
     text-decoration: none;
 
+    @include hover(
+      (
+        color: #19191b,
+      )
+    );
+
     &_password {
       justify-content: center;
       display: flex;
