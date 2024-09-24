@@ -13,4 +13,9 @@ export const SignInValidationSchema = yup.object().shape({
     .string()
     .required(ValidationMessages.REQUIRED)
     .min(MIN_PASSWORD_LENGTH, ValidationMessages.PASSWORD_LENGTH_MIN),
+  confirmPassword: yup
+    .string()
+    .required(ValidationMessages.REQUIRED)
+    .min(MIN_PASSWORD_LENGTH, ValidationMessages.PASSWORD_LENGTH_MIN)
+    .oneOf([yup.ref('password')], ValidationMessages.PASSWORDS_NOT_MATCHED),
 });

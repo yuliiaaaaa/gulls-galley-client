@@ -6,7 +6,7 @@ const baseUrl = 'https://gulls-galley-server-production.up.railway.app';
 const baseQuery = fetchBaseQuery({
   baseUrl: baseUrl,
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.user;
+    const token = (getState() as RootState).auth.accessToken;
 
     if (token) {
       headers.set('authorization', `Bearer ${token}`);

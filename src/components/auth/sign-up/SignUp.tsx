@@ -5,11 +5,28 @@ import s from './signup.module.scss';
 import { SignInValidationSchema } from '../../../libs/validation-schemas/sign-up-validation-schems';
 import { Button } from '../../utils/button/Button';
 import cn from 'classnames';
+import { useRegisterUserMutation } from '../../../redux/auth/authApi';
+import { useNavigate } from 'react-router';
 
 export const SignUp = () => {
-  const handleSubmit = () => {};
+  const [registerUser, { data, isError, isLoading }] = useRegisterUserMutation();
+  const navigate = useNavigate();
 
-  const initialValues = { firstName: '', lastName: '', email: '', password: '' };
+  const handleSubmit = async (values: { email: string; password: string; confirmPassword: string }) => {
+    try {
+      const serverData = {
+        ...values,
+        password_confirm: values.confirmPassword, 
+      };
+
+      const response = await registerUser(serverData).unwrap();
+      navigate(AppRoute.USER_PAGE);
+    } catch (e) {
+      console.log('Error during registration:', e);
+    }
+  };
+
+  const initialValues = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
   return (
     <div className={s.signup}>
@@ -19,7 +36,7 @@ export const SignUp = () => {
       </div>
 
       <Formik initialValues={initialValues} validationSchema={SignInValidationSchema} onSubmit={handleSubmit}>
-        {({ errors, touched, setFieldValue, isValid, dirty }) => (
+        {({ errors, touched, isValid, dirty }) => (
           <Form className={s.form}>
             <div className={s.input__block}>
               <Field
@@ -61,7 +78,25 @@ export const SignUp = () => {
               {errors.password && touched.password ? <div className={s.error}>{errors.password}</div> : null}
             </div>
 
-            <Button className={s.button} isDisabled={!isValid || dirty} title="Create account" />
+            <div className={s.input__block}>
+              <Field
+                className={cn(s.input, { [s.error__input]: errors.confirmPassword && touched.confirmPassword })}
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm password"
+              />
+              {errors.confirmPassword && touched.confirmPassword ? (
+                <div className={s.error}>{errors.confirmPassword}</div>
+              ) : null}
+            </div>
+            {isError && <div className={s.error}>Registration failed. Please try again.</div>}
+
+            <Button
+              className={s.button}
+              isDisabled={!isValid || !dirty || isLoading}
+              title="Create account"
+              type="submit"
+            />
           </Form>
         )}
       </Formik>

@@ -5,9 +5,23 @@ import s from './login.module.scss';
 import { LogInValidationSchema } from '../../../libs/validation-schemas/log-in-validation-shema';
 import { Button } from '../../utils/button/Button';
 import cn from 'classnames';
+import { useLoginMutation } from '../../../redux/auth/authApi';
+import { LogInRequestDto } from '../../../libs/types/auth/LogInRequestDto';
+import { useNavigate } from 'react-router';
 
 export const LogIn = () => {
-  const handleSubmit = () => {};
+  const [login, { data, isLoading, isError }] = useLoginMutation();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (values: LogInRequestDto) => {
+    console.log(values);
+    try {
+      console.log(await login(values).unwrap());
+      navigate(AppRoute.USER_PAGE);
+    } catch (err) {
+      console.error('Login failed:', err);
+    }
+  };
 
   const initialValues = { email: '', password: '' };
 
@@ -20,7 +34,7 @@ export const LogIn = () => {
         </div>
 
         <Formik initialValues={initialValues} validationSchema={LogInValidationSchema} onSubmit={handleSubmit}>
-          {({ errors, touched, setFieldValue, isValid, dirty }) => (
+          {({ errors, touched, isValid, dirty }) => (
             <Form className={s.form}>
               <div className={s.input__block}>
                 <Field
@@ -41,8 +55,9 @@ export const LogIn = () => {
                 />
                 {errors.password && touched.password ? <div className={s.error}>{errors.password}</div> : null}
               </div>
+              {isError && <div className={s.error}>Registration failed. Please try again.</div>}
 
-              <Button className={s.button} isDisabled={!isValid || dirty} title="Create account" />
+              <Button className={s.button} isDisabled={!isValid || !dirty || isLoading} title="Login" type="submit" />
             </Form>
           )}
         </Formik>

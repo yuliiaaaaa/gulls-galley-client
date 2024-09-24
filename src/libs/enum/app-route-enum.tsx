@@ -16,6 +16,7 @@ const AppRoute = {
   CART: '/cart',
   FAVORITES: '/favorites',
   CATEGORIES: '/categories',
+  USER_PAGE: '/user',
 } as const;
 
 export { AppRoute };
