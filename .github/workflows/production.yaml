@@ -16,6 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
       - name: Install Vercel CLI
         run: npm install --global vercel
 
@@ -27,3 +32,4 @@ jobs:
 
       - name: Deploy Project Artifacts
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+
