@@ -33,16 +33,16 @@
     color: $review-text-gray-color;
     text-decoration: none;
 
-    &_password{
-      display: flex;
-      justify-content: center;
-    }
-
     @include hover(
       (
         color: #19191b,
       )
     );
+
+    &_password {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__footer {
@@ -185,7 +185,7 @@
   &:disabled {
     background-color: $disabled-background-color;
     color: $placeholder-text-color;
-    border: none
+    border: none;
   }
 
   @include onTablet {

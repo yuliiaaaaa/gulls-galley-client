@@ -30,9 +30,8 @@
 }
 
 @mixin hover($properties) {
-  @each $property, $value in $properties {
-    transition: #{$property} $transition-time ease-in-out;
-  }
+  transition: all $transition-time ease-in-out;
+
   &:hover {
     @each $property, $value in $properties {
       #{$property}: $value;
