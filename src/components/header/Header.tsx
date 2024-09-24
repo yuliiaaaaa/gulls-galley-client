@@ -13,6 +13,8 @@ import { CategoriesComponent } from './categoriesComponent';
 import { CategoriesComponentTablet } from './categoriesComponentTablet';
 import { useIsProductPage } from '../../libs/hooks/useIsProductPage';
 import { useScrollToHash } from '../../libs/hooks/useScrollToHash';
+import { useIsAuthPage } from '../../libs/hooks/useIsAuthPage';
+import { getIconAccountPath } from '../../libs/helpers/getIconAccountPath';
 
 export const Header = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -21,8 +23,10 @@ export const Header = () => {
   const [query, setQuery] = useState('');
   const scrollingUp = useScrollingUp();
   const isProductPage = useIsProductPage();
+  const isAuthPage = useIsAuthPage([AppRoute.SIGN_UP, AppRoute.LOG_IN]);
 
-  const isIconBlack = isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage;
+  const isIconBlack =
+    isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage || isAuthPage;
   const iconColor = isIconBlack ? '#19191b' : 'white';
 
   useScrollToHash('about-us');
@@ -86,7 +90,8 @@ export const Header = () => {
               <LinkComponent
                 className={cn(s.nav__link, s.nav__link_catalog, {
                   [s.nav__link_sticky]: scrollingUp,
-                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
+                  [s.nav__link_searchBarStyle]:
+                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isAuthPage,
                 })}
                 children="Catalog"
                 to={AppRoute.CATALOG}
@@ -96,7 +101,8 @@ export const Header = () => {
               <LinkComponent
                 className={cn(s.nav__link, {
                   [s.nav__link_sticky]: scrollingUp,
-                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
+                  [s.nav__link_searchBarStyle]:
+                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isAuthPage,
                 })}
                 children="About us"
                 to={`${AppRoute.ROOT}#about-us`}
@@ -106,7 +112,8 @@ export const Header = () => {
               <LinkComponent
                 className={cn(s.nav__link, {
                   [s.nav__link_sticky]: scrollingUp,
-                  [s.nav__link_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
+                  [s.nav__link_searchBarStyle]:
+                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isAuthPage,
                 })}
                 children="Contacts"
                 to={AppRoute.CONTACTS}
@@ -118,7 +125,7 @@ export const Header = () => {
         <Logo
           className={cn(s.header__logo, {
             [s.header__logo_sticky]: scrollingUp || isMenuOpened,
-            [s.header__logo_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage,
+            [s.header__logo_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isAuthPage,
           })}
         />
 
@@ -132,7 +139,7 @@ export const Header = () => {
 
           <LinkComponent
             children={<SvgIcon className={cn(s.header__icon, s.header__account)} id="account" color={iconColor} />}
-            to={AppRoute.ACCOUNT}
+            to={getIconAccountPath()}
           />
 
           <LinkComponent

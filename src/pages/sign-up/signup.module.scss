@@ -4,7 +4,17 @@
 @import '../../sass/container.scss';
 
 .signup {
-  margin-top: 200px;
+  margin-block: 200px;
   display: flex;
   justify-content: center;
+
+  @include onTablet {
+    margin-top: 191px;
+    margin-bottom: 291px;
+  }
+
+  @include onPhone {
+    margin-top: 132px;
+    margin-bottom: 138px;
+  }
 }

@@ -7,6 +7,8 @@ import '../../sass/normalize.scss';
 import { ProductPage } from '../product/ProductPage';
 import { SignUpPage } from '../sign-up/SignUpPage';
 import { LogInPage } from '../log-in/LogInPage';
+import { UserPage } from '../user-page/UserPage';
+import { PrivateRoute } from '../../components/routes/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -17,6 +19,14 @@ function App() {
         { path: AppRoute.ROOT, element: <HomePage /> },
         { path: AppRoute.SIGN_UP, element: <SignUpPage /> },
         { path: AppRoute.LOG_IN, element: <LogInPage /> },
+        {
+          path: AppRoute.USER_PAGE,
+          element: (
+            <PrivateRoute>
+              <UserPage />
+            </PrivateRoute>
+          ),
+        },
       ],
     },
     { path: AppRoute.ANY, element: <NotFoundPage /> },
