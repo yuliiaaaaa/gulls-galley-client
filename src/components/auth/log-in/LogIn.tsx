@@ -55,6 +55,7 @@ export const LogIn = () => {
                 />
                 {errors.password && touched.password ? <div className={s.error}>{errors.password}</div> : null}
               </div>
+              
               {isError && <div className={s.error}>Registration failed. Please try again.</div>}
 
               <Button className={s.button} isDisabled={!isValid || !dirty || isLoading} title="Login" type="submit" />
