@@ -1,0 +1,97 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.header {
+  background-image: url('/user-page/background.png');
+  background-position: center;
+  background-size: cover;
+  height: 507px;
+  width: 100%;
+
+  &__text {
+    color: #fff;
+    @include font(20px, 2vw, 20px, 500, 30px);
+    width: 248px;
+    text-align: left;
+    align-self: flex-end;
+  }
+
+  &__welcome {
+    color: #fff;
+    @include font(100px, 2vw, 100px, 700, 100px);
+    text-transform: uppercase;
+  }
+
+  &__name {
+    color: #fff;
+    @include font(100px, 2vw, 100px, 700, 100px);
+    text-transform: uppercase;
+  }
+
+  &__welcomeBlock {
+    width: 632px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    padding-top: 183px;
+    height: 252px;
+    gap: 72px;
+  }
+
+  @include onTablet {
+    height: 377px;
+
+    &__text {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      width: 186px;
+    }
+
+    &__welcome {
+      @include font(60px, 2vw, 60px, 700, 60px);
+    }
+
+    &__name {
+      @include font(60px, 2vw, 60px, 700, 60px);
+    }
+
+    &__welcomeBlock {
+      width: fit-content;
+    }
+
+    &__info {
+      padding-top: 173px;
+      height: 173px;
+      gap: 0;
+    }
+  }
+
+  @include onPhone {
+    height: 279px;
+
+    &__text {
+      display: none;
+    }
+
+    &__welcome {
+      @include font(40px, 2vw, 40px, 700, 40px);
+    }
+
+    &__name {
+      @include font(40px, 2vw, 40px, 700, 40px);
+    }
+
+    &__welcomeBlock {
+      width: fit-content;
+    }
+
+    &__info {
+      padding-top: 139px;
+      height: fit-content;
+      padding-left: 45px;
+      justify-content: start;
+    }
+  }
+}
