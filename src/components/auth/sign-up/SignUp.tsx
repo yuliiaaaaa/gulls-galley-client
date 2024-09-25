@@ -7,19 +7,22 @@ import { Button } from '../../utils/button/Button';
 import cn from 'classnames';
 import { useRegisterUserMutation } from '../../../redux/auth/authApi';
 import { useNavigate } from 'react-router';
+import { SignUpRequestDto } from '../../../libs/types/auth/SignUpRequestDto';
 
 export const SignUp = () => {
   const [registerUser, { data, isError, isLoading }] = useRegisterUserMutation();
   const navigate = useNavigate();
 
-  const handleSubmit = async (values: { email: string; password: string; confirmPassword: string }) => {
+  const handleSubmit = async (values: SignUpRequestDto) => {
     try {
       const serverData = {
         ...values,
-        password_confirm: values.confirmPassword, 
+        first_name: values.firstName,
+        last_name: values.lastName,
+        password_confirm: values.confirmPassword,
       };
+      await registerUser(serverData).unwrap();
 
-      const response = await registerUser(serverData).unwrap();
       navigate(AppRoute.USER_PAGE);
     } catch (e) {
       console.log('Error during registration:', e);
