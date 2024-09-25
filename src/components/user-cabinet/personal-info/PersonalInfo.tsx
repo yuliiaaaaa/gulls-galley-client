@@ -9,7 +9,7 @@ export const PersonalInfo = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
   const user = useAppSelector((state) => state.auth.user);
-  const userName = `${user?.first_name} ${user?.last_name}`;
+  const userName = `${user?.first_name || ''} ${user?.last_name || ''}`.trim();
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhoneNumber(e.target.value);
