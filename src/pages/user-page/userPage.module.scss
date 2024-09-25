@@ -3,7 +3,11 @@
 @import '../../sass/normalize.scss';
 @import '../../sass/container.scss';
 
-
 .page {
-
+  &__container {
+    margin-top: 64px;
+    margin-bottom: 104px;
+    display: flex;
+    justify-content: space-between;
+  }
 }

@@ -15,7 +15,7 @@ export const authApi = mainApi.injectEndpoints({
       }),
       transformResponse: (response: { data: SignUpResponseDto }) => response.data,
     }),
-    
+
     login: build.mutation<LogInResponseDto, LogInRequestDto>({
       query: (userData: LogInRequestDto) => ({
         url: '/api/v1/user/token/',
@@ -25,7 +25,7 @@ export const authApi = mainApi.injectEndpoints({
       transformResponse: (response: { data: SignUpResponseDto }) => response.data,
     }),
 
-    logout: build.mutation({
+    logout: build.mutation<void, void>({
       query: () => ({
         url: '/api/v1/user/logout-token/',
         method: RTKMethods.DELETE,
@@ -34,4 +34,4 @@ export const authApi = mainApi.injectEndpoints({
   }),
 });
 
-export const { useRegisterUserMutation, useLoginMutation } = authApi;
+export const { useRegisterUserMutation, useLoginMutation, useLogoutMutation } = authApi;
