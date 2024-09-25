@@ -15,6 +15,8 @@ import { useIsProductPage } from '../../libs/hooks/useIsProductPage';
 import { useScrollToHash } from '../../libs/hooks/useScrollToHash';
 import { useIsAuthPage } from '../../libs/hooks/useIsAuthPage';
 import { getIconAccountPath } from '../../libs/helpers/getIconAccountPath';
+import { useIsHeaderStyledPAge } from '../../libs/hooks/useIsHeaderStyledPages';
+import { styledHeaderRoutes } from '../../libs/consts/app';
 
 export const Header = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -23,10 +25,9 @@ export const Header = () => {
   const [query, setQuery] = useState('');
   const scrollingUp = useScrollingUp();
   const isProductPage = useIsProductPage();
-  const isAuthPage = useIsAuthPage([AppRoute.SIGN_UP, AppRoute.LOG_IN]);
+  const isHeaderStyledPages = useIsHeaderStyledPAge(styledHeaderRoutes);
 
-  const isIconBlack =
-    isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage || isAuthPage;
+  const isIconBlack = isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages;
   const iconColor = isIconBlack ? '#19191b' : 'white';
 
   useScrollToHash('about-us');
@@ -91,7 +92,7 @@ export const Header = () => {
                 className={cn(s.nav__link, s.nav__link_catalog, {
                   [s.nav__link_sticky]: scrollingUp,
                   [s.nav__link_searchBarStyle]:
-                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isAuthPage,
+                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages,
                 })}
                 children="Catalog"
                 to={AppRoute.CATALOG}
@@ -102,7 +103,7 @@ export const Header = () => {
                 className={cn(s.nav__link, {
                   [s.nav__link_sticky]: scrollingUp,
                   [s.nav__link_searchBarStyle]:
-                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isAuthPage,
+                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages,
                 })}
                 children="About us"
                 to={`${AppRoute.ROOT}#about-us`}
@@ -113,7 +114,7 @@ export const Header = () => {
                 className={cn(s.nav__link, {
                   [s.nav__link_sticky]: scrollingUp,
                   [s.nav__link_searchBarStyle]:
-                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isAuthPage,
+                    isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages,
                 })}
                 children="Contacts"
                 to={AppRoute.CONTACTS}
@@ -125,7 +126,8 @@ export const Header = () => {
         <Logo
           className={cn(s.header__logo, {
             [s.header__logo_sticky]: scrollingUp || isMenuOpened,
-            [s.header__logo_searchBarStyle]: isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isAuthPage,
+            [s.header__logo_searchBarStyle]:
+              isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages,
           })}
         />
 

@@ -9,6 +9,8 @@ import { SignUpPage } from '../sign-up/SignUpPage';
 import { LogInPage } from '../log-in/LogInPage';
 import { UserPage } from '../user-page/UserPage';
 import { PrivateRoute } from '../../components/routes/PrivateRoute';
+import { Catalog } from '../catalog/Catalog';
+import { AuthWrapper } from '../../components/routes/AuthWrapper';
 
 function App() {
   const router = createBrowserRouter([
@@ -17,8 +19,23 @@ function App() {
       children: [
         { path: AppRoute.PRODUCT, element: <ProductPage /> },
         { path: AppRoute.ROOT, element: <HomePage /> },
-        { path: AppRoute.SIGN_UP, element: <SignUpPage /> },
-        { path: AppRoute.LOG_IN, element: <LogInPage /> },
+        {
+          path: AppRoute.SIGN_UP,
+          element: (
+            <AuthWrapper>
+              <SignUpPage />
+            </AuthWrapper>
+          ),
+        },
+        {
+          path: AppRoute.LOG_IN,
+          element: (
+            <AuthWrapper>
+              <LogInPage />
+            </AuthWrapper>
+          ),
+        },
+        { path: AppRoute.CATALOG, element: <Catalog /> },
         {
           path: AppRoute.USER_PAGE,
           element: (
