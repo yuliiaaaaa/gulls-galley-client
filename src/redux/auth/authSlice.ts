@@ -42,6 +42,11 @@ const authSlice = createSlice({
         state.user = payload.user;
       },
     );
+    builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
+      state.accessToken = null;
+      state.refreshToken = null;
+      state.user = null;
+    });
   },
 });
 

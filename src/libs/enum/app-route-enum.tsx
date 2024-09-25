@@ -17,6 +17,7 @@ const AppRoute = {
   FAVORITES: '/favorites',
   CATEGORIES: '/categories',
   USER_PAGE: '/user',
+  RESET_PASSWORD: '/reset-password',
 } as const;
 
 export { AppRoute };
