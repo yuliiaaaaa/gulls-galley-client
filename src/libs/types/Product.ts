@@ -34,3 +34,14 @@ export type MinimalProduct = Omit<
   | 'created_at'
   | 'updated_at'
 >;
+
+export type GetProductsDto = {
+  is_best?: boolean;
+  is_new?: boolean;
+  is_sale?: boolean;
+  limit?: number;
+  max_items?: number;
+  offset?: number;
+  ordering?: string;
+  search?: string;
+};

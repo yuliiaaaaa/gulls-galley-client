@@ -12,6 +12,7 @@
     margin-bottom: 40px;
     text-align: left;
     text-transform: uppercase;
+    margin-top: 104px;
   }
 
   &__btn_wrapper {
@@ -54,6 +55,10 @@
   @include onTablet {
     margin-bottom: 40px;
 
+    &__title {
+      margin-top: 88px;
+    }
+
     .sellers {
       &__container {
         margin-bottom: 88px;
@@ -65,6 +70,7 @@
     &__title {
       @include font(32px, 2vw, 32px, 300, 41px);
       margin-bottom: 32px;
+      margin-top: 80px;
     }
 
     .sellers {

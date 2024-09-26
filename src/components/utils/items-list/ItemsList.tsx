@@ -14,8 +14,8 @@ type Props = {
 export const ItemsList: FC<Props> = ({ data, indexTextSection, text, productType }) => {
   return (
     <div className={s.list}>
-      {data.map((item) =>
-        item.id === indexTextSection ? (
+      {data.map((item, index) =>
+        index === indexTextSection ? (
           <>
             <ItemCard key={item.id} item={item} productType={productType} />
             <div className={s.text__container}>
