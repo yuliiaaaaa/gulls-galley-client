@@ -6,3 +6,4 @@ export type Review = {
   reviewTitle: string;
   reviewText: string;
 };
+
