@@ -6,6 +6,7 @@
   &__image {
     &_sofa {
     }
+
     &_candles {
       position: absolute;
       bottom: 108px;
@@ -65,6 +66,28 @@
       @include font(160px, 2vw, 160px, 600, 160px);
       bottom: -63px;
       right: 174px;
+    }
+  }
+
+  @include mediaMaxQueryBetween(640px, 950px) {
+    &__image {
+      &_sofa {
+        width: 339px;
+        height: 418px;
+      }
+
+      &_candles {
+        bottom: 108px;
+        right: 0;
+        width: 137px;
+        height: 158px;
+      }
+    }
+
+    &__title {
+      @include font(160px, 2vw, 160px, 600, 160px);
+      bottom: -63px;
+      right: 36px;
     }
   }
 }

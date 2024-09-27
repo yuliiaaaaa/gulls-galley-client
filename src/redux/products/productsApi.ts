@@ -1,3 +1,4 @@
+import { DEFAULT_LIMIT_PRODUCTS } from '../../libs/consts/app';
 import { AppRoute } from '../../libs/enum/app-route-enum';
 import { RTKMethods } from '../../libs/enum/rtk-queries-methods';
 import { Category } from '../../libs/types/Category';
@@ -7,7 +8,7 @@ import { mainApi } from '../mainApi';
 export const productsApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], GetProductsDto>({
-      query: ({ is_best, is_new, is_sale, limit = 10, max_items, offset = 0, ordering, search }) => {
+      query: ({ is_best, is_new, is_sale, limit = DEFAULT_LIMIT_PRODUCTS, max_items, offset = 0, ordering, search }) => {
         const params = { is_best, is_new, is_sale, limit, max_items, offset, ordering, search };
 
         const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value != null));
