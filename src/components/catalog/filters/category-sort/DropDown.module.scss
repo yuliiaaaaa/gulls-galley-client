@@ -1,0 +1,173 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixins.scss';
+@import '../../../../sass/container.scss';
+
+.dropdown {
+  position: relative;
+  &__title {
+    @include font(16px, 2vw, 16px, 400, 26px);
+  }
+
+  &__icon {
+    transform: rotate(90deg);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+    &_open {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__block {
+    display: flex;
+    gap: 4px;
+    justify-content: end;
+  }
+
+  &__body {
+    transition: max-height 0.1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: fit-content;
+    background-color: #fff;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1000;
+    right: 13px;
+    top: 20px;
+
+    &_open {
+      max-height: 500px;
+      padding-block: 20px;
+    }
+  }
+
+  &__header {
+    display: none;
+  }
+
+  &__option {
+    padding-inline: 20px;
+    height: 48px;
+    width: 257px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__radio {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 1px solid black;
+    border-radius: 24px;
+    align-self: center;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      background-color: black;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:checked:before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    &:hover {
+      border-color: black;
+    }
+
+    &:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @include onTablet {
+    &__header {
+      display: flex;
+    }
+  }
+
+  @include onPhone {
+    &__title {
+      @include font(16px, 2vw, 16px, 400, 24px);
+    }
+
+    &__icon {
+      transform: rotate(90deg);
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+
+      &_open {
+        transform: rotate(-90deg);
+      }
+    }
+
+    &__block {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding-inline: 10px;
+    }
+
+    &__body {
+      transition: max-height 0.1s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: fit-content;
+      background-color: #fff;
+      max-height: 0;
+      overflow: hidden;
+      position: fixed;
+      bottom: 0;
+      z-index: 1000;
+      right: 13px;
+      top: 20px;
+
+      &_open {
+        top: 0;
+        right: 0;
+        width: 81%;
+        max-height: 100%;
+        padding-block: 16px;
+      }
+    }
+
+    &__option {
+      padding-inline: 20px;
+      height: 48px;
+      width: 257px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &__header {
+      padding-top: 24px;
+      padding-inline: 16px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+
+      &_title {
+        padding-left: 8px;
+        @include font(16px, 2vw, 16px, 400, 24px);
+      }
+    }
+  }
+}

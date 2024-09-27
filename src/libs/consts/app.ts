@@ -6,3 +6,4 @@ export const MIN_PASSWORD_LENGTH = 8;
 export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const styledHeaderRoutes = [AppRoute.CATALOG, AppRoute.SIGN_UP, AppRoute.LOG_IN, AppRoute.CATALOG];
 export const AuthPagesRoutes = [AppRoute.SIGN_UP, AppRoute.LOG_IN];
+export const DEFAULT_LIMIT_PRODUCTS=16;

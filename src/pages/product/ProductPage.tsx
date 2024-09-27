@@ -9,7 +9,6 @@ export const ProductPage = () => {
   const { id } = useParams();
   return (
     <div className={`${s.productPage} ${s.container}`}>
-      {/* <h1>Product #{id}</h1> */}
       <div className={s.productPage__crumbs}>
         <BreadCrumbs />
       </div>

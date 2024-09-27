@@ -74,3 +74,9 @@
     @content;
   }
 }
+
+@mixin mediaMaxQueryBetween($breakpoint-min, $breakpoint-max) {
+  @media (min-width: $breakpoint-min) and (max-width: $breakpoint-max) {
+    @content;
+  }
+}
