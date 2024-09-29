@@ -4,13 +4,13 @@ import s from './productsDescription.module.scss';
 import { ProductInfo } from './product-info/ProductInfo';
 
 export const ProductsDescription = () => {
-  const { id } = useParams();
-  console.log('id', id);
+  const { slug = '' } = useParams();
+  console.log('id', slug);
 
   return (
     <div className={s.description}>
-      <ProductsPicture id={Number(id)} />
-      <ProductInfo id={Number(id)} />
+      <ProductsPicture slug={slug} />
+      <ProductInfo slug={slug} />
     </div>
   );
 };

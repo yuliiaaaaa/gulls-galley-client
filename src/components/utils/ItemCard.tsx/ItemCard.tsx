@@ -15,9 +15,10 @@ type Props = {
 
 export const ItemCard: FC<Props> = ({ item, productType }) => {
   const isDiscounted = productType?.includes(FiltersProductType.SALE);
+
   return (
     <div className={s.card}>
-      <Link to={`${AppRoute.CATALOG}/${item.id}`} className={s.card__link}>
+      <Link to={`${AppRoute.CATALOG}/${item.slug}`} className={s.card__link}>
         <div className={s.card__img_wrapper}>
           <img className={s.card__img} src={item.main_image_url} alt="item" />
           <SvgIcon className={s.card__heart} id="heart" />

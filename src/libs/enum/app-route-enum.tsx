@@ -8,7 +8,7 @@ const AppRoute = {
   ACCESSORIES: '/products/accessories',
   LIGHTNING: '/products/lighting',
   CATALOG: '/products',
-  PRODUCT: '/products/:id',
+  PRODUCT: '/products/:slug',
   EXPLORE: '#best-sellers',
   CONTACTS: '#contacts',
   ABOUT_US: '#about-us',

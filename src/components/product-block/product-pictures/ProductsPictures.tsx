@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useGetProductByIdQuery } from '../../../redux/products/productsApi';
+import { useGetProductBySlugQuery } from '../../../redux/products/productsApi';
 import ImageViewer from 'react-simple-image-viewer';
 import s from './productsPictures.module.scss';
 import { Image } from '../../../libs/types/Image';
@@ -8,10 +8,10 @@ import { getProductType } from '../../../libs/helpers/getProductType';
 import { Product } from '../../../libs/types/Product';
 
 type Props = {
-  id: number;
+  slug: string;
 };
 
-export const ProductsPicture: React.FC<Props> = ({ id }) => {
+export const ProductsPicture: React.FC<Props> = ({ slug }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
 
@@ -25,7 +25,7 @@ export const ProductsPicture: React.FC<Props> = ({ id }) => {
     setIsViewerOpen(false);
   };
 
-  const { data: product, isLoading, error } = useGetProductByIdQuery(id);
+  const { data: product, isLoading, error } = useGetProductBySlugQuery(slug);
   const images = product?.images || [];
 
   console.log('product', product);
