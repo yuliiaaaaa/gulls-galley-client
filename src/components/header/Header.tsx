@@ -17,6 +17,7 @@ import { useIsAuthPage } from '../../libs/hooks/useIsAuthPage';
 import { getIconAccountPath } from '../../libs/helpers/getIconAccountPath';
 import { useIsHeaderStyledPAge } from '../../libs/hooks/useIsHeaderStyledPages';
 import { styledHeaderRoutes } from '../../libs/consts/app';
+import { CartPage } from '../../pages/cart/CartPage';
 
 export const Header = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -30,6 +31,12 @@ export const Header = () => {
   const isIconBlack =
     isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages;
   const iconColor = isIconBlack ? '#19191b' : 'white';
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleCartOpen = () => {
+    console.log('Cart open/close triggered');
+    setIsCartOpen((prev) => !prev);
+  };
 
   useScrollToHash('about-us');
 
@@ -54,6 +61,8 @@ export const Header = () => {
     setIsCategoriesMenuOpened(false);
   };
 
+  console.log(isCartOpen);
+
   const {
     data: products = [],
     error,
@@ -65,12 +74,12 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    if (isMenuOpened || isSearchBarOpened) {
+    if (isMenuOpened || isSearchBarOpened || isCartOpen) {
       document.body.classList.add('no-scroll');
     } else {
       document.body.classList.remove('no-scroll');
     }
-  }, [isMenuOpened, isSearchBarOpened]);
+  }, [isMenuOpened, isSearchBarOpened, isCartOpen]);
 
   const burgerIcon = isMenuOpened ? 'close' : 'burger-menu';
 
@@ -145,10 +154,7 @@ export const Header = () => {
             to={getIconAccountPath()}
           />
 
-          <LinkComponent
-            children={<SvgIcon className={cn(s.header__icon)} id="cart" color={iconColor} />}
-            to={AppRoute.CART}
-          />
+          <SvgIcon className={cn(s.header__icon)} id="cart" color={iconColor} onClick={handleCartOpen} />
 
           <SvgIcon
             className={cn(s.header__icon, s.header__burger_menu)}
@@ -199,6 +205,13 @@ export const Header = () => {
             <CategoriesComponent />
           </div>
         </div>
+      )}
+
+      {isCartOpen && (
+        <>
+          <div className={s.overlay} />
+          <CartPage isCartOpen={isCartOpen} onClick={handleCartOpen} />
+        </>
       )}
     </section>
   );

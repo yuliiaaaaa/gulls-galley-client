@@ -4,19 +4,19 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, pers
 import { mainApi } from './mainApi';
 import { authReducer } from './auth/authSlice';
 import { productsApi } from './products/productsApi';
-
-
+import { cartApi } from './cart/cartApi';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth',],
+  whitelist: ['auth'],
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
   [mainApi.reducerPath]: mainApi.reducer,
   products: productsApi.reducer,
+  cart: cartApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -28,7 +28,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(mainApi.middleware, productsApi.middleware),
+    }).concat(mainApi.middleware),
 });
 
 export const persistor = persistStore(store);
