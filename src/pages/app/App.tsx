@@ -12,6 +12,7 @@ import { PrivateRoute } from '../../components/routes/PrivateRoute';
 import { Catalog } from '../catalog/Catalog';
 import { AuthWrapper } from '../../components/routes/AuthWrapper';
 import { CartPage } from '../cart/CartPage';
+import { LayoutNotFoundPage } from '../../components/utils/layout/LayoutNotFoundPage';
 
 function App() {
   const router = createBrowserRouter([
@@ -47,7 +48,7 @@ function App() {
         },
       ],
     },
-    { path: AppRoute.ANY, element: <NotFoundPage /> },
+    { element: <LayoutNotFoundPage />, children: [{ path: AppRoute.ANY, element: <NotFoundPage /> }] },
   ]);
 
   return (

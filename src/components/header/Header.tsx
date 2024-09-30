@@ -29,7 +29,14 @@ export const Header = () => {
   const isHeaderStyledPages = useIsHeaderStyledPAge(styledHeaderRoutes);
 
   const isIconBlack =
-    isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages;
+    isSearchBarOpened ||
+    isMenuOpened ||
+    scrollingUp ||
+    isCategoriesMenuOpened ||
+    isProductPage ||
+    isHeaderStyledPages;
+    
+    console.log(isIconBlack)
   const iconColor = isIconBlack ? '#19191b' : 'white';
   const [isCartOpen, setIsCartOpen] = useState(false);
 
