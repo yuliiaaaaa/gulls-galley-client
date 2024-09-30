@@ -1,6 +1,6 @@
 import { mainApi } from '../mainApi';
 import { RTKMethods } from '../../libs/enum/rtk-queries-methods';
-
+import { Cart, CartItemAdd, PatchedCartItemUpdateQuantity } from '../../libs/types/Cart';
 
 export const cartApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,7 +13,6 @@ export const cartApi = mainApi.injectEndpoints({
       invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
     }),
 
-
     getCartById: builder.query<Cart, number>({
       query: (id: number) => ({
         url: `/api/v1/cart/${id}/`,
@@ -22,7 +21,6 @@ export const cartApi = mainApi.injectEndpoints({
       transformResponse: (response: Cart) => response,
       providesTags: (result, error, id) => [{ type: 'Cart', id }],
     }),
-
 
     addItemToCart: builder.mutation<void, CartItemAdd>({
       query: (item: CartItemAdd) => ({
@@ -41,7 +39,6 @@ export const cartApi = mainApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
     }),
-
 
     removeItemFromCart: builder.mutation<void, number>({
       query: (id: number) => ({
