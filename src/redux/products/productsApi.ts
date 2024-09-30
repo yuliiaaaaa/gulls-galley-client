@@ -2,7 +2,8 @@ import { DEFAULT_LIMIT_PRODUCTS } from '../../libs/consts/app';
 import { AppRoute } from '../../libs/enum/app-route-enum';
 import { RTKMethods } from '../../libs/enum/rtk-queries-methods';
 import { Category } from '../../libs/types/Category';
-import { GetProductsDto, Product } from '../../libs/types/Product';
+import { FavoriteProduct, GetFavoritesResponse } from '../../libs/types/products/Favorites';
+import { GetProductsDto, Product } from '../../libs/types/products/Product';
 import { mainApi } from '../mainApi';
 
 export const productsApi = mainApi.injectEndpoints({
@@ -63,6 +64,19 @@ export const productsApi = mainApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'Product', id: 'LIST' }],
     }),
+    getFavorites: builder.query<FavoriteProduct[], { limit?: number; offset?: number }>({
+      query: ({ limit = DEFAULT_LIMIT_PRODUCTS, offset = 0 }) => {
+        const params = { limit, offset };
+        const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value != null));
+
+        return {
+          url: '/api/v1/catalog/favorites/',
+          method: RTKMethods.GET,
+          params: filteredParams,
+        };
+      },
+      transformResponse: (response: GetFavoritesResponse) => response.results,
+    }),
   }),
 });
 
@@ -72,4 +86,5 @@ export const {
   useGetProductBySlugQuery,
   useAddProductToFavoritesMutation,
   useRemoveFavoritesProductMutation,
+  useGetFavoritesQuery,
 } = productsApi;

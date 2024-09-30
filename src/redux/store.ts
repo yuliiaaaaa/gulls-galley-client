@@ -5,10 +5,12 @@ import { mainApi } from './mainApi';
 import { authReducer } from './auth/authSlice';
 import { productsApi } from './products/productsApi';
 
+
+
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'],
+  whitelist: ['auth',],
 };
 
 const rootReducer = combineReducers({

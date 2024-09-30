@@ -1,5 +1,5 @@
 import { FiltersProductType } from '../enum/Filters';
-import { Product } from '../types/Product';
+import { Product } from '../types/products/Product';
 
 export const getTrueProperties = (product: Product): (keyof Product)[] => {
   const trueProperties: (keyof Product)[] = [];

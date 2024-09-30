@@ -1,4 +1,4 @@
-import { MinimalProduct } from '../../../../libs/types/Product';
+import { MinimalProduct } from '../../../../libs/types/products/Product';
 import { SimilarProductCard } from '../similar-products-card/SimilarProductCard';
 import s from './similarProductList.module.scss';
 

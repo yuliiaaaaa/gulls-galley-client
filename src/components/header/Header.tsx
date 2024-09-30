@@ -7,7 +7,7 @@ import useScrollingUp from '../../libs/hooks/useScrollingUp';
 import cn from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { useGetProductsQuery } from '../../redux/products/productsApi';
-import { Product } from '../../libs/types/Product';
+import { Product } from '../../libs/types/products/Product';
 import { ItemCard } from '../utils/ItemCard.tsx/ItemCard';
 import { CategoriesComponent } from './categoriesComponent';
 import { CategoriesComponentTablet } from './categoriesComponentTablet';
@@ -27,7 +27,8 @@ export const Header = () => {
   const isProductPage = useIsProductPage();
   const isHeaderStyledPages = useIsHeaderStyledPAge(styledHeaderRoutes);
 
-  const isIconBlack = isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages;
+  const isIconBlack =
+    isSearchBarOpened || isMenuOpened || scrollingUp || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages;
   const iconColor = isIconBlack ? '#19191b' : 'white';
 
   useScrollToHash('about-us');

@@ -5,7 +5,7 @@ import s from './productsPictures.module.scss';
 import { Image } from '../../../libs/types/Image';
 import { getProductLabel } from '../../../libs/helpers/getProductLabelHelper';
 import { getProductType } from '../../../libs/helpers/getProductType';
-import { Product } from '../../../libs/types/Product';
+import { Product } from '../../../libs/types/products/Product';
 
 type Props = {
   slug: string;

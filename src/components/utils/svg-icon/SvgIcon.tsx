@@ -6,7 +6,7 @@ interface IconProps {
   height?: number;
   className?: string;
   color?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
 }
 
 const SvgIcon: React.FC<IconProps> = ({ id, width = 24, height = 24, className, onClick, color = 'white' }) => {

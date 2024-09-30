@@ -34,9 +34,6 @@
   &__icon {
     padding: 15px;
     cursor: pointer;
-
-    &__favorite {
-    }
   }
 
   &__buttons {
@@ -47,7 +44,26 @@
   }
 
   &__price {
+    @include font(34px, 2vw, 34px, 300, 47px);
+  }
+
+  &__price_discount_style {
+    text-decoration: line-through;
+    @include font(34px, 2vw, 34px, 300, 47px);
+    text-align: left;
+    color: $review-text-gray-color;
+  }
+
+  &__price_block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__price_discount {
     @include font(40px, 2vw, 40px, 300, 52px);
+    color: $price-discount-color-red;
+    text-align: left;
   }
 
   &__fav {
@@ -245,6 +261,18 @@
     width: 100%;
     &__title {
       @include font(32px, 2vw, 32px, 500, 32px);
+    }
+
+    &__price_discount_style {
+      @include font(20px, 2vw, 20px, 300, 26px);
+    }
+
+    &__price_block {
+      gap: 12px;
+    }
+
+    &__price_discount {
+      @include font(24px, 2vw, 24px, 300, 31px);
     }
 
     &__header {

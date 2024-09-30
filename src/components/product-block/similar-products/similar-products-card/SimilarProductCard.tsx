@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MinimalProduct } from '../../../../libs/types/Product';
+import { MinimalProduct } from '../../../../libs/types/products/Product';
 import s from './similarProductCard.module.scss';
 import { AppRoute } from '../../../../libs/enum/app-route-enum';
 

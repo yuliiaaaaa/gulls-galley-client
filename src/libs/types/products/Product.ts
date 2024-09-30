@@ -17,7 +17,7 @@ export interface Product {
   properties?: any[];
   variations?: any[];
   images?: any[];
-  is_favorite?: string;
+  is_favorite?: boolean;
   created_at?: string;
   updated_at?: string;
 }
@@ -46,5 +46,5 @@ export type GetProductsDto = {
   offset?: number;
   ordering?: string;
   search?: string;
-  is_favorite?: string;
+  is_favorite?: boolean;
 };

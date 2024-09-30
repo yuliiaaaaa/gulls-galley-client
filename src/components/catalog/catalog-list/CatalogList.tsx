@@ -1,5 +1,5 @@
 import { getSpecifiedTrueProperties } from '../../../libs/helpers/getTrueProperties';
-import { Product } from '../../../libs/types/Product';
+import { Product } from '../../../libs/types/products/Product';
 import { ItemCard } from '../../utils/ItemCard.tsx/ItemCard';
 import s from './catalogList.module.scss';
 
