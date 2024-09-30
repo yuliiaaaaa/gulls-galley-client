@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   [mainApi.reducerPath]: mainApi.reducer,
   products: productsApi.reducer,
-  [cartApi.reducerPath]: cartApi.reducer,
+  cart: cartApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
