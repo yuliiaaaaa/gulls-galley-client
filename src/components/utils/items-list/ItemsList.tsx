@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Item } from '../../../libs/types/Item';
 import { ItemCard } from '../ItemCard.tsx/ItemCard';
 import s from './ItemList.module.scss';
-import { Product } from '../../../libs/types/Product';
+import { Product } from '../../../libs/types/products/Product';
 
 type Props = {
   data: Product[];

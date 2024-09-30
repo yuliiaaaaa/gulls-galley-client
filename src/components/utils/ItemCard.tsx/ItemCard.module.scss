@@ -27,7 +27,9 @@
     top: 16px;
     cursor: pointer;
     fill: none;
-    stroke: white;
+    stroke: $main-font-text-color;
+    z-index: 2;
+    padding: 10px;
   }
 
   &__link {

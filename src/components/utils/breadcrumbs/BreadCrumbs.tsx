@@ -1,13 +1,13 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { AppRoute } from '../../../libs/enum/app-route-enum';
 import { LinkComponent } from '../link/Link';
-import { useGetProductByIdQuery } from '../../../redux/products/productsApi';
 import s from './breadcrumbs.module.scss';
+import { useGetProductBySlugQuery } from '../../../redux/products/productsApi';
 
 export const BreadCrumbs = () => {
   const { pathname } = useLocation();
-  const { id } = useParams();
-  const { data: product, isLoading, error } = useGetProductByIdQuery(Number(id!), { skip: !id });
+  const { slug = '' } = useParams();
+  const { data: product, isLoading, error } = useGetProductBySlugQuery(slug, { skip: !slug });
 
   const pathnames = pathname.split('/').filter(Boolean);
   console.log(pathname);
@@ -30,7 +30,7 @@ export const BreadCrumbs = () => {
             );
           }
 
-          if (id && index === pathnames.length - 1) {
+          if (slug && index === pathnames.length - 1) {
             return (
               <li className={s.breadcrumb__el} key={to} aria-current="page">
                 <p className={`${s.breadcrumb__link} ${s.breadcrumb__link_underline}`}>

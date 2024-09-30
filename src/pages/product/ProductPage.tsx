@@ -6,7 +6,7 @@ import { ProductsDescription } from '../../components/product-block/ProductDescr
 import { BreadCrumbs } from '../../components/utils/breadcrumbs/BreadCrumbs';
 
 export const ProductPage = () => {
-  const { id } = useParams();
+
   return (
     <div className={`${s.productPage} ${s.container}`}>
       <div className={s.productPage__crumbs}>

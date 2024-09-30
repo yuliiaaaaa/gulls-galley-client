@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   short_description?: string | null;
   price: number;
+  slug: string;
   discount_percentage?: number | null;
   discounted_price?: number;
   main_image_url: string;
@@ -16,6 +17,7 @@ export interface Product {
   properties?: any[];
   variations?: any[];
   images?: any[];
+  is_favorite?: boolean;
   created_at?: string;
   updated_at?: string;
 }
@@ -44,4 +46,5 @@ export type GetProductsDto = {
   offset?: number;
   ordering?: string;
   search?: string;
+  is_favorite?: boolean;
 };

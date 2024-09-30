@@ -1,4 +1,4 @@
-import { Product } from '../types/Product';
+import { Product } from '../types/products/Product';
 
 export const FiltersProductType = {
   BEST_SELLERS: 'is_best' as keyof Product,

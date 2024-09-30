@@ -3,8 +3,8 @@ import { AppRoute } from '../enum/app-route-enum';
 
 export const useIsProductPage = (): boolean => {
   const { pathname } = useLocation();
-  const { id } = useParams();
-  const isProductPage = pathname === `${AppRoute.CATALOG}/${id}`;
+  const { slug } = useParams();
+  const isProductPage = pathname === `${AppRoute.CATALOG}/${slug}`;
 
   return isProductPage;
 };

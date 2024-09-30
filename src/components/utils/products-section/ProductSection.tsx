@@ -4,7 +4,7 @@ import s from '../../home/bestSellers/BestSellers.module.scss';
 import { useMediaQuery } from '../../../libs/hooks/useMediaQuery';
 import { FC } from 'react';
 import { Item } from '../../../libs/types/Item';
-import { Product } from '../../../libs/types/Product';
+import { Product } from '../../../libs/types/products/Product';
 
 type Props = {
   to: string;
@@ -30,7 +30,7 @@ export const ProductSection: FC<Props> = ({ to, data, productType, title, text, 
         <div className={s.sellers__list}>
           <ItemsList data={displayedData} indexTextSection={indexTextSection} text={text} productType={productType} />
         </div>
-        
+
         <div className={s.sellers__btn_wrapper}>
           <LinkComponent to={to} className={s.sellers__btn}>
             Show more
