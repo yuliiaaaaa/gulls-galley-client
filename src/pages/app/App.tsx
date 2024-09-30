@@ -11,6 +11,7 @@ import { UserPage } from '../user-page/UserPage';
 import { PrivateRoute } from '../../components/routes/PrivateRoute';
 import { Catalog } from '../catalog/Catalog';
 import { AuthWrapper } from '../../components/routes/AuthWrapper';
+import { CartPage } from '../cart/CartPage';
 
 function App() {
   const router = createBrowserRouter([
