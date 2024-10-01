@@ -18,6 +18,7 @@ const AppRoute = {
   CATEGORIES: '/categories',
   USER_PAGE: '/user',
   RESET_PASSWORD: '/reset-password',
+  NOT_FOUND_PAGE: '/404',
 } as const;
 
 export { AppRoute };
