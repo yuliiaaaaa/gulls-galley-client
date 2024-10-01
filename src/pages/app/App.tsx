@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 import { AppRoute } from '../../libs/enum/app-route-enum';
 import { NotFoundPage } from '../404-page/NotFoundPage';
 import { HomePage } from '../home/HomePage';
@@ -48,7 +48,15 @@ function App() {
         },
       ],
     },
-    { element: <LayoutNotFoundPage />, children: [{ path: AppRoute.ANY, element: <NotFoundPage /> }] },
+    {
+      element: (
+        <LayoutNotFoundPage>
+          <NotFoundPage />
+        </LayoutNotFoundPage>
+      ),
+      path: AppRoute.NOT_FOUND_PAGE,
+    },
+    { path: AppRoute.ANY, element: <Navigate to={AppRoute.NOT_FOUND_PAGE} replace={true} /> },
   ]);
 
   return (
