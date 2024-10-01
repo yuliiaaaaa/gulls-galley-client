@@ -28,11 +28,11 @@ const useScrollingUp = () => {
   };
 
   useEffect(() => {
-    // Add scroll event listener
+
     on(window, 'scroll', handleScroll, { passive: true });
 
     return () => {
-      // Remove scroll event listener
+
       off(window, 'scroll', handleScroll, { passive: true });
     };
   }, []);

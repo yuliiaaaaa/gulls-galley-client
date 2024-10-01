@@ -9,14 +9,25 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  transition:
-    top $transition-time ease-in-out,
-    background-color 0.4s ease-in-out;
+  transition: top $transition-time ease-in-out;
 
   &__sticky {
     position: fixed;
     height: 110px;
     background-color: #fff;
+    transition:
+      top $transition-time ease-in-out,
+      background-color $transition-time ease-in-out;
+    animation: slideUp 0.35s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 
   &__container {
@@ -160,6 +171,7 @@
 
     &_catalog {
       padding-bottom: 44px;
+      padding-right: 39px;
     }
   }
 
@@ -268,6 +280,7 @@
   display: flex;
   gap: 16px;
   overflow-y: auto;
+  height: calc(100vh - 110px - 88px - 40px - 32px - 14px);
 
   &__items {
     height: 100%;
@@ -309,6 +322,7 @@
     flex-direction: column;
     gap: 40px;
     background-color: #fff;
+    height: calc(100vh - 76px - 56px - 20px - 32px - 14px);
 
     &__not_found {
       display: flex;
@@ -344,6 +358,7 @@
     flex-direction: column;
     gap: 40px;
     background-color: #fff;
+    height: calc(100vh - 76px - 56px - 20px - 32px - 30px);
 
     &__items {
       gap: 8px;
