@@ -45,7 +45,7 @@ export const CategoriesComponentTablet: React.FC<Props> = () => {
                 <LinkComponent
                   className={s.category__subtitle_link}
                   children={childCategory.name}
-                  to={`${AppRoute.CATEGORIES}/${childCategory.id}`}
+                  to={`${AppRoute.CATALOG}?category=${childCategory.slug}`}
                 />
               </li>
             ))}
@@ -59,7 +59,7 @@ export const CategoriesComponentTablet: React.FC<Props> = () => {
                 <LinkComponent
                   className={s.category__title_link}
                   children={category.name}
-                  to={`${AppRoute.CATALOG}?filter=${category.type}`}
+                  to={`${AppRoute.CATALOG}?sortBy=${category.type}`}
                 />
               </li>
             ))}
@@ -72,7 +72,7 @@ export const CategoriesComponentTablet: React.FC<Props> = () => {
                   <LinkComponent
                     className={s.category__title_link}
                     children={category.name}
-                    to={`${AppRoute.CATEGORIES}/${category.id}`}
+                    to={`${AppRoute.CATALOG}?category=${category.slug}`}
                   />
                   <SvgIcon id="arrow-right-category" onClick={() => handleOpenCategory(category.id)} />
                 </div>
