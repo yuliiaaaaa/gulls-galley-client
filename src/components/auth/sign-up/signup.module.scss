@@ -1,0 +1,214 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.signup {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+
+  &__title {
+    @include font(48px, 2vw, 48px, 300, 62px);
+    text-transform: uppercase;
+  }
+
+  &__tip {
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+
+  &__tip_footer {
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+
+  &__link {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    color: $review-text-gray-color;
+    text-decoration: none;
+
+    @include hover(
+      (
+        color: #19191b,
+      )
+    );
+  }
+
+  &__footer {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__wrapper {
+    margin-bottom: 56px;
+  }
+
+  @include onTablet {
+    .signup {
+      &__header {
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+
+      &__title {
+        @include font(32px, 2vw, 32px, 300, 41px);
+      }
+
+      &__tip {
+        @include font(16px, 2vw, 16px, 300, 24px);
+      }
+
+      &__tip_footer {
+        @include font(16px, 2vw, 16px, 300, 24px);
+      }
+
+      &__link {
+        @include font(16px, 2vw, 16px, 300, 24px);
+        color: $review-text-gray-color;
+        text-decoration: none;
+      }
+
+      &__footer {
+        gap: 4px;
+      }
+    }
+  }
+
+  @include onPhone {
+    .signup {
+      &__header {
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+
+      &__title {
+        @include font(32px, 2vw, 32px, 300, 41px);
+      }
+
+      &__tip {
+        @include font(16px, 2vw, 16px, 300, 24px);
+      }
+
+      &__tip_footer {
+        @include font(16px, 2vw, 16px, 300, 24px);
+      }
+
+      &__link {
+        @include font(16px, 2vw, 16px, 300, 24px);
+        color: $review-text-gray-color;
+        text-decoration: none;
+      }
+
+      &__footer {
+        gap: 4px;
+      }
+    }
+  }
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid #19191b;
+  width: 512px;
+  height: 38px;
+  padding-block: 12px;
+  outline: none;
+  @include font(20px, 2vw, 20px, 300, 26px);
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &::placeholder {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    text-align: left;
+    color: $placeholder-text-color;
+  }
+
+  @include onTablet {
+    width: 343px;
+    height: 38px;
+
+    &__block {
+      gap: 8px;
+    }
+  }
+
+  @include onPhone {
+    width: 343px;
+    height: 38px;
+
+    &__block {
+      gap: 8px;
+    }
+  }
+}
+
+.button {
+  @include font(20px, 2vw, 20px, 500, 30px);
+  margin-top: 56px;
+  margin-bottom: 24px;
+  height: 62px;
+  width: 512px;
+  background-color: $main-font-text-color;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  @include hover(
+    (
+      color: $main-font-text-color,
+      background-color: #fff,
+    )
+  );
+
+  &:disabled {
+    background-color: $disabled-background-color;
+    color: $placeholder-text-color;
+    border: none
+  }
+
+  @include onTablet {
+    @include font(20px, 2vw, 20px, 500, 30px);
+    margin-top: 40px;
+    margin-bottom: 24px;
+    height: 56px;
+    width: 343px;
+  }
+
+  @include onPhone {
+    @include font(20px, 2vw, 20px, 500, 30px);
+    margin-top: 40px;
+    margin-bottom: 56px;
+    height: 56px;
+    width: 343px;
+  }
+}
+
+.error {
+  color: $error-color;
+  @include font(16px, 2vw, 16px, 400, 24px);
+
+  @include onTablet {
+    @include font(12px, 2vw, 12px, 400, 18px);
+  }
+
+  @include onPhone {
+    @include font(12px, 2vw, 12px, 400, 18px);
+  }
+}
+
+.error__input {
+  border-color: $error-color;
+}

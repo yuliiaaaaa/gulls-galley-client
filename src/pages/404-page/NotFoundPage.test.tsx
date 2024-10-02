@@ -5,6 +5,6 @@ import React from 'react';
 
 test('renders page with correct text', () => {
   const { getByText } = render(<NotFoundPage />);
-  const buttonElement = getByText('Page not found...');
-  expect(buttonElement).toBeInTheDocument();
+  const titleElement = getByText('Oops!');
+  expect(titleElement).toBeInTheDocument();
 });

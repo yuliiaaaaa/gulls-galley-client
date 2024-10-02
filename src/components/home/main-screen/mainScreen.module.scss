@@ -1,0 +1,85 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.screen {
+  height: 100vh;
+  background-image: url('/main/main.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__btn {
+    padding: 16px 48px 16px 48px;
+    text-decoration: none;
+    background-color: #ffffff;
+    color: $main-font-text-color;
+    text-align: center;
+    @include font(20px, 2vw, 20px, 500, 30px);
+
+    @include hover(
+      (
+        background-color: $main-font-text-color,
+        color: white,
+      )
+    );
+  }
+
+  &__btn_container {
+    justify-content: center;
+    display: flex;
+  }
+
+  &__title {
+    @include font(100px, 2vw, 100px, 700, 100px);
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &__text {
+    @include font(24px, 2vw, 24px, 500, 24px);
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+    padding-top: 259px;
+    padding-bottom: 80px;
+  }
+
+  @include onTablet {
+    &__title {
+      @include font(80px, 2vw, 80px, 700, 80px);
+    }
+
+    &__info {
+      padding-top: 316px;
+      padding-inline: 24px;
+    }
+  }
+
+  @include onPhone {
+    &__btn {
+      padding: 12px 48px 12px 48px;
+    }
+
+    &__title {
+      @include font(56px, 2vw, 56px, 700, 56px);
+    }
+
+    &__text {
+      @include font(18px, 2vw, 18px, 500, 27px);
+    }
+
+    &__info {
+      padding-inline: 16px;
+      gap: 12px;
+      padding-top: 216px;
+      padding-bottom: 48px;
+    }
+  }
+}

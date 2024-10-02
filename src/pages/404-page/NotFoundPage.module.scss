@@ -1,0 +1,103 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/normalize.scss';
+@import '../../sass/container.scss';
+
+.page {
+  background-image: url('/404/404.png');
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &__title {
+    @include font(80px, 2vw, 80px, 500, 96px);
+    text-align: center;
+  }
+
+  &__text {
+    @include font(24px, 2vw, 24px, 500, 24px);
+  }
+
+  &__link {
+    padding: 16px 48px;
+    text-decoration: none;
+    @include font(20px, 2vw, 20px, 500, 30px);
+    color: #fff;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    align-items: center;
+    bottom: 245px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  &__text_block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link_block {
+    height: 62px;
+    background-color: $main-font-text-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    @include hover(
+      (
+        background-color: #fff,
+        border: 1px solid $main-font-text-color,
+      )
+    );
+
+    &:hover {
+      .page__link {
+        color: $main-font-text-color;
+      }
+    }
+  }
+
+  @include onPhone {
+    &__info {
+      gap: 40px;
+      bottom: 215px;
+    }
+
+    &__link_block {
+      height: 62px;
+      width: 268px;
+      cursor: pointer;
+    }
+
+    &__title {
+      @include font(60px, 2vw, 60px, 500, 72px);
+    }
+
+    &__text {
+      @include font(18px, 2vw, 18px, 500, 27px);
+      text-align: center;
+    }
+
+    &__link {
+      width: 172px;
+      padding: 16px 47px;
+      text-decoration: none;
+      @include font(20px, 2vw, 20px, 500, 30px);
+      color: #fff;
+      width: fit-content;
+    }
+  }
+}

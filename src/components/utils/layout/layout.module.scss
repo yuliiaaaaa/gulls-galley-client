@@ -1,0 +1,19 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.main {
+  min-height: calc(100vh - 110px);
+
+  @include onTablet {
+    min-height: calc(100vh - 76px);
+  }
+
+  @include onPhone {
+    min-height: calc(100vh - 76px);
+  }
+
+  &__auth {
+    min-height: unset;
+  }
+}

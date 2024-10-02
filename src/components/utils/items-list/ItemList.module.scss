@@ -1,0 +1,44 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  row-gap: 24px;
+}
+
+.text {
+  @include font(60px, 2vw, 60px, 500, 60px);
+  text-align: left;
+
+  &__container {
+    width: 336px;
+  }
+}
+
+@include onTablet {
+  .list {
+    gap: 15px;
+  }
+  .text {
+    @include font(40px, 2vw, 40px, 500, 40px);
+    &__container {
+      width: 187px;
+    }
+  }
+}
+
+@include onPhone{
+   .list {
+    gap: 8px;
+  }
+  .text {
+    @include font(40px, 2vw, 40px, 500, 40px);
+    &__container {
+      width: 167px;
+    }
+  }
+}
