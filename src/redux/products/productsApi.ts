@@ -36,6 +36,35 @@ export const productsApi = mainApi.injectEndpoints({
           ? [{ type: 'Product' as const, id: 'LIST' }, ...result.map(({ id }) => ({ type: 'Product' as const, id }))]
           : [{ type: 'Product' as const, id: 'LIST' }],
     }),
+    getCategoryProducts: builder.query<Product[], GetProductsDto & { slug: string }>({
+      query: ({
+        slug,
+        is_best,
+        is_new,
+        is_sale,
+        limit = DEFAULT_LIMIT_PRODUCTS,
+        max_items,
+        offset = 0,
+        ordering,
+        search,
+      }) => {
+        const params = { is_best, is_new, is_sale, limit, max_items, offset, ordering, search };
+
+        const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value != null));
+
+        return {
+          url: `api/v1/catalog/categories/${slug}/products/`,
+          params: filteredParams,
+        };
+      },
+      transformResponse: (response: { data: { results: Product[] } }) => {
+        return response.data.results || [];
+      },
+      providesTags: (result, error, arg) =>
+        result
+          ? [{ type: 'Product' as const, id: 'LIST' }, ...result.map(({ id }) => ({ type: 'Product' as const, id }))]
+          : [{ type: 'Product' as const, id: 'LIST' }],
+    }),
     getProductCategories: builder.query<Category[], void>({
       query: () => `api/v1/catalog/categories/tree/`,
       transformResponse: (response: { data: Category[] }) => {
@@ -87,4 +116,5 @@ export const {
   useAddProductToFavoritesMutation,
   useRemoveFavoritesProductMutation,
   useGetFavoritesQuery,
+  useGetCategoryProductsQuery
 } = productsApi;

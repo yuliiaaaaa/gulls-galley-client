@@ -10,7 +10,7 @@ export const NewArrivals = () => {
 
   return (
     <ProductSection
-      to={`${AppRoute.CATALOG}?filter=new`}
+      to={`${AppRoute.CATALOG}?filter=${FiltersProductType.NEW}`}
       data={products}
       productType={[FiltersProductType.NEW]}
       title="New arrivals"

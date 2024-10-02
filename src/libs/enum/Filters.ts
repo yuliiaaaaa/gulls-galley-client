@@ -5,6 +5,6 @@ export const FiltersProductType = {
   NEW: 'is_new' as keyof Product,
   SALE: 'is_sale' as keyof Product,
   ALL: 'all' as keyof Product,
-  PRICE_ASC: 'price',
-  PRICE_DESC: '-price',
+  PRICE_ASC: 'final_price',
+  PRICE_DESC: '-final_price',
 };

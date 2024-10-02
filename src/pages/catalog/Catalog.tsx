@@ -4,21 +4,30 @@ import { CatalogList } from '../../components/catalog/catalog-list/CatalogList';
 import { BreadCrumbs } from '../../components/utils/breadcrumbs/BreadCrumbs';
 import s from './catalog.module.scss';
 import { DropDown } from '../../components/catalog/filters/category-sort/DropDown';
-import { useGetProductsQuery } from '../../redux/products/productsApi';
+import { useGetCategoryProductsQuery, useGetProductsQuery } from '../../redux/products/productsApi';
 import { FiltersProductType } from '../../libs/enum/Filters';
 import { Button } from '../../components/utils/button/Button';
-import { LinkComponent } from '../../components/utils/link/Link';
 import { DEFAULT_LIMIT_PRODUCTS } from '../../libs/consts/app';
+import { useSearchParams } from 'react-router-dom';
 
 export const Catalog = () => {
-  const [sortBy, setSortBy] = useState('');
-  const [limit, setLimit] = useState<number | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialSortBy = searchParams.get('sortBy') || '';
+  const category = searchParams.get('category') || '';
+  const initialLimit = parseInt(searchParams.get('limit') || `${DEFAULT_LIMIT_PRODUCTS}`, 10);
+  const [sortBy, setSortBy] = useState(initialSortBy);
+  const [limit, setLimit] = useState<number | null>(initialLimit);
 
   useEffect(() => {
-    setLimit(DEFAULT_LIMIT_PRODUCTS);
+    if (sortBy) {
+      setLimit(DEFAULT_LIMIT_PRODUCTS);
+    }
   }, [sortBy]);
 
-  console.log('sortBy', sortBy);
+  useEffect(() => {
+    const params = { sortBy, limit: limit?.toString() || '', category };
+    setSearchParams(params);
+  }, [category, sortBy, limit, setSearchParams]);
 
   const filterOption = useMemo(() => {
     const isSale = sortBy === FiltersProductType.SALE;
@@ -40,12 +49,16 @@ export const Catalog = () => {
     setLimit((prevLimit) => (prevLimit ? prevLimit + DEFAULT_LIMIT_PRODUCTS : DEFAULT_LIMIT_PRODUCTS));
   };
 
-  const { data, isError, isLoading } = useGetProductsQuery(filterOption);
+  const {
+    data: productsData,
+    isError,
+    isLoading,
+  } = category ? useGetCategoryProductsQuery({ slug: category, ...filterOption }) : useGetProductsQuery(filterOption);
 
-  console.log(data);
+  console.log(productsData);
   console.log(filterOption);
 
-  const products = data || [];
+  const products = productsData || [];
   const allProductsLoaded = products.length < (limit || DEFAULT_LIMIT_PRODUCTS);
 
   return (

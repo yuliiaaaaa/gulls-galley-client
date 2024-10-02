@@ -10,7 +10,7 @@ export const BestSellers = () => {
 
   return (
     <ProductSection
-      to={`${AppRoute.CATALOG}?filter=best-sellers`}
+      to={`${AppRoute.CATALOG}?filter=${FiltersProductType.BEST_SELLERS}`}
       data={products}
       productType={[FiltersProductType.BEST_SELLERS]}
       title="Best Sellers"
