@@ -16,16 +16,34 @@ export const productsApi = mainApi.injectEndpoints({
         limit = DEFAULT_LIMIT_PRODUCTS,
         max_items,
         offset = 0,
-        ordering,
+        ordering = '',
         search,
       }) => {
         const params = { is_best, is_new, is_sale, limit, max_items, offset, ordering, search };
 
-        const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value != null));
+     
+        const queryParams = new URLSearchParams();
 
+        // Ітеруємо по кожному ключу об'єкта params
+        Object.keys(params).forEach((key) => {
+          const value = params[key];
+
+          // Додаємо тільки ті значення, які не є undefined або null
+          if (value !== undefined && value !== null && value !== '') {
+            // Додаємо перевірку на пустий рядок
+            if (Array.isArray(value)) {
+              // Якщо значення — масив, додаємо кожен елемент окремо
+              value.forEach((item) => queryParams.append(key, item.toString()));
+            } else {
+              // Додаємо значення, якщо воно не є масивом
+              queryParams.append(key, value.toString());
+            }
+          }
+        });
+
+        // Повертаємо URL з рядком запиту
         return {
-          url: `api/v1/catalog/products/`,
-          params: filteredParams,
+          url: `api/v1/catalog/products/?${queryParams.toString()}`,
         };
       },
       transformResponse: (response: { data: { results: Product[] } }) => {
