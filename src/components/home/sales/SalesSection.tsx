@@ -9,7 +9,7 @@ export const SalesSection = () => {
 
   return (
     <ProductSection
-      to={`${AppRoute.CATALOG}?filter=${FiltersProductType.SALE}`}
+      to={`${AppRoute.CATALOG}?sortBy=${FiltersProductType.SALE}`}
       data={products}
       productType={[FiltersProductType.SALE]}
       title="Sales"

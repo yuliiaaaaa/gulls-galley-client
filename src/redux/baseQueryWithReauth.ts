@@ -43,6 +43,7 @@ export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, Fetch
     if (refreshResult.data) {
       const data = refreshResult.data as AuthToken;
       api.dispatch(setTokens(data));
+      console.log('refresh');
 
       result = await baseQuery(args, api, extraOptions);
     } else {
