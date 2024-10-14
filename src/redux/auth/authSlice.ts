@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { authApi } from './authApi';
 import { SignUpResponseDto, User } from '../../libs/types/auth/SignUpResponseDto';
 import { LogInResponseDto } from '../../libs/types/auth/LogInResponseDto';
+import { AuthToken } from '../../libs/types/auth/AuthToken';
 
 type InitialState = {
   user: User | null;
@@ -24,31 +25,18 @@ const authSlice = createSlice({
       state.refreshToken = null;
       state.user = null;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addMatcher(
-      authApi.endpoints.login.matchFulfilled,
-      (state, { payload }: PayloadAction<LogInResponseDto>) => {
-        state.accessToken = payload.access;
-        state.refreshToken = payload.refresh;
-        state.user = payload.user;
-      },
-    );
-    builder.addMatcher(
-      authApi.endpoints.registerUser.matchFulfilled,
-      (state, { payload }: PayloadAction<SignUpResponseDto>) => {
-        state.accessToken = payload.access;
-        state.refreshToken = payload.refresh;
-        state.user = payload.user;
-      },
-    );
-    builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
-      state.accessToken = null;
-      state.refreshToken = null;
+    setTokens: (state, { payload }: PayloadAction<AuthToken>) => {
+      state.accessToken = payload.access;
+      state.refreshToken = payload.refresh;
+    },
+    setUser: (state, { payload }: PayloadAction<User>) => {
+      state.user = payload;
+    },
+    clearUser: (state) => {
       state.user = null;
-    });
+    },
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, setTokens,setUser } = authSlice.actions;
 export const authReducer = authSlice.reducer;
