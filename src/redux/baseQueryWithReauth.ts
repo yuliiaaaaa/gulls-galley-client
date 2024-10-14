@@ -32,7 +32,7 @@ export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, Fetch
   if (result.error && result.error.status === 401 && refreshToken) {
     const refreshResult = await baseQuery(
       {
-        body: { refreshToken },
+        body: { refresh: refreshToken },
         method: RTKMethods.POST,
         url: '/api/v1/user/token/refresh/',
       },
