@@ -4,7 +4,7 @@ import { AuthToken } from '../libs/types/auth/AuthToken';
 import { RTKMethods } from '../libs/enum/rtk-queries-methods';
 import type { RootState } from './store';
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
+const baseUrl = 'https://gulls-galley-server-production.up.railway.app';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: baseUrl,
