@@ -25,7 +25,10 @@ export const Catalog = () => {
   }, [sortBy]);
 
   useEffect(() => {
-    const params = { sortBy, limit: limit?.toString() || '', category };
+    const params: Record<string, string> = {};
+    if (sortBy) params.sortBy = sortBy;
+    if (limit) params.limit = limit.toString();
+    if (category) params.category = category;
     setSearchParams(params);
   }, [category, sortBy, limit, setSearchParams]);
 
