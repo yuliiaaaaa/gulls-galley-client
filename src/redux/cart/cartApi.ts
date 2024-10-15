@@ -19,7 +19,6 @@ export const cartApi = mainApi.injectEndpoints({
         method: RTKMethods.GET,
       }),
       transformResponse: (response: CartResponse) => response.data,
-      providesTags: () => [{ type: 'Cart', id: 'LIST' }],
     }),
 
     addItemToCart: builder.mutation<void, CartItemAdd>({
@@ -31,19 +30,20 @@ export const cartApi = mainApi.injectEndpoints({
       invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
     }),
 
-    updateCartItemQuantity: builder.mutation<void, { id: number; quantity: PatchedCartItemUpdateQuantity }>({
-      query: ({ id, quantity }) => ({
-        url: `/api/v1/cart/${id}/update_item_quantity/`,
+    updateCartItemQuantity: builder.mutation<void, { item_id: number; quantity: number }>({
+      query: ({ quantity, item_id }) => ({
+        url: `/api/v1/cart/update_item_quantity/`,
         method: RTKMethods.PATCH,
-        body: quantity,
+        body: { quantity, item_id },
       }),
       invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
     }),
 
     removeItemFromCart: builder.mutation<void, number>({
-      query: (id: number) => ({
-        url: `/api/v1/cart/${id}/remove_item/`,
+      query: (item_id: number) => ({
+        url: `/api/v1/cart/remove_item/`,
         method: RTKMethods.DELETE,
+        params: { item_id },
       }),
       invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
     }),

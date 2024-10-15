@@ -21,6 +21,7 @@ type Props = {
 export const ProductInfo: React.FC<Props> = ({ slug }) => {
   const { data: product, isLoading, refetch, isSuccess } = useGetProductBySlugQuery(slug);
   const [addToCart] = useAddItemToCartMutation();
+  const [serverError, setServerError] = useState('');
   const { favoriteStatus, isAdding, isRemoving, handleAddToFavorites, error } = useFavoriteToggle(slug);
 
   const [count, setCount] = useState(1);
@@ -51,6 +52,7 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
       })
       .catch((err) => {
         console.error('Failed to add item to cart:', err);
+        setServerError(err.data);
       });
   };
 
@@ -116,6 +118,7 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
             />
             <Button className={s.productInfo__button_buy} isDisabled={false} title="Buy now" />
           </div>
+          {serverError && <p className={s.error}>{serverError}</p>}
 
           <div className={s.productInfo__description}>
             {product?.short_description && (

@@ -1,6 +1,5 @@
 import { Product } from './products/Product';
 
-
 export type Cart = {
   cart_id: number;
   user: number | null;
@@ -24,7 +23,8 @@ export type CartItemAdd = {
 };
 
 export type CartItem = {
-  product_id: number;
+  id: number;
+  product: Product;
   quantity: number;
   variation?: Variation;
 };
