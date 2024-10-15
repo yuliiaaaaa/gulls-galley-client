@@ -13,9 +13,10 @@ import { useFavoriteToggle } from '../../../libs/hooks/useFavoriteToggle';
 type Props = {
   item: Product;
   productType?: string[] | undefined;
+  onRemoveFavorite?: (id:number) => void;
 };
 
-export const ItemCard: FC<Props> = ({ item, productType }) => {
+export const ItemCard: FC<Props> = ({ item, productType, onRemoveFavorite }) => {
   const { id, slug } = item;
   const { favoriteStatus, handleAddToFavorites } = useFavoriteToggle(slug);
 
@@ -23,6 +24,9 @@ export const ItemCard: FC<Props> = ({ item, productType }) => {
     event.stopPropagation();
     event.preventDefault();
     handleAddToFavorites(id);
+    if (favoriteStatus && onRemoveFavorite) {
+      onRemoveFavorite(id);
+    }
   };
 
   return (

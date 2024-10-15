@@ -13,6 +13,7 @@ import { Catalog } from '../catalog/Catalog';
 import { AuthWrapper } from '../../components/routes/AuthWrapper';
 import { CartPage } from '../cart/CartPage';
 import { LayoutNotFoundPage } from '../../components/utils/layout/LayoutNotFoundPage';
+import { FavoritePage } from '../favorites/FavoritePage';
 
 function App() {
   const router = createBrowserRouter([
@@ -45,6 +46,14 @@ function App() {
               <UserPage />
             </PrivateRoute>
           ),
+        },
+        {
+          element: (
+            <PrivateRoute>
+              <FavoritePage />
+            </PrivateRoute>
+          ),
+          path: AppRoute.FAVORITES,
         },
       ],
     },

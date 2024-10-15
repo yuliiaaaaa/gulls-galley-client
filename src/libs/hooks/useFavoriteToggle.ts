@@ -6,8 +6,8 @@ import {
 } from '../../redux/products/productsApi';
 
 export const useFavoriteToggle = (slug: string) => {
-  const { data: product, isLoading, error, refetch, isSuccess } = useGetProductBySlugQuery(slug);
-  const [addProductToFavorites, { isLoading: isAdding, isError: isAddError }] = useAddProductToFavoritesMutation();
+  const { data: product, isLoading, error, refetch, isSuccess} = useGetProductBySlugQuery(slug);
+  const [addProductToFavorites, { isLoading: isAdding, isError: isAddError}] = useAddProductToFavoritesMutation();
   const [removeFavoritesProduct, { isLoading: isRemoving, isError: isRemoveError }] =
     useRemoveFavoritesProductMutation();
 
@@ -41,6 +41,7 @@ export const useFavoriteToggle = (slug: string) => {
       if (favoriteStatus) {
         setFavoriteStatus(false);
         await handleRemoveFavorites(id);
+
       } else {
         setFavoriteStatus(true);
         await handleAddtofavorites(id);

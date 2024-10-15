@@ -10,5 +10,5 @@ export type GetFavoritesResponse = {
   count: number;
   next: string | null;
   previous: string | null;
-  results: FavoriteProduct[];
+  data: { results: FavoriteProduct[] };
 };

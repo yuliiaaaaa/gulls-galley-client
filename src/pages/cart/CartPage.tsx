@@ -1,5 +1,7 @@
+import { CartList } from '../../components/cart/cart-list/CartList';
 import { Button } from '../../components/utils/button/Button';
 import SvgIcon from '../../components/utils/svg-icon/SvgIcon';
+import { useGetCartQuery } from '../../redux/cart/cartApi';
 import s from './CartPage.module.scss';
 
 type Props = {
@@ -8,13 +10,15 @@ type Props = {
 };
 
 export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
-  const cart = [];
+  const { data: cart, isLoading, isSuccess } = useGetCartQuery();
+  const cartItems = cart;
+  console.log(cartItems)
 
   return (
     <div className={s.cart}>
       <div className={s.cart__body}>
         <section className={s.container}>
-          {!(cart.length > 0) && (
+          {!(cartItems?.items?.length > 0) && (
             <>
               <div className={s.cart__header}>
                 <p className={s.cart__title}>Your Cart</p>
@@ -26,6 +30,8 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
               <Button className={s.cart__empty_button} isDisabled={false} title="Continue shopping" onClick={onClick} />
             </>
           )}
+
+          <CartList items={cartItems} />
         </section>
       </div>
     </div>
