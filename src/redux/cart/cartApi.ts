@@ -19,7 +19,7 @@ export const cartApi = mainApi.injectEndpoints({
         method: RTKMethods.GET,
       }),
       transformResponse: (response: CartResponse) => response.data,
-      providesTags: (result, error, id) => [{ type: 'Cart', id }],
+      providesTags: () => [{ type: 'Cart', id: 'LIST' }],
     }),
 
     addItemToCart: builder.mutation<void, CartItemAdd>({

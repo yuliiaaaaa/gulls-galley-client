@@ -11,14 +11,14 @@ type Props = {
 
 export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
   const { data: cart, isLoading, isSuccess } = useGetCartQuery();
-  const cartItems = cart;
+  const cartItems = cart?.items || [];
   console.log(cartItems)
 
   return (
     <div className={s.cart}>
       <div className={s.cart__body}>
         <section className={s.container}>
-          {!(cartItems?.items?.length > 0) && (
+          {!(cartItems.length > 0) && (
             <>
               <div className={s.cart__header}>
                 <p className={s.cart__title}>Your Cart</p>
