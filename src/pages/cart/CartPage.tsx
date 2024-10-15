@@ -12,26 +12,38 @@ type Props = {
 export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
   const { data: cart, isLoading, isSuccess } = useGetCartQuery();
   const cartItems = cart?.items || [];
-  console.log(cartItems)
+  console.log(cartItems);
 
   return (
     <div className={s.cart}>
       <div className={s.cart__body}>
         <section className={s.container}>
-          {!(cartItems.length > 0) && (
+          <div className={s.cart__header}>
+            <p className={s.cart__title}>Your Cart</p>
+            <SvgIcon id="close" onClick={onClick} className={s.cart__close} />
+          </div>
+          {!(cartItems.length > 0) && !isLoading && (
             <>
-              <div className={s.cart__header}>
-                <p className={s.cart__title}>Your Cart</p>
-                <SvgIcon id="close" onClick={onClick} className={s.cart__close} />
-              </div>
-
               <p className={s.cart__empty_title}>Your shopping cart is empty.</p>
 
               <Button className={s.cart__empty_button} isDisabled={false} title="Continue shopping" onClick={onClick} />
             </>
           )}
 
-          <CartList items={cartItems} />
+          {isLoading && <p>Loading your cart items...</p>}
+          {!isLoading && cartItems.length > 0 && (
+            <div className={s.cart__content}>
+              <CartList items={cartItems} />
+              <div className={s.cart__buttom}>
+                <div className={s.cart__price}>
+                  <h1 className={s.cart__price_text}>Total</h1>
+                  <p className={s.cart__price_sum}>{`${cart?.total_price} €`}</p>
+                </div>
+
+                <Button className={s.cart__checkout} isDisabled={false} title="Checkout" />
+              </div>
+            </div>
+          )}
         </section>
       </div>
     </div>
