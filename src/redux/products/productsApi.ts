@@ -93,8 +93,9 @@ export const productsApi = mainApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'Product', id: 'LIST' }],
     }),
+
     getFavorites: builder.query<FavoriteProduct[], { limit?: number; offset?: number }>({
-      query: ({ limit = DEFAULT_LIMIT_PRODUCTS, offset = 0 }) => {
+      query: ({ limit, offset }) => {
         const params = { limit, offset };
         const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value != null));
 
@@ -104,7 +105,7 @@ export const productsApi = mainApi.injectEndpoints({
           params: filteredParams,
         };
       },
-      transformResponse: (response: GetFavoritesResponse) => response.results,
+      transformResponse: (response: GetFavoritesResponse) => response.data.results,
     }),
   }),
 });
@@ -116,5 +117,5 @@ export const {
   useAddProductToFavoritesMutation,
   useRemoveFavoritesProductMutation,
   useGetFavoritesQuery,
-  useGetCategoryProductsQuery
+  useGetCategoryProductsQuery,
 } = productsApi;

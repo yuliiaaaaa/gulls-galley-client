@@ -13,7 +13,6 @@ import { CategoriesComponent } from './categoriesComponent';
 import { CategoriesComponentTablet } from './categoriesComponentTablet';
 import { useIsProductPage } from '../../libs/hooks/useIsProductPage';
 import { useScrollToHash } from '../../libs/hooks/useScrollToHash';
-import { useIsAuthPage } from '../../libs/hooks/useIsAuthPage';
 import { getIconAccountPath } from '../../libs/helpers/getIconAccountPath';
 import { useIsHeaderStyledPAge } from '../../libs/hooks/useIsHeaderStyledPages';
 import { styledHeaderRoutes } from '../../libs/consts/app';

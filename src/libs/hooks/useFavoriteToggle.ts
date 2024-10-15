@@ -4,12 +4,18 @@ import {
   useGetProductBySlugQuery,
   useRemoveFavoritesProductMutation,
 } from '../../redux/products/productsApi';
+import { useAppSelector } from '../../redux/hooks/useAppSelector';
+import { AppRoute } from '../enum/app-route-enum';
+import { useNavigate } from 'react-router';
 
 export const useFavoriteToggle = (slug: string) => {
   const { data: product, isLoading, error, refetch, isSuccess } = useGetProductBySlugQuery(slug);
   const [addProductToFavorites, { isLoading: isAdding, isError: isAddError }] = useAddProductToFavoritesMutation();
   const [removeFavoritesProduct, { isLoading: isRemoving, isError: isRemoveError }] =
     useRemoveFavoritesProductMutation();
+  const navigate = useNavigate();
+
+  const isAuth = useAppSelector((state) => state.auth.accessToken);
 
   const [favoriteStatus, setFavoriteStatus] = useState(false);
 
@@ -36,6 +42,11 @@ export const useFavoriteToggle = (slug: string) => {
   };
 
   const handleAddToFavorites = async (id: number) => {
+    if (!isAuth) {
+      navigate(AppRoute.LOG_IN, { replace: true });
+      return;
+    }
+
     const previousFavoriteStatus = favoriteStatus;
     try {
       if (favoriteStatus) {

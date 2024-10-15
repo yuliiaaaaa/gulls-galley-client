@@ -1,6 +1,6 @@
 import { mainApi } from '../mainApi';
 import { RTKMethods } from '../../libs/enum/rtk-queries-methods';
-import { Cart, CartItemAdd, PatchedCartItemUpdateQuantity } from '../../libs/types/Cart';
+import { Cart, CartItemAdd, CartResponse, PatchedCartItemUpdateQuantity } from '../../libs/types/Cart';
 
 export const cartApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,13 +13,13 @@ export const cartApi = mainApi.injectEndpoints({
       invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
     }),
 
-    getCartById: builder.query<Cart, number>({
-      query: (id: number) => ({
-        url: `/api/v1/cart/${id}/`,
+    getCart: builder.query<Cart, void>({
+      query: () => ({
+        url: `/api/v1/cart/`,
         method: RTKMethods.GET,
       }),
-      transformResponse: (response: Cart) => response,
-      providesTags: (result, error, id) => [{ type: 'Cart', id }],
+      transformResponse: (response: CartResponse) => response.data,
+      providesTags: () => [{ type: 'Cart', id: 'LIST' }],
     }),
 
     addItemToCart: builder.mutation<void, CartItemAdd>({
@@ -52,7 +52,7 @@ export const cartApi = mainApi.injectEndpoints({
 
 export const {
   useCreateCartMutation,
-  useGetCartByIdQuery,
+  useGetCartQuery,
   useAddItemToCartMutation,
   useUpdateCartItemQuantityMutation,
   useRemoveItemFromCartMutation,

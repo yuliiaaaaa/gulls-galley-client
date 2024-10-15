@@ -8,10 +8,12 @@ type Props = {
 };
 export const CatalogList: React.FC<Props> = ({ products }) => {
   return (
-    <div className={s.list}>
-      {products.map((product) => (
-        <ItemCard key={product.id} item={product} productType={getSpecifiedTrueProperties(product)} />
-      ))}
+    <div className={s.wrapper}>
+      <div className={s.list}>
+        {products.map((product) => (
+          <ItemCard key={product.id} item={product} productType={getSpecifiedTrueProperties(product)} />
+        ))}
+      </div>
     </div>
   );
 };

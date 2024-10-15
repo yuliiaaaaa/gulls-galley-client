@@ -12,6 +12,7 @@ import { ProductPrice } from '../../utils/product-price/ProductPrice';
 import { getProductType } from '../../../libs/helpers/getProductType';
 import { Product } from '../../../libs/types/products/Product';
 import { useFavoriteToggle } from '../../../libs/hooks/useFavoriteToggle';
+import { useAddItemToCartMutation } from '../../../redux/cart/cartApi';
 
 type Props = {
   slug: string;
@@ -19,6 +20,7 @@ type Props = {
 
 export const ProductInfo: React.FC<Props> = ({ slug }) => {
   const { data: product, isLoading, refetch, isSuccess } = useGetProductBySlugQuery(slug);
+  const [addToCart] = useAddItemToCartMutation();
   const { favoriteStatus, isAdding, isRemoving, handleAddToFavorites, error } = useFavoriteToggle(slug);
 
   const [count, setCount] = useState(1);
@@ -31,7 +33,26 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
     }
   };
 
-  console.log('is favorite', product?.is_favorite);
+  const handleAddToCart = () => {
+    if (!product) return;
+
+    const cartItem = {
+      product_id: product.id,
+      quantity: count,
+      variation_id: null,
+    };
+
+    console.log('Adding to cart:', cartItem);
+
+    addToCart(cartItem)
+      .unwrap()
+      .then(() => {
+        console.log('Item added to cart');
+      })
+      .catch((err) => {
+        console.error('Failed to add item to cart:', err);
+      });
+  };
 
   return (
     <div className={s.productInfo}>
@@ -87,7 +108,12 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
           </div>
 
           <div className={s.productInfo__buttons}>
-            <Button className={s.productInfo__button_add} isDisabled={false} title="Add to cart" />
+            <Button
+              className={s.productInfo__button_add}
+              isDisabled={false}
+              onClick={handleAddToCart}
+              title="Add to cart"
+            />
             <Button className={s.productInfo__button_buy} isDisabled={false} title="Buy now" />
           </div>
 
