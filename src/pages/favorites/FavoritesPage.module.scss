@@ -92,16 +92,6 @@
         margin-bottom: 88px;
       }
     }
-
-    &__empty {
-      &__text {
-        @include font(20px, 2vw, 20px, 500, 30px);
-      }
-
-      &__subtext {
-        @include font(16px, 2vw, 16px, 400, 24px);
-      }
-    }
   }
 
   @include onPhone {
@@ -115,12 +105,6 @@
     &_emptyWrapper {
       margin-top: 40px;
       margin-bottom: 80px;
-    }
-  }
-
-  &__empty {
-    &__text {
-      @include font(16px, 2vw, 16px, 500, 20px);
     }
   }
 }
