@@ -93,15 +93,48 @@
     display: flex;
     align-items: center;
   }
-}
 
-.btn {
-  width: 59px;
-  height: 24px;
-  color: $error-color;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  @include font(16px, 2vw, 16px, 400, 24px);
+  @include onPhone {
+    .card {
+      &__title {
+        @include font(16px, 2vw, 16px, 500, 20px);
+      }
+
+      &__left {
+        gap: 12px;
+      }
+
+      &__price_block {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      &__quantity_buttons {
+        height: 36px;
+      }
+
+      &__count_text {
+        @include font(14px, 2vw, 14px, 400, 24px);
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .btn {
+    width: 59px;
+    height: 24px;
+    color: $error-color;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    @include font(16px, 2vw, 16px, 400, 24px);
+
+    @include onPhone {
+      width: 59px;
+      height: 36px;
+    }
+  }
 }

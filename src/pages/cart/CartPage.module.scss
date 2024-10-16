@@ -96,7 +96,34 @@
     }
   }
 
-  &__content {
+  @include onTablet {
+    &__body {
+      width: 50%;
+    }
+  }
 
+  @include onPhone {
+    &__body {
+      padding-top: 16px;
+      padding-bottom: 60px;
+      width: 92%;
+    }
+
+    &__header {
+      margin-bottom: 40px;
+    }
+
+    &__title {
+      @include font(32px, 2vw, 32px, 400, 41px);
+    }
+
+    &__empty_title {
+      @include font(20px, 2vw, 20px, 300, 26px);
+      margin-bottom: 56px;
+    }
+
+    &__buttom {
+      margin-bottom: 60px;
+    }
   }
 }
