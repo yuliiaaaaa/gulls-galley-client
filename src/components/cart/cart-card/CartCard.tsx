@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { getProductType } from '../../../libs/helpers/getProductType';
-import { Product } from '../../../libs/types/products/Product';
 import { Button } from '../../utils/button/Button';
 import { ProductPrice } from '../../utils/product-price/ProductPrice';
 import s from './CartCard.module.scss';
@@ -13,9 +12,11 @@ import {
 
 type Props = {
   item: CartItem;
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  cartItems: CartItem[];
 };
 
-export const Cartcard: React.FC<Props> = ({ item }) => {
+export const Cartcard: React.FC<Props> = ({ item, setCartItems, cartItems }) => {
   const [count, setCount] = useState(item.quantity);
   const [prevCount, setPrevCount] = useState(item.quantity);
   const [removeItemFromCart] = useRemoveItemFromCartMutation();
@@ -29,10 +30,10 @@ export const Cartcard: React.FC<Props> = ({ item }) => {
         item_id: itemId,
         quantity,
       }).unwrap();
-      refetch(); 
+      refetch();
     } catch (error) {
       console.error('Error updating item quantity:', error);
-      setCount(prevCount); 
+      setCount(prevCount);
     }
   };
 
@@ -49,8 +50,14 @@ export const Cartcard: React.FC<Props> = ({ item }) => {
   };
 
   const handleRemoveItem = async () => {
-    await removeItemFromCart(item.id);
-    refetch();
+    const prevCartItems = [...cartItems];
+    setCartItems((prevItems) => prevItems.filter((i) => i.id !== item.id));
+    try {
+      await removeItemFromCart(item.id).unwrap();
+    } catch (error) {
+      console.error('Error removing item:', error);
+      setCartItems(prevCartItems);
+    }
   };
 
   return (

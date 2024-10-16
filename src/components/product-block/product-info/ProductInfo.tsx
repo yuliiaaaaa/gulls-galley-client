@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import {
-  useAddProductToFavoritesMutation,
   useGetProductBySlugQuery,
-  useRemoveFavoritesProductMutation,
 } from '../../../redux/products/productsApi';
 import { Button } from '../../utils/button/Button';
 import SvgIcon from '../../utils/svg-icon/SvgIcon';
@@ -10,9 +8,8 @@ import { StarRate } from '../star-rate/StarRate';
 import s from './productInfo.module.scss';
 import { ProductPrice } from '../../utils/product-price/ProductPrice';
 import { getProductType } from '../../../libs/helpers/getProductType';
-import { Product } from '../../../libs/types/products/Product';
 import { useFavoriteToggle } from '../../../libs/hooks/useFavoriteToggle';
-import { useAddItemToCartMutation } from '../../../redux/cart/cartApi';
+import { useAddItemToCartMutation, useGetCartQuery } from '../../../redux/cart/cartApi';
 
 type Props = {
   slug: string;
@@ -20,6 +17,7 @@ type Props = {
 
 export const ProductInfo: React.FC<Props> = ({ slug }) => {
   const { data: product, isLoading, refetch, isSuccess } = useGetProductBySlugQuery(slug);
+  const { refetch: refetchCart } = useGetCartQuery();
   const [addToCart] = useAddItemToCartMutation();
   const [serverError, setServerError] = useState('');
   const { favoriteStatus, isAdding, isRemoving, handleAddToFavorites, error } = useFavoriteToggle(slug);
@@ -49,6 +47,7 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
       .unwrap()
       .then(() => {
         console.log('Item added to cart');
+        refetchCart();
       })
       .catch((err) => {
         console.error('Failed to add item to cart:', err);

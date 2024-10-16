@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
 import { CartList } from '../../components/cart/cart-list/CartList';
 import { Button } from '../../components/utils/button/Button';
 import SvgIcon from '../../components/utils/svg-icon/SvgIcon';
 import { useGetCartQuery } from '../../redux/cart/cartApi';
 import s from './CartPage.module.scss';
+import { CartItem } from '../../libs/types/Cart';
 
 type Props = {
   isCartOpen: boolean;
@@ -11,8 +13,13 @@ type Props = {
 
 export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
   const { data: cart, isLoading, isSuccess } = useGetCartQuery();
-  const cartItems = cart?.items || [];
-  console.log(cartItems);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    if (cart?.items) {
+      setCartItems(cart.items);
+    }
+  }, [cart]);
 
   return (
     <div className={s.cart}>
@@ -33,7 +40,7 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
           {isLoading && <p>Loading your cart items...</p>}
           {!isLoading && cartItems.length > 0 && (
             <div className={s.cart__content}>
-              <CartList items={cartItems} />
+              <CartList items={cartItems} setCartItems={setCartItems} />
               <div className={s.cart__buttom}>
                 <div className={s.cart__price}>
                   <h1 className={s.cart__price_text}>Total</h1>
