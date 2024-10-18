@@ -20,16 +20,16 @@ export const Footer = () => {
             <div className={s.footer__explore}>
               <h5 className={s.footer__contactInfo__title}>Explore</h5>
               <div className={s.footer__contactInfo_column}>
-                <Link to={AppRoute.FURNITURE} className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
+                <Link to="" className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
                   Furniture
                 </Link>
-                <Link to={AppRoute.LIGHTNING} className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
+                <Link to="" className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
                   Lighting
                 </Link>
-                <Link to={AppRoute.ACCESSORIES} className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
+                <Link to="" className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
                   Accessories
                 </Link>
-                <Link to={AppRoute.OTHER} className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
+                <Link to="" className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
                   Other
                 </Link>
               </div>
@@ -37,7 +37,7 @@ export const Footer = () => {
 
             <div className={s.footer__help}>
               <h5 className={s.footer__contactInfo__title}>Help</h5>
-              <Link to={AppRoute.FURNITURE} className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
+              <Link to="" className={cn(s.footer__contactLink, { [s.whiteText]: isProductPage })}>
                 FAQ
               </Link>
             </div>

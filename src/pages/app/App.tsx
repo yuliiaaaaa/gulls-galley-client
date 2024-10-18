@@ -14,6 +14,7 @@ import { AuthWrapper } from '../../components/routes/AuthWrapper';
 import { CartPage } from '../cart/CartPage';
 import { LayoutNotFoundPage } from '../../components/utils/layout/LayoutNotFoundPage';
 import { FavoritePage } from '../favorites/FavoritePage';
+import { CheckoutPage } from '../checkout/CheckoutPage';
 
 function App() {
   const router = createBrowserRouter([
@@ -36,6 +37,14 @@ function App() {
             <AuthWrapper>
               <LogInPage />
             </AuthWrapper>
+          ),
+        },
+        {
+          path: AppRoute.CHECKOUT,
+          element: (
+            <PrivateRoute>
+              <CheckoutPage />
+            </PrivateRoute>
           ),
         },
         { path: AppRoute.CATALOG, element: <Catalog /> },
