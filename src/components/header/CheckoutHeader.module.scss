@@ -1,0 +1,25 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/container.scss';
+
+.header {
+  height: 122px;
+  background-color: $disabled-background-color;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid $placeholder-text-color;
+
+  &__logo_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 122px;
+  }
+
+  &__logo {
+    @include font(32px, 2vw, 32px, 600, 25px);
+    width: 80px;
+  }
+}

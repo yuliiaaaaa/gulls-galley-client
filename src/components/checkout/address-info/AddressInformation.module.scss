@@ -1,0 +1,42 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.contacts {
+  background-color: #fff;
+  padding-block: 40px;
+  height: fit-content;
+  margin: unset;
+
+  &__title {
+    @include font(40px, 2vw, 40px, 300, 2px);
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+}
+
+.btn {
+  width: 248px;
+  height: 56px;
+  background-color: $main-font-text-color;
+  color: #fff;
+  @include font(20px, 2vw, 20px, 500, 30px);
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include hover(
+    (
+      background-color: #fff,
+      color: $main-font-text-color,
+    )
+  );
+}

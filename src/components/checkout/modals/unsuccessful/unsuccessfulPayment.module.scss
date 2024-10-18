@@ -1,0 +1,173 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixins.scss';
+@import '../../../../sass/container.scss';
+
+.modal {
+  background-color: #fff;
+  width: 60%;
+  padding-block: 64px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 100;
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+    margin-top: 40px;
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 33px;
+    top: 34px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  &__isClose {
+    display: none;
+  }
+
+  &__oops {
+    @include font(40px, 2vw, 40px, 300, 52px);
+    color: $main-font-text-color;
+  }
+
+  &__text {
+    @include font(20px, 2vw, 20px, 500, 30px);
+  }
+
+  &__subtext {
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+
+  @include onTablet {
+    border-radius: 24px;
+    width: calc(100% - 32px);
+    padding-inline: 16px;
+    gap: 32px;
+    bottom: 0;
+    top: unset;
+    transform: none;
+    padding-block: 40px;
+    left: 0;
+
+    &__info {
+      gap: 16px;
+      margin-bottom: 48px;
+      margin-top: 40px;
+    }
+
+    &__img {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__icon {
+      position: absolute;
+      right: 33px;
+      top: 34px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    &__isClose {
+      display: none;
+    }
+
+    &__oops {
+      @include font(40px, 2vw, 40px, 300, 52px);
+      color: $main-font-text-color;
+    }
+
+    &__text {
+      @include font(20px, 2vw, 20px, 500, 30px);
+    }
+
+    &__subtext {
+      @include font(20px, 2vw, 20px, 300, 26px);
+      display: none;
+    }
+  }
+
+  @include onPhone {
+    border-radius: 24px;
+    width: calc(100% - 32px);
+    padding-inline: 16px;
+    gap: 32px;
+    bottom: 0;
+    top: unset;
+    transform: none;
+    padding-block: 40px;
+    left: 0;
+
+    &__info {
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    &__oops {
+      @include font(28px, 2vw, 28px, 400, 28px);
+    }
+
+    &__text {
+      @include font(16px, 2vw, 16px, 300, 22px);
+    }
+
+    &__subtext {
+      @include font(20px, 2vw, 20px, 300, 26px);
+      display: none;
+    }
+  }
+}
+
+.btn {
+  width: 512px;
+  height: 56px;
+  background-color: $main-font-text-color;
+  color: #fff;
+  @include font(24px, 2vw, 24px, 500, 24px);
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include hover(
+    (
+      background-color: #fff,
+      color: $main-font-text-color,
+    )
+  );
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include onTablet {
+    width: 100%;
+    @include font(20px, 2vw, 20px, 500, 30px);
+  }
+}
+
+.img {
+  @include onTablet {
+    width: 60px;
+    height: 60px;
+  }
+
+  @include onPhone {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,48 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/normalize.scss';
+@import '../../sass/container.scss';
+
+.checkout {
+  background-color: $disabled-background-color;
+  min-height: 100vh;
+  margin-top: 122px;
+  padding-top: 16px;
+  position: relative;
+
+  &__payment_btn {
+    margin-top: 40px;
+    width: 100%;
+    height: 72px;
+    background-color: $main-font-text-color;
+    color: #fff;
+    @include font(24px, 2vw, 24px, 500, 24px);
+    box-sizing: border-box;
+    cursor: pointer;
+
+    @include hover(
+      (
+        background-color: #fff,
+        color: $main-font-text-color,
+      )
+    );
+
+    &_wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__blocks {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    gap: 16px;
+  }
+}

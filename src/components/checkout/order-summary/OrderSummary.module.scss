@@ -1,0 +1,36 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.summ {
+  width: 424px;
+  background-color: #fff;
+  margin: unset;
+  padding-bottom: 24px;
+
+  &__title {
+    @include font(40px, 2vw, 40px, 300, 52px);
+    margin-bottom: 24px;
+  }
+
+  &__price {
+    padding-top: 16px;
+    border-top: 1px solid $review-text-gray-color;
+    display: flex;
+    justify-content: space-between;
+
+    &_text {
+      @include font(20px, 2vw, 20px, 500, 30px);
+    }
+
+    &_summ {
+      @include font(20px, 2vw, 20px, 500, 30px);
+    }
+  }
+
+  &__blocks {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+}

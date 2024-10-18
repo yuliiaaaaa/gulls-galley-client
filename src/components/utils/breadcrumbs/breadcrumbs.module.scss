@@ -1,0 +1,61 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.breadcrumb {
+  &__list {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap
+  }
+
+  &__el {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    padding-block: 16px;
+    cursor: pointer;
+
+    &:not(:last-child)::after {
+      content: url('/product-page/arrow.png');
+      width: 16px;
+      height: 16px;
+      margin-left: 16px;
+      margin-right: 16px;
+      align-content: center;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $review-text-gray-color;
+
+    &_underline {
+      color: $main-font-text-color;
+      position: relative;
+
+      &::after {
+        content: '';
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        background-color: $main-font-text-color;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  @include mediaMaxQuery(640px) {
+    &__el {
+      padding-block: 10px;
+      @include font(16px, 2vw, 16px, 400, 24px);
+
+      &:not(:last-child)::after {
+        content: url('/product-page/arrow.png');
+        margin-left: 12px;
+        margin-right: 12px;
+        width: 10px;
+        height: 14px;
+      }
+    }
+  }
+}

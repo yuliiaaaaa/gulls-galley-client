@@ -1,0 +1,51 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.address {
+  width: 60%;
+  &__title {
+    @include font(40px, 2vw, 40px, 400, 52px);
+    position: relative;
+    text-align: left;
+    margin-bottom: 104px;
+    padding-bottom: 12px;
+
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      position: absolute;
+      background-color: $main-font-text-color;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 104px;
+  }
+
+  &__button {
+    width: 248px;
+    height: 56px;
+    background-color: $main-font-text-color;
+    @include font(20px, 2vw, 20px, 500, 30px);
+    color: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    @include hover(
+      (
+        color: $main-font-text-color,
+        background-color: #fff,
+      )
+    );
+  }
+
+  &__text {
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+}
