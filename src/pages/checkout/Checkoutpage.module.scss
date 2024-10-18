@@ -1,0 +1,39 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/normalize.scss';
+@import '../../sass/container.scss';
+
+.checkout {
+  background-color: $placeholder-text-color;
+  height: 100%;
+  margin-top: 138px;
+  position: relative;
+
+  &__payment_btn {
+    width: 45%;
+    height: 72px;
+    background-color: $main-font-text-color;
+    color: #fff;
+    @include font(24px, 2vw, 24px, 500, 24px);
+    box-sizing: border-box;
+    cursor: pointer;
+
+    @include hover(
+      (
+        background-color: #fff,
+        color: $main-font-text-color,
+      )
+    );
+
+    &_wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__blocks {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+}

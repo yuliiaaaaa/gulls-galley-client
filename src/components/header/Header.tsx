@@ -217,7 +217,7 @@ export const Header = () => {
       {isCartOpen && (
         <>
           <div className={s.overlay} />
-          <CartPage isCartOpen={isCartOpen} onClick={handleCartOpen} />
+          <CartPage isCartOpen={isCartOpen} onClick={handleCartOpen} setCartOpen={setIsCartOpen} />
         </>
       )}
     </section>

@@ -8,7 +8,7 @@ import s from './layout.module.scss';
 import cn from 'classnames';
 
 export const Layout = () => {
-  const isFooterNotShown = useIsAuthPage([AppRoute.SIGN_UP, AppRoute.LOG_IN]);
+  const isFooterNotShown = useIsAuthPage([AppRoute.SIGN_UP, AppRoute.LOG_IN, AppRoute.CHECKOUT]);
 
   return (
     <>

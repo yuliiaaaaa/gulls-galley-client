@@ -5,13 +5,17 @@ import SvgIcon from '../../components/utils/svg-icon/SvgIcon';
 import { useGetCartQuery } from '../../redux/cart/cartApi';
 import s from './CartPage.module.scss';
 import { CartItem } from '../../libs/types/Cart';
+import { useNavigate } from 'react-router';
+import { AppRoute } from '../../libs/enum/app-route-enum';
 
 type Props = {
   isCartOpen: boolean;
+  setCartOpen: (isCartOpen: boolean) => void;
   onClick: () => void;
 };
 
-export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
+export const CartPage: React.FC<Props> = ({ isCartOpen, onClick, setCartOpen }) => {
+  const navigate = useNavigate();
   const { data: cart, isLoading, isSuccess } = useGetCartQuery();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
@@ -20,6 +24,11 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
       setCartItems(cart.items);
     }
   }, [cart]);
+
+  const handleCheckout = () => {
+    navigate(AppRoute.CHECKOUT);
+    setCartOpen(false);
+  };
 
   return (
     <div className={s.cart}>
@@ -47,7 +56,7 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick }) => {
                   <p className={s.cart__price_sum}>{`${cart?.total_price} €`}</p>
                 </div>
 
-                <Button className={s.cart__checkout} isDisabled={false} title="Checkout" />
+                <Button className={s.cart__checkout} isDisabled={false} title="Checkout" onClick={handleCheckout} />
               </div>
             </div>
           )}

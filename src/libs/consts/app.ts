@@ -10,6 +10,8 @@ export const styledHeaderRoutes = [
   AppRoute.LOG_IN,
   AppRoute.CATALOG,
   AppRoute.FAVORITES,
+  AppRoute.CHECKOUT,
 ];
 export const AuthPagesRoutes = [AppRoute.SIGN_UP, AppRoute.LOG_IN];
 export const DEFAULT_LIMIT_PRODUCTS = 16;
+export const phoneRegex=/^(?:\+1)?\s?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;

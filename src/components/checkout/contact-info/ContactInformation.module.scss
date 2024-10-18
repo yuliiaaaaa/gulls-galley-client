@@ -1,0 +1,37 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.contacts {
+  width: 45%;
+  background-color: #fff;
+  padding-block: 40px;
+  height: fit-content;
+  margin: unset;
+
+  &__title {
+    @include font(40px, 2vw, 40px, 300, 2px);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
