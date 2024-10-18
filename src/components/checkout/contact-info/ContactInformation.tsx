@@ -7,7 +7,13 @@ import { ContactForm } from './ContactForm';
 export const ContactInformation = () => {
   const [isOpen, setIsOpened] = useState(false);
   const { data } = useGetUserProfileQuery();
-  const user = data || {};
+  const user = data || {
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone_number: '',
+  };
+
   console.log(data);
   const [orderContactData, setOrderContactData] = useState({
     name: '',
@@ -20,7 +26,7 @@ export const ContactInformation = () => {
       setOrderContactData({
         name: `${user.first_name} ${user.last_name}`,
         email: user.email,
-        phone: user.phone_number,
+        phone: user.phone_number ?? '',
       });
     }
   }, [user]);
