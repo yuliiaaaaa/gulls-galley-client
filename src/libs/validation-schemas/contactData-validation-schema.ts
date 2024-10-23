@@ -8,7 +8,7 @@ export const ContactDataValidationSchema = yup.object().shape({
     .string()
     .required(ValidationMessages.REQUIRED)
     .matches(emailRegex, ValidationMessages.EMAIL_FORMAT_NOT_CORRECT),
-  phone: yup
+  phone_number: yup
     .string()
     .required(ValidationMessages.REQUIRED)
     .matches(phoneRegex, ValidationMessages.PHONE_FORMAT_NOT_CORRECT),

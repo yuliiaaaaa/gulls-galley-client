@@ -6,7 +6,7 @@ import { AppRoute } from '../../libs/enum/app-route-enum';
 import useScrollingUp from '../../libs/hooks/useScrollingUp';
 import cn from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { useGetProductsQuery } from '../../redux/products/productsApi';
+import { useGetFavoritesQuery, useGetProductsQuery } from '../../redux/products/productsApi';
 import { Product } from '../../libs/types/products/Product';
 import { ItemCard } from '../utils/ItemCard.tsx/ItemCard';
 import { CategoriesComponent } from './categoriesComponent';
@@ -18,16 +18,28 @@ import { useIsHeaderStyledPAge } from '../../libs/hooks/useIsHeaderStyledPages';
 import { styledHeaderRoutes } from '../../libs/consts/app';
 import { CartPage } from '../../pages/cart/CartPage';
 import { useIsNotFoundPage } from '../../libs/hooks/useIsNotFoundPage';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../redux/hooks/useAppSelector';
+import { useGetCartQuery } from '../../redux/cart/cartApi';
+import { CountCircle } from '../utils/countCircle/CountCircle';
 
 export const Header = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [isSearchBarOpened, setIsSearchBarOpened] = useState(false);
   const [isCategoriesMenuOpened, setIsCategoriesMenuOpened] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
   const scrollingUp = useScrollingUp();
   const isProductPage = useIsProductPage();
   const isHeaderStyledPages = useIsHeaderStyledPAge(styledHeaderRoutes);
   const isNotFoundPAge = useIsNotFoundPage();
+  const { data: cart } = useGetCartQuery();
+  const { data: favorites = [] } = useGetFavoritesQuery({ limit: 100 });
+  const cartItemsCount = cart?.items.length || 0;
+  const favoritesItemsCount = favorites.length || 0;
+
   const linkBlackStyled =
     isSearchBarOpened || isCategoriesMenuOpened || isProductPage || isHeaderStyledPages || isNotFoundPAge;
 
@@ -40,16 +52,14 @@ export const Header = () => {
     isHeaderStyledPages ||
     isNotFoundPAge;
 
-  console.log(isIconBlack);
+  const burgerIcon = isMenuOpened ? 'close' : 'burger-menu';
   const iconColor = isIconBlack ? '#19191b' : 'white';
-  const [isCartOpen, setIsCartOpen] = useState(false);
-
-  const handleCartOpen = () => {
-    console.log('Cart open/close triggered');
-    setIsCartOpen((prev) => !prev);
-  };
 
   useScrollToHash('about-us');
+
+  const handleCartOpen = () => {
+    setIsCartOpen((prev) => !prev);
+  };
 
   const handleOpenMenu = () => {
     setIsMenuOpened((prev) => !prev);
@@ -72,7 +82,23 @@ export const Header = () => {
     setIsCategoriesMenuOpened(false);
   };
 
-  console.log(isCartOpen);
+  useEffect(() => {
+    if (isCartOpen) {
+      setSearchParams({ is_cart_open: 'true' });
+    } else {
+      const params = new URLSearchParams(searchParams);
+      params.delete('is_cart_open');
+      setSearchParams(params);
+    }
+  }, [isCartOpen, setSearchParams, searchParams]);
+
+  useEffect(() => {
+    if (isMenuOpened || isSearchBarOpened || isCartOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [isMenuOpened, isSearchBarOpened, isCartOpen]);
 
   const {
     data: products = [],
@@ -83,16 +109,6 @@ export const Header = () => {
   const getTitlesFromProducts = (products: Product[]): string[] => {
     return products.map((product) => product.name);
   };
-
-  useEffect(() => {
-    if (isMenuOpened || isSearchBarOpened || isCartOpen) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-  }, [isMenuOpened, isSearchBarOpened, isCartOpen]);
-
-  const burgerIcon = isMenuOpened ? 'close' : 'burger-menu';
 
   return (
     <section
@@ -151,17 +167,23 @@ export const Header = () => {
         <div className={s.header__icons}>
           <SvgIcon className={cn(s.header__icon)} id="search" onClick={handleSearchBarOpen} color={iconColor} />
 
-          <LinkComponent
-            children={<SvgIcon className={cn(s.header__icon, s.header__heart)} id="heart" color={iconColor} />}
-            to={AppRoute.FAVORITES}
-          />
+          <div className={s.header__icon_fav}>
+            <LinkComponent
+              children={<SvgIcon className={cn(s.header__icon, s.header__heart)} id="heart" color={iconColor} />}
+              to={AppRoute.FAVORITES}
+            />
+            {favoritesItemsCount > 0 && <CountCircle quantity={favoritesItemsCount} className={s.header__icon_count} />}
+          </div>
 
           <LinkComponent
             children={<SvgIcon className={cn(s.header__icon, s.header__account)} id="account" color={iconColor} />}
             to={getIconAccountPath()}
           />
 
-          <SvgIcon className={cn(s.header__icon)} id="cart" color={iconColor} onClick={handleCartOpen} />
+          <div className={s.header__icon_fav}>
+            <SvgIcon className={cn(s.header__icon)} id="cart" color={iconColor} onClick={handleCartOpen} />
+            {cartItemsCount > 0 && <CountCircle quantity={cartItemsCount} className={s.header__icon_count} />}
+          </div>
 
           <SvgIcon
             className={cn(s.header__icon, s.header__burger_menu)}
@@ -189,7 +211,7 @@ export const Header = () => {
 
           <div className={s.result__items}>
             {products?.length > 0 ? (
-              products.map((product) => <ItemCard item={product} />)
+              products.map((product: Product) => <ItemCard item={product} />)
             ) : (
               <div className={s.result__not_found}>
                 <p className={s.result__error}>No matching results for {query}</p>

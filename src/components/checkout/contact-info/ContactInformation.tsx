@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useGetUserProfileQuery } from '../../../redux/user/userApi';
+import {
+  useGetUserProfileQuery,
+  usePatchUserProfileMutation,
+  useUpdateUserProfileMutation,
+} from '../../../redux/user/userApi';
 import SvgIcon from '../../utils/svg-icon/SvgIcon';
 import s from './ContactInformation.module.scss';
 import { ContactForm } from './ContactForm';
@@ -7,36 +11,42 @@ import { ContactForm } from './ContactForm';
 export const ContactInformation = () => {
   const [isOpen, setIsOpened] = useState(false);
   const { data } = useGetUserProfileQuery();
-  const user = data || {
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone_number: '',
-  };
+  const [updateUserData] = usePatchUserProfileMutation();
 
   console.log(data);
   const [orderContactData, setOrderContactData] = useState({
     name: '',
     email: '',
-    phone: '',
+    phone_number: '',
   });
 
   useEffect(() => {
-    if (user) {
+    if (data) {
       setOrderContactData({
-        name: `${user.first_name} ${user.last_name}`,
-        email: user.email,
-        phone: user.phone_number ?? '',
+        name: `${data.first_name} ${data.last_name}`,
+        email: data.email,
+        phone_number: data.phone_number ?? '',
       });
     }
-  }, [user]);
+  }, [data]);
 
   const handleEditFormOpen = () => {
     setIsOpened((prev) => !prev);
   };
 
-  const handleSaveOrderContactData = (values: { name: string; email: string; phone: string }) => {
+  const handleSaveOrderContactData = (values: { name: string; email: string; phone_number: string }) => {
+    const [first_name, last_name] = values.name.split(' ');
+    console.log(first_name, last_name);
+
+    const updateUserValues = {
+      first_name: first_name,
+      last_name: last_name,
+      email: values.email,
+      phone_number: values.phone_number,
+    };
+
     setOrderContactData(values);
+    updateUserData(updateUserValues);
     setIsOpened(false);
   };
 
@@ -52,7 +62,7 @@ export const ContactInformation = () => {
           <div className={s.contacts__info}>
             <p>{orderContactData.name}</p>
             <p>{orderContactData.email}</p>
-            <p>{orderContactData.phone}</p>
+            <p>{orderContactData.phone_number}</p>
           </div>
         ) : (
           <ContactForm initialContactData={orderContactData} onSave={handleSaveOrderContactData} />

@@ -83,10 +83,6 @@
       cursor: pointer;
     }
 
-    &__isClose {
-      display: none;
-    }
-
     &__oops {
       @include font(40px, 2vw, 40px, 300, 52px);
       color: $main-font-text-color;

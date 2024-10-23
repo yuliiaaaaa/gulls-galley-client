@@ -31,6 +31,11 @@
       display: flex;
       justify-content: center;
     }
+    
+    &:disabled {
+      background-color: $disabled-background-color;
+      color: $placeholder-text-color;
+    }
   }
 
   &__blocks {
@@ -45,4 +50,8 @@
     width: 45%;
     gap: 16px;
   }
+}
+
+.error {
+  color: $error-color;
 }

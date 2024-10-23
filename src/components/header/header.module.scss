@@ -48,6 +48,22 @@
   &__icon {
     padding: 16px;
     cursor: pointer;
+    position: relative;
+
+    &_fav {
+      position: relative;
+    }
+
+    &_count {
+      position: absolute;
+      border-radius: 45px;
+      top: 6px;
+      right: 2px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__logo {
@@ -100,6 +116,14 @@
     &__icon {
       padding: 8px;
       z-index: 1000;
+
+      &_count {
+        top: 1px;
+        right: -6px;
+        width: 20px;
+        height: 20px;
+        z-index: 1000;
+      }
     }
 
     &__logo {
@@ -133,6 +157,14 @@
     &__icon {
       padding: 8px;
       z-index: 1000;
+
+      &_count {
+        top: 1px;
+        right: -6px;
+        width: 20px;
+        height: 20px;
+        z-index: 1000;
+      }
     }
 
     &__logo {

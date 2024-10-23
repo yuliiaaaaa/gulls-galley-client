@@ -15,6 +15,8 @@ import { CartPage } from '../cart/CartPage';
 import { LayoutNotFoundPage } from '../../components/utils/layout/LayoutNotFoundPage';
 import { FavoritePage } from '../favorites/FavoritePage';
 import { CheckoutPage } from '../checkout/CheckoutPage';
+import { UnSuccessfulPaymentModal } from '../../components/checkout/modals/unsuccessful/unsuccessfulPaymentModal';
+import { SuccessfulPaymentModal } from '../../components/checkout/modals/successful/SuccessfulPaymentModal';
 
 function App() {
   const router = createBrowserRouter([
@@ -66,6 +68,8 @@ function App() {
         },
       ],
     },
+    { path: AppRoute.PAYMENT_FAILED, element: <UnSuccessfulPaymentModal /> },
+    { path: AppRoute.PAYMENT_SUCCESS, element: <SuccessfulPaymentModal /> },
     {
       element: (
         <LayoutNotFoundPage>

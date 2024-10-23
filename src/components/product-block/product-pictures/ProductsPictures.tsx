@@ -28,9 +28,6 @@ export const ProductsPicture: React.FC<Props> = ({ slug }) => {
   const { data: product, isLoading, error } = useGetProductBySlugQuery(slug);
   const images = product?.images || [];
 
-  console.log('product', product);
-  console.log(images);
-
   const mainImage = images.find((img: Image) => img.is_main === true)?.image;
   const smallImages = images.filter((img: Image) => !img.is_main).map((img: Image) => img.image);
   const imagesViewer = [mainImage, ...smallImages];
@@ -53,13 +50,9 @@ export const ProductsPicture: React.FC<Props> = ({ slug }) => {
 
         <div className={s.images__small}>
           {smallImages.map((image, index: number) => (
-            <img
-              className={s.images__small_img}
-              src={image}
-              onClick={() => openImageViewer(index)}
-              key={index}
-              alt="small img"
-            />
+            <div onClick={() => openImageViewer(index)} key={index} className={s.images__small_img__wrapper}>
+              <img className={s.images__small_img} src={image} alt="small img" />
+            </div>
           ))}
         </div>
       </div>

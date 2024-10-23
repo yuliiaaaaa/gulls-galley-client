@@ -4,7 +4,7 @@ import { PaginatedUserAddressList, UserAddress, UserProfile, UserResponse } from
 
 export const userApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
-    // Fetch all user addresses
+
     getAddresses: builder.query<PaginatedUserAddressList, { limit?: number; offset?: number }>({
       query: ({ limit, offset }) => {
         const params = { limit, offset };
@@ -22,7 +22,7 @@ export const userApi = mainApi.injectEndpoints({
           : [{ type: 'Address', id: 'LIST' }],
     }),
 
-    // Get a specific address by ID
+
     getAddressById: builder.query<UserAddress, number>({
       query: (id) => ({
         url: `/api/v1/user/addresses/${id}/`,
@@ -31,7 +31,6 @@ export const userApi = mainApi.injectEndpoints({
       providesTags: (result, error, id) => [{ type: 'Address', id }],
     }),
 
-    // Add a new address
     addAddress: builder.mutation<UserAddress, Partial<UserAddress>>({
       query: (newAddress) => ({
         url: `/api/v1/user/addresses/`,
@@ -41,7 +40,6 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: [{ type: 'Address', id: 'LIST' }],
     }),
 
-    // Update an address by replacing it completely (PUT)
     updateAddress: builder.mutation<UserAddress, { id: number; data: Partial<UserAddress> }>({
       query: ({ id, data }) => ({
         url: `/api/v1/user/addresses/${id}/`,
@@ -51,7 +49,6 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: (result, error, { id }) => [{ type: 'Address', id }],
     }),
 
-    // Partially update an address (PATCH)
     patchAddress: builder.mutation<UserAddress, { id: number; data: Partial<UserAddress> }>({
       query: ({ id, data }) => ({
         url: `/api/v1/user/addresses/${id}/`,
@@ -61,7 +58,6 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: (result, error, { id }) => [{ type: 'Address', id }],
     }),
 
-    // Delete an address by ID
     deleteAddress: builder.mutation<void, number>({
       query: (id) => ({
         url: `/api/v1/user/addresses/${id}/`,
@@ -70,7 +66,6 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: (result, error, id) => [{ type: 'Address', id }],
     }),
 
-    // Get current user's profile
     getUserProfile: builder.query<UserProfile, void>({
       query: () => ({
         url: `/api/v1/user/me/`,
@@ -80,7 +75,6 @@ export const userApi = mainApi.injectEndpoints({
       providesTags: [{ type: 'UserProfile', id: 'ME' }],
     }),
 
-    // Update user profile (PUT)
     updateUserProfile: builder.mutation<UserProfile, Partial<UserProfile>>({
       query: (updatedProfile) => ({
         url: `/api/v1/user/me/`,
@@ -90,7 +84,6 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: [{ type: 'UserProfile', id: 'ME' }],
     }),
 
-    // Partially update user profile (PATCH)
     patchUserProfile: builder.mutation<UserProfile, Partial<UserProfile>>({
       query: (updatedProfile) => ({
         url: `/api/v1/user/me/`,

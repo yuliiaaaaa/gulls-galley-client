@@ -7,6 +7,7 @@ import s from './CartPage.module.scss';
 import { CartItem } from '../../libs/types/Cart';
 import { useNavigate } from 'react-router';
 import { AppRoute } from '../../libs/enum/app-route-enum';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   isCartOpen: boolean;
@@ -24,6 +25,7 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick, setCartOpen }) 
       setCartItems(cart.items);
     }
   }, [cart]);
+
 
   const handleCheckout = () => {
     navigate(AppRoute.CHECKOUT);

@@ -5,6 +5,7 @@
 .img {
   height: 100%;
   width: 96px;
+  object-fit: cover;
 
   &__wrapper {
     width: 96px;
