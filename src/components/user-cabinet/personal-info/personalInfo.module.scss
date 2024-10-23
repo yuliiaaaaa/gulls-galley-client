@@ -1,0 +1,54 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.info {
+  width: 60%;
+  &__title {
+    @include font(40px, 2vw, 40px, 400, 52px);
+    position: relative;
+    margin-bottom: 104px;
+    text-align: left;
+    padding-bottom: 12px;
+
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      position: absolute;
+      background-color: $main-font-text-color;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__inputs {
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__input {
+    border: none;
+    border-bottom: 1px solid #19191b;
+    width: 512px;
+    height: 54px;
+    padding-block: 12px;
+    outline: none;
+    @include font(20px, 2vw, 20px, 300, 26px);
+
+    &::placeholder {
+      @include font(20px, 2vw, 20px, 300, 26px);
+      text-align: left;
+      color: $placeholder-text-color;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-font-text-color;
+    @include font(20px, 2vw, 20px, 500, 30px);
+    cursor: pointer;
+  }
+}

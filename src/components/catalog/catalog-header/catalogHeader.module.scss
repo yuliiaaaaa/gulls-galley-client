@@ -1,0 +1,93 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.header {
+  &__image {
+    &_sofa {
+    }
+
+    &_candles {
+      position: absolute;
+      bottom: 108px;
+      right: 112px;
+    }
+  }
+
+  &__images {
+    position: relative;
+  }
+
+  &__title {
+    @include font(160px, 2vw, 160px, 600, 160px);
+    position: absolute;
+    bottom: 42px;
+    right: 272px;
+  }
+
+  @include onPhone {
+    &__image {
+      &_sofa {
+        width: 218px;
+        height: 172px;
+      }
+
+      &_candles {
+        bottom: -27px;
+        right: 0;
+        width: 65px;
+        height: 79px;
+      }
+    }
+
+    &__title {
+      @include font(70px, 2vw, 70px, 500, 70px);
+      bottom: -51px;
+      right: 74px;
+    }
+  }
+
+  @include onTablet {
+    &__image {
+      &_sofa {
+        width: 600px;
+        height: 472px;
+      }
+
+      &_candles {
+        bottom: 108px;
+        right: 88px;
+        width: 195px;
+        height: 238px;
+      }
+    }
+
+    &__title {
+      @include font(160px, 2vw, 160px, 600, 160px);
+      bottom: -63px;
+      right: 174px;
+    }
+  }
+
+  @include mediaMaxQueryBetween(640px, 950px) {
+    &__image {
+      &_sofa {
+        width: 339px;
+        height: 418px;
+      }
+
+      &_candles {
+        bottom: 108px;
+        right: 0;
+        width: 137px;
+        height: 158px;
+      }
+    }
+
+    &__title {
+      @include font(160px, 2vw, 160px, 600, 160px);
+      bottom: -63px;
+      right: 36px;
+    }
+  }
+}

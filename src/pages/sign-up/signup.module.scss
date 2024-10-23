@@ -1,0 +1,20 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/normalize.scss';
+@import '../../sass/container.scss';
+
+.signup {
+  margin-block: 200px;
+  display: flex;
+  justify-content: center;
+
+  @include onTablet {
+    margin-top: 191px;
+    margin-bottom: 291px;
+  }
+
+  @include onPhone {
+    margin-top: 132px;
+    margin-bottom: 138px;
+  }
+}

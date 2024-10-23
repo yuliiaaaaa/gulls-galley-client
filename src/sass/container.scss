@@ -1,10 +1,18 @@
 @import './mixins.scss';
 
 .container {
-  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
 
   @include onDesktop {
     padding-inline: 24px;
+  }
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+
+  @include onPhone {
+    padding-inline: 16px;
   }
 }

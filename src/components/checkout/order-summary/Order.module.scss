@@ -1,0 +1,105 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.img {
+  height: 100%;
+  width: 96px;
+
+  &__wrapper {
+    width: 96px;
+    height: 102px;
+    position: relative;
+  }
+}
+
+.card {
+  display: flex;
+  gap: 12px;
+
+  &__title {
+    color: $main-font-text-color;
+  }
+
+  &__count {
+    width: 25px;
+    height: 25px;
+    border-radius: 45px;
+    background-color: $main-font-text-color;
+    position: absolute;
+    z-index: 10;
+    right: -9px;
+    top: -9px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include font(12px, 2vw, 12px, 700, 12px);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__title {
+    @include font(16px, 2vw, 16px, 700, 24px);
+  }
+
+  &__left {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__price {
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  &__price_discount_style {
+    text-decoration: line-through;
+    @include font(16px, 2vw, 16px, 400, 24px);
+    text-align: left;
+    color: $review-text-gray-color;
+  }
+
+  &__price_block {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__price_discount {
+    @include font(16px, 2vw, 16px, 400, 24px);
+    color: $price-discount-color-red;
+    text-align: left;
+  }
+}
+
+@include onTablet {
+  .img {
+    width: 90px;
+
+    &__wrapper {
+      width: 90px;
+      height: 94px;
+    }
+  }
+
+  .card {
+    gap: 18px;
+
+    &__title {
+      @include font(16px, 2vw, 16px, 500, 20px);
+    }
+
+    &__left {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+  }
+}

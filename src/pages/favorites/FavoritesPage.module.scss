@@ -1,0 +1,110 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/normalize.scss';
+@import '../../sass/container.scss';
+@import '../../sass/container.scss';
+
+.fav {
+  margin-top: 158px;
+
+  &__title {
+    @include font(40px, 2vw, 40px, 300, 52px);
+    margin-bottom: 40px;
+  }
+
+  &__btn {
+    width: 256px;
+    height: 56px;
+    cursor: pointer;
+    background-color: $main-font-text-color;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    @include font(20px, 2vw, 20px, 500, 30px);
+
+    @include hover(
+      (
+        background-color: #fff,
+        color: $main-font-text-color,
+      )
+    );
+
+    &_wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 80px;
+      margin-bottom: 104px;
+    }
+
+    &_emptyWrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 56px;
+      margin-bottom: 104px;
+    }
+  }
+
+  &__icon {
+    padding-inline: 5px;
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    &_textBlock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__text {
+      @include font(20px, 2vw, 20px, 500, 30px);
+    }
+
+    &__subtext {
+      color: $favorites-subtext-color;
+      @include font(16px, 2vw, 16px, 400, 24px);
+    }
+  }
+
+  @include onTablet {
+    margin-top: 116px;
+
+    &__title {
+      @include font(32px, 2vw, 32px, 400, 41px);
+      margin-bottom: 32px;
+    }
+
+    &__btn {
+      width: 248px;
+
+      &_wrapper {
+        margin-top: 53px;
+        margin-bottom: 101px;
+      }
+
+      &_emptyWrapper {
+        margin-top: 40px;
+        margin-bottom: 88px;
+      }
+    }
+  }
+
+  @include onPhone {
+    margin-top: 108px;
+
+    &_wrapper {
+      margin-top: 40px;
+      margin-bottom: 80px;
+    }
+
+    &_emptyWrapper {
+      margin-top: 40px;
+      margin-bottom: 80px;
+    }
+  }
+}

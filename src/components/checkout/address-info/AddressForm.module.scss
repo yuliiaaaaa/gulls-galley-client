@@ -1,0 +1,155 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.btn {
+  width: 248px;
+  height: 56px;
+  background-color: $main-font-text-color;
+  color: #fff;
+  @include font(24px, 2vw, 24px, 500, 24px);
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include hover(
+    (
+      background-color: #fff,
+      color: $main-font-text-color,
+    )
+  );
+
+  &:disabled {
+    background-color: $disabled-background-color;
+    color: $placeholder-text-color;
+    border: none;
+  }
+
+  @include onTablet {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  @include onPhone {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid #19191b;
+  width: 100%;
+  height: 26px;
+  padding-bottom: 12px;
+  padding-top: 16px;
+  outline: none;
+  @include font(20px, 2vw, 20px, 300, 26px);
+
+  &__block {
+    flex: 0 0 50%;
+  }
+
+  &__select {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    height: 54px;
+    border-bottom: 1px solid $main-font-text-color;
+    outline: none;
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+
+  &__checkbox {
+    width: 22px;
+    height: 22px;
+    appearance: none;
+    border: 1.38px solid $main-font-text-color;
+    cursor: pointer;
+
+    @include hover(
+      (
+        color: $main-font-text-color,
+      )
+    );
+
+    &:checked {
+      background-repeat: no-repeat;
+      object-fit: cover;
+      background-size: 10px 8px;
+      background-position: center;
+      background-color: $main-font-text-color;
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 11" fill="none"><path d="M11.5003 1.33301L4.44199 9.39967L1.41699 6.37467" stroke="white" stroke-width="1.375" stroke-miterlimit="10" stroke-linecap="square"/></svg>');
+    }
+  }
+
+  &__placeholder {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    color: $review-text-gray-color;
+  }
+
+  &__row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &::placeholder {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    text-align: left;
+    color: $placeholder-text-color;
+  }
+
+  @include onTablet {
+    &__row {
+      flex-direction: column;
+      gap: 16px;
+      justify-content: unset;
+      align-items: unset;
+
+      &_names {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+
+  @include onPhone {
+    &__row {
+      flex-direction: column;
+      gap: 16px;
+      justify-content: unset;
+      align-items: unset;
+    }
+  }
+}
+
+.error {
+  color: $error-color;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.contacts {
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+
+    &_text {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      color: $main-font-text-color;
+    }
+  }
+
+  @include onTablet {
+  }
+}

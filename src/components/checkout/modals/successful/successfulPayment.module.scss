@@ -1,0 +1,220 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixins.scss';
+@import '../../../../sass/container.scss';
+
+.modal {
+  background-color: #fff;
+  width: 60%;
+  padding-block: 64px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  gap: 48px;
+  flex-direction: column;
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 33px;
+    top: 34px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  &__isClose {
+    display: none;
+  }
+
+  &__text {
+    @include font(40px, 2vw, 40px, 300, 52px);
+  }
+
+  &__subtext {
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+
+  &__orderInfo {
+    display: flex;
+    justify-content: center;
+    width: 512px;
+    flex-direction: column;
+    gap: 16px;
+    padding-block: 32px;
+    border-block: 1px solid $placeholder-text-color;
+    margin: 0 auto;
+
+    &_row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__text {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      color: $main-font-text-color;
+    }
+  }
+
+  &_info {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    color: $main-font-text-color;
+  }
+
+  @include onTablet {
+    border-radius: 24px;
+    width: calc(100% - 32px);
+    padding-inline: 16px;
+    gap: 32px;
+    bottom: 0;
+    top: unset;
+    transform: none;
+    padding-block: 40px;
+    left: 0;
+
+    &__info {
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    &__img {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__icon {
+      position: absolute;
+      right: 33px;
+      top: 34px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    &__text {
+      @include font(28px, 2vw, 28px, 400, 28px);
+    }
+
+    &__subtext {
+      @include font(16px, 2vw, 16px, 300, 22px);
+    }
+
+    &__orderInfo {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-direction: column;
+      gap: 8px;
+      padding-block: 16px;
+      border-block: 1px solid $placeholder-text-color;
+
+      &_row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__text {
+        @include font(13px, 2vw, 13px, 400, 20px);
+        color: $main-font-text-color;
+      }
+    }
+
+    &_info {
+      @include font(13px, 2vw, 13px, 300, 20px);
+      color: $main-font-text-color;
+    }
+  }
+
+  @include onPhone {
+    border-radius: 24px;
+    width: calc(100% - 32px);
+    padding-inline: 16px;
+    gap: 32px;
+    bottom: 0;
+    top: unset;
+    transform: none;
+    padding-block: 40px;
+    left: 0;
+
+    &__text {
+      @include font(28px, 2vw, 28px, 400, 28px);
+    }
+
+    &__subtext {
+      @include font(16px, 2vw, 16px, 300, 22px);
+    }
+
+    &__orderInfo {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-direction: column;
+      gap: 8px;
+      padding-block: 16px;
+      border-block: 1px solid $placeholder-text-color;
+
+      &__text {
+        @include font(13px, 2vw, 13px, 400, 20px);
+      }
+    }
+
+    &_info {
+      @include font(13px, 2vw, 13px, 300, 20px);
+    }
+  }
+}
+
+.btn {
+  width: 512px;
+  height: 56px;
+  background-color: $main-font-text-color;
+  color: #fff;
+  @include font(24px, 2vw, 24px, 500, 24px);
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include hover(
+    (
+      background-color: #fff,
+      color: $main-font-text-color,
+    )
+  );
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include onTablet {
+    width: 100%;
+    @include font(20px, 2vw, 20px, 500, 30px);
+  }
+}
+
+.img {
+  @include onTablet {
+    width: 60px;
+    height: 60px;
+  }
+
+  @include onPhone {
+    width: 60px;
+    height: 60px;
+  }
+}

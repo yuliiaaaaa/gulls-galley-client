@@ -1,0 +1,16 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.title {
+  @include font(48px, 2vw, 48px, 300, 62px);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+@include mediaMaxQuery(640px) {
+  .title {
+    @include font(32px, 2vw, 32px, 300, 41px);
+    margin-bottom: 32px;
+  }
+}

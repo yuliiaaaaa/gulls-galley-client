@@ -1,0 +1,66 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.order {
+  &__header {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $main-font-text-color;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__total {
+    @include font(24px, 2vw, 24px, 500, 24px);
+  }
+
+  &__left {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__bottom {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__button {
+    cursor: pointer;
+    @include font(16px, 2vw, 16px, 300, 24px);
+    color: $main-font-text-color;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__data {
+    @include font(20px, 2vw, 20px, 300, 26px);
+  }
+  &__status {
+    @include font(20px, 2vw, 20px, 300, 26px);
+    color: $green-success-color;
+    text-transform: capitalize;
+  }
+  &__number {
+    @include font(24px, 2vw, 24px, 500, 24px);
+  }
+
+  &__spliter {
+    width: 7px;
+    height: 7px;
+    background-color: $text-spliter-color;
+    border-radius: 45px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-block: 24px;
+  }
+}

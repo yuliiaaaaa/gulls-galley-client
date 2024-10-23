@@ -1,0 +1,104 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/container.scss';
+
+.categoriesTablet {
+  margin-top: 124px;
+  padding-inline: 16px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $placeholder-text-color;
+}
+
+.category {
+  list-style: none;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__arrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title_link {
+    text-decoration: none;
+    @include font(16px, 2vw, 16px, 500, 24px);
+    color: $main-font-text-color;
+    position: relative;
+    padding-block: 12px;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: $main-font-text-color;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform $transition-time ease;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+
+  &__subtitle_link {
+    text-decoration: none;
+    @include font(16px, 2vw, 16px, 300, 24px);
+    color: $text-color-grey;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: $main-font-text-color;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform $transition-time ease;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+}
+
+.subcategory {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__subtitle_item {
+    padding-block: 12px;
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.categoryTitle {
+  @include font(16px, 2vw, 16px, 700, 24px);
+}

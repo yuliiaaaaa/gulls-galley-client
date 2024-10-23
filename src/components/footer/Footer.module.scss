@@ -7,6 +7,11 @@
   gap: 80px;
   flex-direction: column;
 
+  &__wrapper {
+    padding-top: 104px;
+    max-width: 100%;
+  }
+
   &__main_section {
     @include flexSpaceBetween();
     padding-bottom: 38px;
@@ -15,6 +20,7 @@
 
   &__down_section {
     @include flexSpaceBetween();
+    margin-bottom: 42px;
   }
 
   &__contactInfo {
@@ -40,6 +46,10 @@
 
   &__logo {
     width: 500px;
+    font-size: 126px;
+    font-weight: 700;
+    line-height: 100.8px;
+    text-align: left;
   }
 
   &__contacts {
@@ -62,7 +72,11 @@
     text-align: left;
     color: $main-font-text-color;
 
-    @include hover(color, $text-link-grey-hover);
+    @include hover(
+      (
+        color: $text-link-grey-hover,
+      )
+    );
   }
   &__copyright {
     color: $main-font-text-color;
@@ -94,6 +108,157 @@
     color: $main-font-text-color;
     overflow-wrap: break-word;
 
-    @include hover(color, $text-link-grey-hover);
+    @include hover(
+      (
+        color: $text-link-grey-hover,
+      )
+    );
   }
+
+  @include onTablet {
+    display: flex;
+    gap: 80px;
+    flex-direction: column;
+
+    &__main_section {
+      justify-content: unset;
+      align-items: unset;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 40px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #19191b;
+    }
+
+    &__down_section {
+      @include flexSpaceBetween();
+      margin-bottom: 72px;
+    }
+
+    &__contactInfo {
+      display: flex;
+      justify-content: left;
+      gap: 80px;
+
+      &_column {
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__title {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        color: $text-color-grey;
+      }
+    }
+
+    &__logo {
+      @include font(80px, 2vw, 80px, 700, 64px);
+      width: 320px;
+    }
+
+    &__contacts {
+      width: 33%;
+      gap: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__policy {
+      @include flex();
+      gap: 40px;
+    }
+
+    &__policyText {
+      @include font(16px, 2vw, 16px, 400, 24px);
+    }
+
+    &__contactLink {
+      @include font(16px, 2vw, 16px, 500, 24px);
+    }
+  }
+
+  @include onPhone {
+    display: flex;
+    gap: 48px;
+    flex-direction: column;
+
+    &__main_section {
+      justify-content: unset;
+      align-items: unset;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 40px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #19191b;
+    }
+
+    &__down_section {
+      @include flexSpaceBetween();
+      margin-bottom: 36px;
+    }
+
+    &__contactInfo {
+      display: flex;
+      justify-content: left;
+      flex-wrap: wrap;
+      row-gap: 40px;
+      column-gap: 92px;
+      width: fit-content;
+
+      &_column {
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__title {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        color: $text-color-grey;
+      }
+    }
+
+    &__logo {
+      @include font(76px, 2vw, 76px, 800, 60px);
+      width: 320px;
+    }
+
+    &__contacts {
+      width: fit-content;
+      gap: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__policy {
+      @include flex();
+      gap: 40px;
+    }
+
+    &__policyText {
+      @include font(12px, 2vw, 12px, 400, 18px);
+    }
+
+    &__contactLink {
+      @include font(20px, 2vw, 20px, 400, 30px);
+    }
+  }
+}
+
+.blackBackground {
+  background-color: $main-font-text-color;
+}
+
+.whiteText {
+  color: #fff;
+}
+
+.whiteBorder {
+  border-color: #fff;
 }
