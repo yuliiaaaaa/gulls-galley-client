@@ -6,7 +6,7 @@
   width: 424px;
   background-color: #fff;
   margin: unset;
-  padding-bottom: 24px;
+  padding-block: 24px;
   height: fit-content;
 
   &__title {
@@ -19,6 +19,10 @@
     border-top: 1px solid $review-text-gray-color;
     display: flex;
     justify-content: space-between;
+
+    &_summ_header {
+      display: none;
+    }
 
     &_text {
       @include font(20px, 2vw, 20px, 500, 30px);
@@ -33,5 +37,151 @@
     display: flex;
     justify-content: center;
     gap: 16px;
+  }
+
+  &__accordion {
+    &_icon {
+      display: none;
+
+      &_open {
+        display: none;
+      }
+    }
+
+    &_arrow {
+      display: none;
+    }
+  }
+
+  @include onTablet {
+    width: calc(100% - 48px);
+    background-color: #fff;
+    margin: unset;
+    padding-bottom: 0;
+    height: fit-content;
+
+    &__title {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      margin-bottom: 0;
+    }
+
+    &__price {
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      border: unset;
+      display: none;
+
+      &_text {
+        @include font(20px, 2vw, 20px, 500, 30px);
+        display: none;
+      }
+
+      &_summ {
+        @include font(20px, 2vw, 20px, 500, 30px);
+        display: none;
+      }
+      &_summ_header {
+        display: block;
+      }
+    }
+
+    &__blocks {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    &__accordion {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      margin-bottom: 16px;
+
+      &_icon {
+        transform: rotate(-90deg);
+        display: block;
+
+        &_open {
+          transform: rotate(90deg);
+        }
+      }
+
+      &_arrow {
+        display: block;
+      }
+    }
+
+    &__list_close {
+      display: none;
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  @include onPhone {
+    width: calc(100% - 32px);
+    background-color: #fff;
+    margin: unset;
+    padding-bottom: 0;
+    height: fit-content;
+
+    &__title {
+      @include font(16px, 2vw, 16px, 400, 24px);
+      margin-bottom: 0;
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__price {
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      border: unset;
+      display: none;
+
+      &_text {
+        @include font(20px, 2vw, 20px, 500, 30px);
+        display: none;
+      }
+
+      &_summ {
+        @include font(20px, 2vw, 20px, 500, 30px);
+        display: none;
+
+        &_header {
+          display: block;
+        }
+      }
+    }
+    &__accordion {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      margin-bottom: 16px;
+
+      &_icon {
+        transform: rotate(-90deg);
+        display: block;
+
+        &_open {
+          transform: rotate(90deg);
+        }
+      }
+
+      &_arrow {
+        display: block;
+      }
+    }
+
+    &__list_close {
+      display: none;
+    }
   }
 }

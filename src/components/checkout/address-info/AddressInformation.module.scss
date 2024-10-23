@@ -88,6 +88,34 @@
     align-items: center;
     margin-bottom: 24px;
   }
+
+  @include onTablet {
+    padding-block: 16px;
+
+    &__title {
+      @include font(24px, 2vw, 24px, 300, 24px);
+    }
+
+    &__address {
+      &_text {
+        @include font(20px, 2vw, 20px, 500, 30px);
+      }
+    }
+  }
+
+  @include onPhone {
+    padding-block: 16px;
+
+    &__title {
+      @include font(24px, 2vw, 24px, 300, 24px);
+    }
+
+    &__address {
+      &_text {
+        @include font(20px, 2vw, 20px, 500, 30px);
+      }
+    }
+  }
 }
 
 .btn {
@@ -105,6 +133,21 @@
       color: $main-font-text-color,
     )
   );
+
+  @include onTablet {
+  }
+
+  @include onTablet {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  @include onPhone {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
 }
 
 .input {

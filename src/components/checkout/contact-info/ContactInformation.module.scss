@@ -33,4 +33,36 @@
     flex-direction: column;
     gap: 24px;
   }
+
+  @include onTablet {
+    padding-block: 16px;
+
+    &__title {
+      @include font(24px, 2vw, 24px, 300, 24px);
+    }
+
+    &__info {
+      gap: 4px;
+    }
+
+    &__content {
+      gap: 16px;
+    }
+  }
+
+  @include onPhone {
+    padding-block: 16px;
+
+    &__title {
+      @include font(24px, 2vw, 24px, 300, 24px);
+    }
+
+    &__info {
+      gap: 4px;
+    }
+
+    &__content {
+      gap: 16px;
+    }
+  }
 }

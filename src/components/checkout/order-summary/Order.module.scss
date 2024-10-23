@@ -52,6 +52,7 @@
     display: flex;
     justify-content: space-between;
     gap: 12px;
+    align-items: center;
   }
 
   &__price {
@@ -74,5 +75,31 @@
     @include font(16px, 2vw, 16px, 400, 24px);
     color: $price-discount-color-red;
     text-align: left;
+  }
+}
+
+@include onTablet {
+  .img {
+    width: 90px;
+
+    &__wrapper {
+      width: 90px;
+      height: 94px;
+    }
+  }
+
+  .card {
+    gap: 18px;
+
+    &__title {
+      @include font(16px, 2vw, 16px, 500, 20px);
+    }
+
+    &__left {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
   }
 }

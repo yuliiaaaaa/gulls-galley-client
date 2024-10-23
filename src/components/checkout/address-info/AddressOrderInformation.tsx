@@ -18,7 +18,7 @@ type Props = {
 export const AddressOrderInformation: React.FC<Props> = ({ onAddressSelect, addressSelected, onNameChange }) => {
   const [isOpened, setIsOpened] = useState(false);
   const [editingAddress, setEditingAddress] = useState<UserAddress | null>(null);
-  const { data, isSuccess } = useGetUserProfileQuery();
+  const { data, isSuccess, isLoading } = useGetUserProfileQuery();
   const userAddresses = data?.addresses.filter((address) => !address.is_default);
   const defaultAddress = data?.default_address || null;
 
@@ -39,6 +39,7 @@ export const AddressOrderInformation: React.FC<Props> = ({ onAddressSelect, addr
           <h1 className={s.contacts__title}>2. Ship to</h1>
         </div>
 
+        {isLoading && <p>loading...</p>}
         <div>
           <Formik
             initialValues={{ addressSelected }}

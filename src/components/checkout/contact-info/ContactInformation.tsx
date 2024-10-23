@@ -10,7 +10,7 @@ import { ContactForm } from './ContactForm';
 
 export const ContactInformation = () => {
   const [isOpen, setIsOpened] = useState(false);
-  const { data } = useGetUserProfileQuery();
+  const { data, isLoading } = useGetUserProfileQuery();
   const [updateUserData] = usePatchUserProfileMutation();
 
   console.log(data);
@@ -57,6 +57,8 @@ export const ContactInformation = () => {
           <h1 className={s.contacts__title}>1. Contact information</h1>
           <SvgIcon id="edit" className={s.contacts__icon} width={18} height={19} onClick={handleEditFormOpen} />
         </div>
+
+        {isLoading && <p>loading...</p>}
 
         {!isOpen ? (
           <div className={s.contacts__info}>
