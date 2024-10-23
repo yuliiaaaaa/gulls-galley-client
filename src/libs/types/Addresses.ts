@@ -1,8 +1,10 @@
+import { CountryKey, RegionKey } from '../../components/checkout/address-info/CountryData';
+
 export interface UserAddress {
-  id: number;
+  id?: number;
   address: string;
-  country: string;
-  region?: string;
+  country: CountryKey | '';
+  region?: RegionKey | '';
   city: string;
   zip_code: string;
   is_default: boolean;
@@ -22,7 +24,7 @@ export interface UserProfile {
   email: string;
   phone_number?: string;
   addresses: UserAddress[];
-  default_address?: string;
+  default_address?: UserAddress;
 }
 
 export type UserResponse = {

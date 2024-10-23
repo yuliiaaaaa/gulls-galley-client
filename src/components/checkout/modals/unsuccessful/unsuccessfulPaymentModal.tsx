@@ -1,19 +1,14 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { Button } from '../../../utils/button/Button';
-import SvgIcon from '../../../utils/svg-icon/SvgIcon';
 import s from './unsuccessfulPayment.module.scss';
 import cn from 'classnames';
+import { AppRoute } from '../../../../libs/enum/app-route-enum';
 
 export const UnSuccessfulPaymentModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleClose = () => {
-    setIsOpen((prev) => !prev);
-  };
   return (
-    <div className={cn(s.modal, { [s.modal__isClose]: !isOpen })}>
-      <SvgIcon id="close" onClick={handleClose} className={s.modal__icon} />
-
+    <div className={cn(s.modal)}>
       <div className={s.modal__img}>
         <img src="/modals/check-mark-unsuccess.png" alt="unsuccess" className={s.img} />
       </div>
@@ -25,7 +20,7 @@ export const UnSuccessfulPaymentModal = () => {
       </div>
 
       <div className={s.btn__wrapper}>
-        <Button className={s.btn} isDisabled={false} title="Try again" onClick={handleClose} />
+        <Button className={s.btn} isDisabled={false} title="Try again" onClick={() => navigate(AppRoute.CHECKOUT)} />
       </div>
     </div>
   );

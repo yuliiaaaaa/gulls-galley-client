@@ -1,6 +1,6 @@
 import { mainApi } from '../mainApi';
 import { RTKMethods } from '../../libs/enum/rtk-queries-methods';
-import { Cart, CartItemAdd, CartResponse, PatchedCartItemUpdateQuantity } from '../../libs/types/Cart';
+import { Cart, CartItemAdd, CartResponse } from '../../libs/types/Cart';
 
 export const cartApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({

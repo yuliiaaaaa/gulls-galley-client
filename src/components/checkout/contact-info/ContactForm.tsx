@@ -8,16 +8,16 @@ type Props = {
   initialContactData: {
     name: string;
     email: string;
-    phone: string;
+    phone_number: string;
   };
-  onSave: (values: { name: string; email: string; phone: string }) => void;
+  onSave: (values: { name: string; email: string; phone_number: string }) => void;
 };
 
 export const ContactForm: React.FC<Props> = ({ initialContactData, onSave }) => {
   const initialValues = {
     name: initialContactData.name,
     email: initialContactData.email,
-    phone: initialContactData.phone,
+    phone_number: initialContactData.phone_number,
   };
 
   const handleSaveData = (values: typeof initialValues) => {
@@ -51,12 +51,14 @@ export const ContactForm: React.FC<Props> = ({ initialContactData, onSave }) => 
 
             <div className={s.input__block}>
               <Field
-                className={cn(s.input, { [s.error__input]: errors.phone && touched.phone })}
+                className={cn(s.input, { [s.error__input]: errors.phone_number && touched.phone_number })}
                 type="tel"
-                name="phone"
+                name="phone_number"
                 placeholder="Phone number"
               />
-              {errors.phone && touched.phone ? <div className={s.error}>{errors.phone}</div> : null}
+              {errors.phone_number && touched.phone_number ? (
+                <div className={s.error}>{errors.phone_number}</div>
+              ) : null}
             </div>
 
             <Button className={s.btn} isDisabled={!isValid || !dirty} title="Save" type="submit" />

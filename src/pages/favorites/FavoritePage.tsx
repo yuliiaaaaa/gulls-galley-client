@@ -43,15 +43,15 @@ export const FavoritePage = () => {
         </div>
       )}
 
-      {favorites?.length == 0 && !isLoading ? (
+      {favorites?.length == 0 && !isLoading && !isError ? (
         <>
           <div className={s.fav__empty}>
             <p className={s.fav__empty__text}>You don’t have any favorites yet.</p>
 
             <div className={s.fav__empty_textBlock}>
-              <text className={s.fav__empty__subtext}>Click the</text>
+              <p className={s.fav__empty__subtext}>Click the</p>
               <SvgIcon id="heart" color="#B5B5C3" width={20} height={18} className={s.fav__icon} />
-              <text className={s.fav__empty__subtext}>icon to add products</text>
+              <p className={s.fav__empty__subtext}>icon to add products</p>
             </div>
           </div>
         </>

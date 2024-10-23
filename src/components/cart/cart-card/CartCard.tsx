@@ -54,6 +54,7 @@ export const Cartcard: React.FC<Props> = ({ item, setCartItems, cartItems }) => 
     setCartItems((prevItems) => prevItems.filter((i) => i.id !== item.id));
     try {
       await removeItemFromCart(item.id).unwrap();
+      refetch();
     } catch (error) {
       console.error('Error removing item:', error);
       setCartItems(prevCartItems);

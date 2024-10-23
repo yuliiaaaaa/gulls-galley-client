@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   useAddProductToFavoritesMutation,
+  useGetFavoritesQuery,
   useGetProductBySlugQuery,
   useRemoveFavoritesProductMutation,
 } from '../../redux/products/productsApi';
@@ -13,6 +14,7 @@ export const useFavoriteToggle = (slug: string) => {
   const [addProductToFavorites, { isLoading: isAdding, isError: isAddError }] = useAddProductToFavoritesMutation();
   const [removeFavoritesProduct, { isLoading: isRemoving, isError: isRemoveError }] =
     useRemoveFavoritesProductMutation();
+  const { refetch: refetchFavorites } = useGetFavoritesQuery({ limit: 100 });
   const navigate = useNavigate();
 
   const isAuth = useAppSelector((state) => state.auth.accessToken);
@@ -57,6 +59,7 @@ export const useFavoriteToggle = (slug: string) => {
         await handleAddtofavorites(id);
       }
       refetch();
+      refetchFavorites();
     } catch (error) {
       setFavoriteStatus(previousFavoriteStatus);
     }

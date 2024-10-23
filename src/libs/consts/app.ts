@@ -14,4 +14,5 @@ export const styledHeaderRoutes = [
 ];
 export const AuthPagesRoutes = [AppRoute.SIGN_UP, AppRoute.LOG_IN];
 export const DEFAULT_LIMIT_PRODUCTS = 16;
-export const phoneRegex=/^(?:\+1)?\s?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+export const phoneRegex = /^(?:\+1)?\s?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+export const zipRegex = /^\d{5}(-\d{4})?$/;

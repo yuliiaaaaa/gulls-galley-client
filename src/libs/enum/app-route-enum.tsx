@@ -15,6 +15,8 @@ const AppRoute = {
   CHECKOUT: '/checkout',
   RESET_PASSWORD: '/reset-password',
   NOT_FOUND_PAGE: '/404',
+  PAYMENT_SUCCESS: '/payment/success',
+  PAYMENT_FAILED: '/payment/cancel',
 } as const;
 
 export { AppRoute };
