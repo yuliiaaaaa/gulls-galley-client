@@ -64,7 +64,7 @@ export const AddressForm: React.FC<Props> = ({ setIsOpened, onNameChange, initia
               {errors.address && touched.address && <div className={s.error}>{errors.address}</div>}
             </div>
 
-            <div className={s.input__row}>
+            <div className={`${s.input__row} ${s.input__row_names}`}>
               <div className={s.input__block}>
                 <Field
                   className={cn(s.input, { [s.error__input]: errors.firstName && touched.firstName })}

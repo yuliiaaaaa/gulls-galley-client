@@ -17,6 +17,18 @@
       color: $main-font-text-color,
     )
   );
+
+  @include onTablet {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  @include onPhone {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
 }
 
 .input {
@@ -28,9 +40,6 @@
   padding-top: 16px;
   outline: none;
   @include font(20px, 2vw, 20px, 300, 26px);
-
-  &__block {
-  }
 
   &::placeholder {
     @include font(20px, 2vw, 20px, 300, 26px);
@@ -47,5 +56,4 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-bottom: 24px;
 }

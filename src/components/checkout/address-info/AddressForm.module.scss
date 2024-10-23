@@ -23,6 +23,18 @@
     color: $placeholder-text-color;
     border: none;
   }
+
+  @include onTablet {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  @include onPhone {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
 }
 
 .input {
@@ -89,6 +101,29 @@
     text-align: left;
     color: $placeholder-text-color;
   }
+
+  @include onTablet {
+    &__row {
+      flex-direction: column;
+      gap: 16px;
+      justify-content: unset;
+      align-items: unset;
+
+      &_names {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+
+  @include onPhone {
+    &__row {
+      flex-direction: column;
+      gap: 16px;
+      justify-content: unset;
+      align-items: unset;
+    }
+  }
 }
 
 .error {
@@ -113,5 +148,8 @@
       @include font(16px, 2vw, 16px, 400, 24px);
       color: $main-font-text-color;
     }
+  }
+
+  @include onTablet {
   }
 }
