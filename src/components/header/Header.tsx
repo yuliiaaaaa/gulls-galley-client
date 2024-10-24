@@ -199,7 +199,7 @@ export const Header = () => {
         <SvgIcon className={s.search__close} id="close" onClick={handleSearchBarOpen} />
       </div>
 
-      {query && !isLoading && (
+      {query && !isLoading && isSearchBarOpened && (
         <div className={s.result}>
           {!!products?.length && (
             <div className={s.result__text}>
@@ -211,7 +211,7 @@ export const Header = () => {
 
           <div className={s.result__items}>
             {products?.length > 0 ? (
-              products.map((product: Product) => <ItemCard item={product} />)
+              products.map((product: Product) => <ItemCard item={product} onSearchBarClose={()=>setIsSearchBarOpened(false)}/>)
             ) : (
               <div className={s.result__not_found}>
                 <p className={s.result__error}>No matching results for {query}</p>
