@@ -1,12 +1,10 @@
-import { SetStateAction } from 'react';
-import { CartItem } from '../../../libs/types/Cart';
 import { OrderInCabinet, Order as OrderType } from '../../../libs/types/Order';
-import { CartList } from '../../cart/cart-list/CartList';
 import { Button } from '../../utils/button/Button';
 import SvgIcon from '../../utils/svg-icon/SvgIcon';
 import s from './Order.module.scss';
 import { OrderItemCard } from './OrderItemCard';
 import { Item } from '../../../libs/types/Item';
+import { getDataInTimeFormatFromIso } from '../../../libs/helpers/getDateInTimeFormat';
 
 type Props = {
   order: OrderInCabinet;
@@ -18,7 +16,7 @@ export const Order: React.FC<Props> = ({ order }) => {
       <div className={s.order__header}>
         <p className={s.order__number}>{`Order № ${order.order_number}`}</p>
         <div className={s.order__spliter}></div>
-        <p className={s.order__data}>{order.created_at}</p>
+        <p className={s.order__data}>{getDataInTimeFormatFromIso(order.created_at)}</p>
         <div className={s.order__spliter}></div>
         <p className={s.order__status}>{order.status}</p>
       </div>

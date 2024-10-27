@@ -1,6 +1,6 @@
 import { mainApi } from '../mainApi';
 import { RTKMethods } from '../../libs/enum/rtk-queries-methods';
-import { Cart, CartItemAdd, CartResponse } from '../../libs/types/Cart';
+import { Cart, CartItem, CartItemAdd, CartResponse } from '../../libs/types/Cart';
 
 export const cartApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -19,6 +19,10 @@ export const cartApi = mainApi.injectEndpoints({
         method: RTKMethods.GET,
       }),
       transformResponse: (response: CartResponse) => response.data,
+      providesTags: (result: Cart | undefined, error, arg) =>
+        result && result.items
+          ? [...result.items.map(({ id }: CartItem) => ({ type: 'Cart' as const, id })), 'Cart']
+          : ['Cart'],
     }),
 
     addItemToCart: builder.mutation<void, CartItemAdd>({
@@ -27,7 +31,7 @@ export const cartApi = mainApi.injectEndpoints({
         method: RTKMethods.POST,
         body: item,
       }),
-      invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
+      invalidatesTags: ['Cart'],
     }),
 
     updateCartItemQuantity: builder.mutation<void, { item_id: number; quantity: number }>({
@@ -45,7 +49,7 @@ export const cartApi = mainApi.injectEndpoints({
         method: RTKMethods.DELETE,
         params: { item_id },
       }),
-      invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
+      invalidatesTags: ['Cart'],
     }),
   }),
 });

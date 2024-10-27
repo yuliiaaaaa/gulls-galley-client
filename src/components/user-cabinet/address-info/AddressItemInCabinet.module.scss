@@ -1,0 +1,43 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.card {
+  &__address {
+    margin-bottom: 24px;
+    margin-top: 8px;
+
+    &_text {
+      @include font(20px, 2vw, 20px, 500, 30px);
+    }
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__header {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__default_text {
+    text-transform: uppercase;
+    color: $review-text-gray-color;
+    @include font(16px, 2vw, 16px, 400, 24px);
+    opacity: 0;
+  }
+
+  &__default_is {
+    opacity: 1;
+  }
+}
+
+.btn {
+  color: $error-color;
+  background-color: transparent;
+  border: none;
+  @include font(16px, 2vw, 16px, 400, 24px);
+  cursor: pointer;
+}

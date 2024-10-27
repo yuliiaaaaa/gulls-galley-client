@@ -12,7 +12,9 @@ export const SimilarProductCard: React.FC<Props> = ({ product }) => {
     <div className={s.card}>
       <Link className={s.card__link} to={`${AppRoute.CATALOG}/${product.slug}`}>
         <div className={s.card__info}>
-          <img src={product.main_image_url} className={s.card__img} alt="similar-product" />
+          <div className={s.card__img_wrapper}>
+            <img src={product.main_image_url} className={s.card__img} alt="similar-product" />
+          </div>
           <p className={s.card__title}>{product.name}</p>
         </div>
       </Link>

@@ -48,3 +48,7 @@ export type GetProductsDto = {
   search?: string;
   is_favorite?: boolean;
 };
+
+export type RelatedProductsResponse = {
+  data: Product[];
+};

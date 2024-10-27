@@ -1,24 +1,25 @@
 import { useCallback, useState } from 'react';
 import { useGetProductBySlugQuery } from '../../../redux/products/productsApi';
 import ImageViewer from 'react-simple-image-viewer';
-import s from './productsPictures.module.scss';
 import { Image } from '../../../libs/types/Image';
 import { getProductLabel } from '../../../libs/helpers/getProductLabelHelper';
 import { getProductType } from '../../../libs/helpers/getProductType';
 import { Product } from '../../../libs/types/products/Product';
+import s from './productsPictures.module.scss';
 
 type Props = {
   slug: string;
+  setIsViewerOpen: (opened: boolean) => void;
+  isViewerOpen: boolean;
 };
 
-export const ProductsPicture: React.FC<Props> = ({ slug }) => {
+export const ProductsPicture: React.FC<Props> = ({ slug, setIsViewerOpen, isViewerOpen }) => {
   const [currentImage, setCurrentImage] = useState(0);
-  const [isViewerOpen, setIsViewerOpen] = useState(false);
 
   const openImageViewer = useCallback((index: number) => {
     setCurrentImage(index);
     setIsViewerOpen(true);
-  }, []);
+  }, [setIsViewerOpen]);
 
   const closeImageViewer = () => {
     setCurrentImage(0);

@@ -1,11 +1,9 @@
 import { FC } from 'react';
-import { Item } from '../../../libs/types/Item';
 import s from './ItemCard.module.scss';
 import { Link } from 'react-router-dom';
 import SvgIcon from '../svg-icon/SvgIcon';
 import { AppRoute } from '../../../libs/enum/app-route-enum';
-import { getProductLabel } from '../../../libs/helpers/getProductLabelHelper';
-import { FiltersProductType } from '../../../libs/enum/Filters';
+import { getProductLabel } from '../../../libs/helpers/getProductLabelHelper';;
 import { Product } from '../../../libs/types/products/Product';
 import { ProductPrice } from '../product-price/ProductPrice';
 import { useFavoriteToggle } from '../../../libs/hooks/useFavoriteToggle';
@@ -13,10 +11,11 @@ import { useFavoriteToggle } from '../../../libs/hooks/useFavoriteToggle';
 type Props = {
   item: Product;
   productType?: string[] | undefined;
-  onRemoveFavorite?: (id:number) => void;
+  onRemoveFavorite?: (id: number) => void;
+  onSearchBarClose?: (isOpened: boolean) => void;
 };
 
-export const ItemCard: FC<Props> = ({ item, productType, onRemoveFavorite }) => {
+export const ItemCard: FC<Props> = ({ item, productType, onRemoveFavorite ,onSearchBarClose}) => {
   const { id, slug } = item;
   const { favoriteStatus, handleAddToFavorites } = useFavoriteToggle(slug);
 
@@ -29,8 +28,14 @@ export const ItemCard: FC<Props> = ({ item, productType, onRemoveFavorite }) => 
     }
   };
 
+   const handleCardClick = () => {
+     if (onSearchBarClose) {
+       onSearchBarClose(false);
+     }
+   };
+
   return (
-    <div className={s.card}>
+    <div className={s.card} onClick={handleCardClick}>
       <Link to={`${AppRoute.CATALOG}/${item.slug}`} className={s.card__link}>
         <div className={s.card__img_wrapper}>
           <img className={s.card__img} src={item.main_image_url} alt="item" />

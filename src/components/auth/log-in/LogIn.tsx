@@ -14,12 +14,10 @@ export const LogIn = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values: LogInRequestDto) => {
-    console.log(values);
     try {
       console.log(await login(values).unwrap());
       navigate(AppRoute.USER_PAGE);
     } catch (err) {
-      console.error('Login failed:', err);
     }
   };
 
@@ -55,7 +53,7 @@ export const LogIn = () => {
                 />
                 {errors.password && touched.password ? <div className={s.error}>{errors.password}</div> : null}
               </div>
-              
+
               {isError && <div className={s.error}>Registration failed. Please try again.</div>}
 
               <Button className={s.button} isDisabled={!isValid || !dirty || isLoading} title="Login" type="submit" />

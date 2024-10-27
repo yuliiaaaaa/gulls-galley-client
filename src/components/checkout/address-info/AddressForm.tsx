@@ -10,7 +10,7 @@ import { UserAddress } from '../../../libs/types/Addresses';
 type Props = {
   setIsOpened: (value: boolean | ((prev: boolean) => boolean)) => void;
   onNameChange: (firstName: string, lastName: string) => void;
-  initialValues: UserAddress;
+  initialValues: UserAddress | null;
 };
 
 export const AddressForm: React.FC<Props> = ({ setIsOpened, onNameChange, initialValues }) => {
