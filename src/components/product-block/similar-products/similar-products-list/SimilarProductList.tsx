@@ -10,7 +10,7 @@ export const SimilarProductsList: React.FC<Props> = ({ products }) => {
   return (
     <div className={s.list}>
       {products.map((product) => (
-        <SimilarProductCard product={product} />
+        <SimilarProductCard key={product.id} product={product} />
       ))}
     </div>
   );

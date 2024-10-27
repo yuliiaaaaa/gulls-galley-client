@@ -14,9 +14,10 @@ type Props = {
   item: CartItem;
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   cartItems: CartItem[];
+  setServerError: (err: string) => void;
 };
 
-export const Cartcard: React.FC<Props> = ({ item, setCartItems, cartItems }) => {
+export const Cartcard: React.FC<Props> = ({ item, setCartItems, cartItems, setServerError }) => {
   const [count, setCount] = useState(item.quantity);
   const [prevCount, setPrevCount] = useState(item.quantity);
   const [removeItemFromCart] = useRemoveItemFromCartMutation();
@@ -24,6 +25,7 @@ export const Cartcard: React.FC<Props> = ({ item, setCartItems, cartItems }) => 
   const [updateCartItemQuantity] = useUpdateCartItemQuantityMutation();
 
   const updateItemQuantity = async (itemId: number, quantity: number) => {
+    setServerError('');
     setPrevCount(count);
     try {
       await updateCartItemQuantity({
@@ -32,7 +34,7 @@ export const Cartcard: React.FC<Props> = ({ item, setCartItems, cartItems }) => 
       }).unwrap();
       refetch();
     } catch (error) {
-      console.error('Error updating item quantity:', error);
+      setServerError('Cannot update item quantity');
       setCount(prevCount);
     }
   };
@@ -50,13 +52,13 @@ export const Cartcard: React.FC<Props> = ({ item, setCartItems, cartItems }) => 
   };
 
   const handleRemoveItem = async () => {
+    setServerError('');
     const prevCartItems = [...cartItems];
     setCartItems((prevItems) => prevItems.filter((i) => i.id !== item.id));
     try {
       await removeItemFromCart(item.id).unwrap();
-      refetch();
     } catch (error) {
-      console.error('Error removing item:', error);
+      setServerError('Error removing item');
       setCartItems(prevCartItems);
     }
   };
@@ -96,6 +98,3 @@ export const Cartcard: React.FC<Props> = ({ item, setCartItems, cartItems }) => 
     </div>
   );
 };
-function updateItemQuantity(id: number, arg1: number) {
-  throw new Error('Function not implemented.');
-}

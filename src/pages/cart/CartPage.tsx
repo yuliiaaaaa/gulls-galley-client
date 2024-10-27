@@ -7,7 +7,6 @@ import s from './CartPage.module.scss';
 import { CartItem } from '../../libs/types/Cart';
 import { useNavigate } from 'react-router';
 import { AppRoute } from '../../libs/enum/app-route-enum';
-import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   isCartOpen: boolean;
@@ -19,6 +18,9 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick, setCartOpen }) 
   const navigate = useNavigate();
   const { data: cart, isLoading, isSuccess } = useGetCartQuery();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [serverError, setServerError] = useState('');
+
+  console.log('dataCart', cart);
 
   useEffect(() => {
     if (cart?.items) {
@@ -26,6 +28,9 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick, setCartOpen }) 
     }
   }, [cart]);
 
+  useEffect(() => {
+    setServerError('');
+  }, [setServerError]);
 
   const handleCheckout = () => {
     navigate(AppRoute.CHECKOUT);
@@ -51,13 +56,14 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick, setCartOpen }) 
           {isLoading && <p>Loading your cart items...</p>}
           {!isLoading && cartItems.length > 0 && (
             <div className={s.cart__content}>
-              <CartList items={cartItems} setCartItems={setCartItems} />
+              <CartList items={cartItems} setCartItems={setCartItems} setServerError={setServerError} />
               <div className={s.cart__buttom}>
                 <div className={s.cart__price}>
                   <h1 className={s.cart__price_text}>Total</h1>
                   <p className={s.cart__price_sum}>{`${cart?.total_price} €`}</p>
                 </div>
 
+                {serverError && <p className={s.err}>{serverError}</p>}
                 <Button className={s.cart__checkout} isDisabled={false} title="Checkout" onClick={handleCheckout} />
               </div>
             </div>

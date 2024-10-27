@@ -1,12 +1,18 @@
+import { useGetRelatedProductsQuery } from '../../../redux/products/productsApi';
 import { SimilarProductsList } from './similar-products-list/SimilarProductList';
-import { products } from './SimilarProductData';
 import s from './similarProducts.module.scss';
 
-export const SimilarProducts = () => {
+type Props = {
+  slug: string;
+};
+
+export const SimilarProducts: React.FC<Props> = ({ slug }) => {
+  const { data: similarProduct } = useGetRelatedProductsQuery({ slug });
+
   return (
     <div className={s.similar}>
       <h4 className={s.title}>Similar products</h4>
-      <SimilarProductsList products={products} />
+      {!!similarProduct?.length && <SimilarProductsList products={similarProduct} />}
     </div>
   );
 };

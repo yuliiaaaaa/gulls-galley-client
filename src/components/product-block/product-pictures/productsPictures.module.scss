@@ -49,6 +49,11 @@
     &__small_img {
       width: 170px;
       height: 148px;
+
+      &__wrapper {
+        width: 170px;
+        height: 148px;
+      }
     }
 
     &__mainImg {
@@ -70,6 +75,11 @@
     &__small_img {
       width: 170px;
       height: 148px;
+
+      &__wrapper {
+        width: 170px;
+        height: 148px;
+      }
     }
 
     &__mainImg {
@@ -96,6 +106,11 @@
     &__small_img {
       width: 119px;
       height: 109px;
+
+      &__wrapper {
+        height: 109px;
+        width: 128px;
+      }
     }
 
     &__label {
@@ -103,4 +118,12 @@
       left: 16px;
     }
   }
+}
+
+#ReactSimpleImageViewer .styles-module_wrapper__1I_qj {
+  z-index: 10000 !important;
+}
+
+.react-simple-image-viewer__modal {
+  z-index: 10000 !important;
 }

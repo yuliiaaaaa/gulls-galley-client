@@ -3,13 +3,17 @@ import { ProductsPicture } from './product-pictures/ProductsPictures';
 import s from './productsDescription.module.scss';
 import { ProductInfo } from './product-info/ProductInfo';
 
-export const ProductsDescription = () => {
+type Props = {
+  setIsViewerOpen: (opened: boolean) => void;
+  isViewerOpen: boolean;
+};
+
+export const ProductsDescription: React.FC<Props> = ({ setIsViewerOpen,isViewerOpen }) => {
   const { slug = '' } = useParams();
-  console.log('id', slug);
 
   return (
     <div className={s.description}>
-      <ProductsPicture slug={slug} />
+      <ProductsPicture slug={slug} setIsViewerOpen={setIsViewerOpen} isViewerOpen={isViewerOpen}/>
       <ProductInfo slug={slug} />
     </div>
   );

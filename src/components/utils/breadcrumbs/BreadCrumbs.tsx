@@ -10,7 +10,7 @@ export const BreadCrumbs = () => {
   const { data: product, isLoading, error } = useGetProductBySlugQuery(slug, { skip: !slug });
 
   const pathnames = pathname.split('/').filter(Boolean);
-  console.log(pathname);
+
   return (
     <nav aria-label={s.breadcrumb}>
       <ul className={s.breadcrumb__list}>

@@ -6,7 +6,7 @@ import { OrdersList } from './OrdersList';
 import s from './orderInfo.module.scss';
 
 export const OrderInfo = () => {
-  const { data, isError, isLoading } = useGetOrdersQuery({ limit: 5 });
+  const { data, isError, isLoading } = useGetOrdersQuery({ limit: 100 });
   const orders = data || [];
   console.log(orders);
 
@@ -14,6 +14,7 @@ export const OrderInfo = () => {
     <div className={s.orders}>
       <h1 className={s.orders__title}>Orders</h1>
 
+      {isLoading && <p>Loading...</p>}
       {orders?.length === 0 && !isError && !isLoading ? (
         <div className={s.orders__block}>
           <p className={s.orders__text}>You haven’t placed any orders yet.</p>

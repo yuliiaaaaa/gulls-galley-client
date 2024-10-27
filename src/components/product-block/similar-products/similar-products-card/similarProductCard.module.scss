@@ -3,7 +3,6 @@
 @import '../../../../sass/container.scss';
 
 .card {
-  
   &__info {
     display: flex;
     flex-direction: column;
@@ -17,8 +16,15 @@
   }
 
   &__img {
-    width: 453.33px;
-    height: 430px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    &_wrapper {
+      width: 453.33px;
+      height: 430px;
+    }
   }
 
   &__link {
@@ -40,8 +46,10 @@
     }
 
     &__img {
-      width: 255px;
-      height: 237px;
+      &_wrapper {
+        width: 255px;
+        height: 237px;
+      }
     }
 
     &__title {
@@ -59,8 +67,10 @@
     }
 
     &__img {
-      width: 314.67px;
-      height: 430px;
+      &_wrapper {
+        width: 314.67px;
+        height: 430px;
+      }
     }
 
     &__title {
@@ -78,8 +88,10 @@
     }
 
     &__img {
-      width: 314.67px;
-      height: 430px;
+      &_wrapper {
+        width: 314.67px;
+        height: 430px;
+      }
     }
 
     &__title {

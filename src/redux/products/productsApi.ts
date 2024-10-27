@@ -1,9 +1,8 @@
 import { DEFAULT_LIMIT_PRODUCTS } from '../../libs/consts/app';
-import { AppRoute } from '../../libs/enum/app-route-enum';
 import { RTKMethods } from '../../libs/enum/rtk-queries-methods';
 import { Category } from '../../libs/types/Category';
 import { FavoriteProduct, GetFavoritesResponse } from '../../libs/types/products/Favorites';
-import { GetProductsDto, Product } from '../../libs/types/products/Product';
+import { GetProductsDto, Product, RelatedProductsResponse } from '../../libs/types/products/Product';
 import { mainApi } from '../mainApi';
 
 export const productsApi = mainApi.injectEndpoints({
@@ -84,14 +83,14 @@ export const productsApi = mainApi.injectEndpoints({
         method: RTKMethods.POST,
         body: { product_id },
       }),
-      invalidatesTags: [{ type: 'Product', id: 'LIST' }],
+      invalidatesTags: ['FavoriteProduct'],
     }),
     removeFavoritesProduct: builder.mutation<void, number>({
       query: (product_id: number) => ({
         url: `/api/v1/catalog/favorites/${product_id}/remove/`,
         method: RTKMethods.DELETE,
       }),
-      invalidatesTags: [{ type: 'Product', id: 'LIST' }],
+      invalidatesTags: ['FavoriteProduct'],
     }),
 
     getFavorites: builder.query<FavoriteProduct[], { limit?: number; offset?: number }>({
@@ -106,6 +105,20 @@ export const productsApi = mainApi.injectEndpoints({
         };
       },
       transformResponse: (response: GetFavoritesResponse) => response.data.results,
+      providesTags: (result, error, arg) =>
+        result
+          ? [
+              { type: 'FavoriteProduct' as const, id: 'LIST' },
+              ...result.map(({ id }) => ({ type: 'FavoriteProduct' as const, id })),
+            ]
+          : [{ type: 'FavoriteProduct' as const, id: 'LIST' }],
+    }),
+    getRelatedProducts: builder.query<Product[], { slug: string }>({
+      query: ({ slug }) => ({
+        url: `/api/v1/catalog/products/${slug}/related_products/`,
+        method: RTKMethods.GET,
+      }),
+      transformResponse: (response: RelatedProductsResponse) => response.data,
     }),
   }),
 });
@@ -118,4 +131,5 @@ export const {
   useRemoveFavoritesProductMutation,
   useGetFavoritesQuery,
   useGetCategoryProductsQuery,
+  useGetRelatedProductsQuery,
 } = productsApi;

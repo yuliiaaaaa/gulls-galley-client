@@ -25,7 +25,6 @@ export const SignUp = () => {
 
       navigate(AppRoute.USER_PAGE);
     } catch (e) {
-      console.log('Error during registration:', e);
     }
   };
 

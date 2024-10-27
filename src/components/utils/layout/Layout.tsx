@@ -7,8 +7,10 @@ import { AppRoute } from '../../../libs/enum/app-route-enum';
 import s from './layout.module.scss';
 import cn from 'classnames';
 import { CheckoutHeader } from '../../header/CheckoutHeader';
+import { useState } from 'react';
 
 export const Layout = () => {
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
   const isFooterNotShown = useIsAuthPage([AppRoute.SIGN_UP, AppRoute.LOG_IN, AppRoute.CHECKOUT]);
   const { pathname } = useLocation();
   const isCheckout = pathname === AppRoute.CHECKOUT;
@@ -16,9 +18,9 @@ export const Layout = () => {
   return (
     <>
       <ScrollToTop />
-      {isCheckout ? <CheckoutHeader /> : <Header />}
+      {!isViewerOpen && (isCheckout ? <CheckoutHeader /> : <Header />)}
       <main className={cn(s.main, { [s.main__auth]: isFooterNotShown })}>
-        <Outlet />
+        <Outlet context={{ setIsViewerOpen, isViewerOpen }} />
       </main>
       {!isFooterNotShown && <Footer />}
     </>

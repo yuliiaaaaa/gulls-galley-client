@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import {
-  useGetProductBySlugQuery,
-} from '../../../redux/products/productsApi';
+import { useEffect, useState } from 'react';
+import { useGetProductBySlugQuery } from '../../../redux/products/productsApi';
 import { Button } from '../../utils/button/Button';
 import SvgIcon from '../../utils/svg-icon/SvgIcon';
 import { StarRate } from '../star-rate/StarRate';
@@ -10,29 +8,34 @@ import { ProductPrice } from '../../utils/product-price/ProductPrice';
 import { getProductType } from '../../../libs/helpers/getProductType';
 import { useFavoriteToggle } from '../../../libs/hooks/useFavoriteToggle';
 import { useAddItemToCartMutation, useGetCartQuery } from '../../../redux/cart/cartApi';
+import { CustomError } from '../../../libs/types/CustomError';
 
 type Props = {
   slug: string;
 };
 
 export const ProductInfo: React.FC<Props> = ({ slug }) => {
-  const { data: product, isLoading, refetch, isSuccess } = useGetProductBySlugQuery(slug);
-  const { refetch: refetchCart } = useGetCartQuery();
+  const { data: product, isLoading, isSuccess } = useGetProductBySlugQuery(slug);
   const [addToCart] = useAddItemToCartMutation();
   const [serverError, setServerError] = useState('');
-  const { favoriteStatus, isAdding, isRemoving, handleAddToFavorites, error } = useFavoriteToggle(slug);
-
+  const { favoriteStatus, handleAddToFavorites } = useFavoriteToggle(slug);
   const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    setServerError('');
+  }, [product]);
+
   const handlePlusCount = () => {
     setCount((prev) => prev + 1);
   };
+
   const handleMinusCount = () => {
     if (count > 1) {
       setCount((prev) => prev - 1);
     }
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (!product) return;
 
     const cartItem = {
@@ -41,18 +44,12 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
       variation_id: null,
     };
 
-    console.log('Adding to cart:', cartItem);
-
-    addToCart(cartItem)
-      .unwrap()
-      .then(() => {
-        console.log('Item added to cart');
-        refetchCart();
-      })
-      .catch((err) => {
-        console.error('Failed to add item to cart:', err);
-        setServerError(err.data);
-      });
+    try {
+      await addToCart(cartItem).unwrap();
+      setServerError('');
+    } catch (err) {
+      setServerError((err as CustomError).data);
+    }
   };
 
   return (
