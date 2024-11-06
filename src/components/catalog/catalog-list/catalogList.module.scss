@@ -3,14 +3,20 @@
 @import '../../../sass/container.scss';
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 40px;
-  column-gap: 16px;
+  grid-template-columns: repeat(auto-fit, 336px);
   justify-content: center;
+  column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, 187px);
+  }
 
   @include onPhone {
     gap: 24px;
     column-gap: 8px;
+
+    grid-template-columns: repeat(auto-fit, 167px);
   }
 }
