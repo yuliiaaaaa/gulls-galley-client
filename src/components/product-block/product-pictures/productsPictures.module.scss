@@ -41,10 +41,10 @@
   }
 
   @include onSmallDesktop {
-    &__main {
-      width: 542px;
-      height: 558px;
-    }
+    // &__main {
+    //   width: 542px;
+    //   height: 558px;
+    // }
 
     &__small_img {
       width: 170px;

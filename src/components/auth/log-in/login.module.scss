@@ -133,6 +133,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    &_password {
+      position: relative;
+    }
   }
 
   &::placeholder {
@@ -216,4 +220,11 @@
 
 .error__input {
   border-color: $error-color;
+}
+
+.eyeIcon {
+  cursor: pointer;
+  right: 0;
+  position: absolute;
+  bottom: 13px;
 }
