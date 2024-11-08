@@ -7,12 +7,12 @@ export type ReviewResponse = {
 
 export type Review = {
   id: number;
-  user: number;
-  product: number;
+  user: string;
+  product?: number;
   rating: number;
   title: string;
   comment: string;
-  is_approved: boolean;
+  is_approved?: boolean;
   created_at: string;
-  updated_at: string;
+  updated_at?: string;
 };
