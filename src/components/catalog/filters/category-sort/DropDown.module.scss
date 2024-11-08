@@ -97,7 +97,7 @@
 
   @include onTablet {
     &__header {
-      display: flex;
+      display: none;
     }
   }
 

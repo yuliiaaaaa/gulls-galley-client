@@ -25,6 +25,10 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
     setServerError('');
   }, [product]);
 
+  useEffect(() => {
+    setCount(1);
+  }, [product]);
+
   const handlePlusCount = () => {
     setCount((prev) => prev + 1);
   };

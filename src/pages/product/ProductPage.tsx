@@ -5,6 +5,7 @@ import { SimilarProducts } from '../../components/product-block/similar-products
 import { ProductsDescription } from '../../components/product-block/ProductDescription';
 import { BreadCrumbs } from '../../components/utils/breadcrumbs/BreadCrumbs';
 import { useGetReviewsQuery } from '../../redux/reviews/reviewsApi';
+import { reviewsData } from '../../components/product-block/customers-reviews/ReviewData';
 
 export const ProductPage = () => {
   type OutletContextType = {
@@ -15,8 +16,9 @@ export const ProductPage = () => {
   const { slug = '' } = useParams();
   const { setIsViewerOpen, isViewerOpen } = useOutletContext<OutletContextType>();
   const { data, isLoading } = useGetReviewsQuery(slug);
-  const reviews = data || [];
-  console.log(data)
+  const reviews = !!data?.length ? data : reviewsData;
+  console.log(data);
+  console.log(reviews);
 
   return (
     <div className={`${s.productPage} ${s.container}`}>
@@ -27,7 +29,7 @@ export const ProductPage = () => {
       <div className={s.products__similar}>
         <SimilarProducts slug={slug} />
       </div>
-      {/* <Review reviews={reviews} /> */}
+      <Review reviews={reviews} />
     </div>
   );
 };
