@@ -10,8 +10,8 @@ export const ReviewCard: React.FC<Props> = ({ review }) => {
   return (
     <div className={s.card}>
       <div className={s.card__add_info}>
-        <p className={s.card__name}>{review.name}</p>
-        <p className={s.card__date}>{review.date}</p>
+        <p className={s.card__name}>{review.user}</p>
+        <p className={s.card__date}>{review.created_at}</p>
       </div>
 
       <div className={s.card__main_info}>
@@ -20,8 +20,8 @@ export const ReviewCard: React.FC<Props> = ({ review }) => {
         </div>
 
         <div className={s.card__text_block}>
-          <p className={s.card__title}>{review.reviewTitle}</p>
-          <p className={s.card__text}>{review.reviewText}</p>
+          <p className={s.card__title}>{review.title}</p>
+          <p className={s.card__text}>{review.comment}</p>
         </div>
       </div>
     </div>

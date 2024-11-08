@@ -4,6 +4,7 @@
 
 .productInfo {
   width: 424px;
+  padding-right: clamp(0px, 3vw + 36px, 88px);
   &__title {
     @include font(60px, 2vw, 60px, 500, 60px);
   }
@@ -258,6 +259,7 @@
   }
 
   @include mediaMaxQuery(950px) {
+    padding-right: 0;
     width: 100%;
     &__title {
       @include font(32px, 2vw, 32px, 500, 32px);
@@ -353,6 +355,6 @@
   }
 }
 
-.error{
+.error {
   color: $error-color;
 }

@@ -7,6 +7,7 @@ import { productsApi } from './products/productsApi';
 import { cartApi } from './cart/cartApi';
 import { authApi } from './auth/authApi';
 import { ordersApi } from './orders/ordersApi';
+import { reviewsApi } from './reviews/reviewsApi';
 
 const persistConfig = {
   key: 'root',
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   products: productsApi.reducer,
   cart: cartApi.reducer,
   ordersApi: ordersApi.reducer,
+  reviewApi: reviewsApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

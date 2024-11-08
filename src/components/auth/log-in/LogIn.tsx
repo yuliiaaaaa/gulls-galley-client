@@ -8,18 +8,22 @@ import cn from 'classnames';
 import { useLoginMutation } from '../../../redux/auth/authApi';
 import { LogInRequestDto } from '../../../libs/types/auth/LogInRequestDto';
 import { useNavigate } from 'react-router';
+import SvgIcon from '../../utils/svg-icon/SvgIcon';
+import { useState } from 'react';
 
 export const LogIn = () => {
   const [login, { data, isLoading, isError }] = useLoginMutation();
   const navigate = useNavigate();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleSubmit = async (values: LogInRequestDto) => {
     try {
       console.log(await login(values).unwrap());
       navigate(AppRoute.USER_PAGE);
-    } catch (err) {
-    }
+    } catch (err) {}
   };
+
+  const togglePasswordVisibility = () => setIsPasswordVisible((prev) => !prev);
 
   const initialValues = { email: '', password: '' };
 
@@ -45,12 +49,20 @@ export const LogIn = () => {
               </div>
 
               <div className={s.input__block}>
-                <Field
-                  className={cn(s.input, { [s.error__input]: errors.password && touched.password })}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
+                <div className={s.input__block_password}>
+                  <Field
+                    className={cn(s.input, { [s.error__input]: errors.password && touched.password })}
+                    type={isPasswordVisible ? 'text' : 'password'}
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <SvgIcon
+                    id={isPasswordVisible ? 'eye-close' : 'eye'}
+                    onClick={togglePasswordVisibility}
+                    className={s.eyeIcon}
+                  />
+                </div>
+
                 {errors.password && touched.password ? <div className={s.error}>{errors.password}</div> : null}
               </div>
 

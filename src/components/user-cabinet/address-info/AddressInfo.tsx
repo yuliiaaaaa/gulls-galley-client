@@ -72,7 +72,9 @@ export const AddressInfo = () => {
         <Button className={s.address__button} isDisabled={false} title="Add new address" onClick={handleOpenForm} />
       )}
 
-      {isOpenedNewPage && <AddressForm setIsOpened={setIsOpendNewPage} onNameChange={() => {}} initialValues={addressToEdit} />}
+      {isOpenedNewPage && (
+        <AddressForm setIsOpened={setIsOpendNewPage} onNameChange={() => {}} initialValues={addressToEdit} />
+      )}
     </div>
   );
 };
