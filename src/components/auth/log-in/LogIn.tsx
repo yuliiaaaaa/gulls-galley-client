@@ -18,7 +18,7 @@ export const LogIn = () => {
 
   const handleSubmit = async (values: LogInRequestDto) => {
     try {
-      console.log(await login(values).unwrap());
+      await login(values).unwrap();
       navigate(AppRoute.USER_PAGE);
     } catch (err) {}
   };

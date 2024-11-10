@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { AppRoute } from '../../../libs/enum/app-route-enum';
-import { useAppSelector } from '../../../redux/hooks/useAppSelector';
-import { LinkComponent } from '../../utils/link/Link';
 import s from './personalInfo.module.scss';
 import { ChangePassword } from './ChangePassword';
 import { useGetUserProfileQuery, usePatchUserProfileMutation } from '../../../redux/user/userApi';
 import { Field, Form, Formik } from 'formik';
 import { PersonalInfoInCabinetValidationSchema } from '../../../libs/validation-schemas/personal-info-in-user-cabinet-validation-schema';
+import { Button } from '../../utils/button/Button';
 
 export const PersonalInfo = () => {
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
@@ -17,18 +15,18 @@ export const PersonalInfo = () => {
   const initialValues = {
     fullName: `${user?.first_name || ''} ${user?.last_name || ''}`,
     email: user?.email || '',
-    phoneNumber: user?.phone_number || '',
+    phone_number: user?.phone_number || '',
   };
 
   const handlePasswordOpen = () => {
     setIsPasswordChanged((prev) => !prev);
   };
 
-  const handleSubmit = async (values: { fullName: string; email: string; phoneNumber: string }) => {
+  const handleSubmit = async (values: { fullName: string; email: string; phone_number: string }) => {
     const [firstName, lastName] = values.fullName.split(' ');
     try {
       await updateUserDate({ ...values, first_name: firstName, last_name: lastName }).unwrap();
-      setServerError(''); 
+      setServerError('');
     } catch (error) {
       setServerError('Failed to update profile');
     }
@@ -45,49 +43,26 @@ export const PersonalInfo = () => {
           validationSchema={PersonalInfoInCabinetValidationSchema}
           onSubmit={handleSubmit}
         >
-          {({ errors, touched, handleBlur, handleChange, handleSubmit }) => (
+          {({ errors, touched, handleSubmit, isValid, dirty }) => (
             <Form className={s.info__inputs} onSubmit={handleSubmit}>
               <div>
-                <Field
-                  className={s.info__input}
-                  name="fullName"
-                  placeholder="Full Name"
-                  onBlur={() => {
-                    handleSubmit(); 
-                  }}
-                  onChange={handleChange} 
-                />
+                <Field className={s.info__input} name="fullName" placeholder="Full Name" />
                 {errors.fullName && touched.fullName && <div>{errors.fullName}</div>}
               </div>
 
               <div>
-                <Field
-                  className={s.info__input}
-                  name="email"
-                  placeholder="Email"
-                  type="email"
-                  onBlur={() => {
-                    handleSubmit(); 
-                  }}
-                  onChange={handleChange} 
-                />
+                <Field className={s.info__input} name="email" placeholder="Email" type="email" />
                 {errors.email && touched.email && <div>{errors.email}</div>}
               </div>
 
               <div>
-                <Field
-                  className={s.info__input}
-                  name="phoneNumber"
-                  placeholder="Phone number"
-                  onBlur={() => {
-                    handleSubmit(); // Trigger submission on blur
-                  }}
-                  onChange={handleChange} // Update state on change
-                />
-                {errors.phoneNumber && touched.phoneNumber && <div>{errors.phoneNumber}</div>}
+                <Field className={s.info__input} name="phone_number" placeholder="Phone number" />
+                {errors.phone_number && touched.phone_number && <div>{errors.phone_number}</div>}
               </div>
 
               {serverError && <p>{serverError}</p>}
+
+              <Button className={s.btn} title="Save" type="submit" isDisabled={false} />
             </Form>
           )}
         </Formik>

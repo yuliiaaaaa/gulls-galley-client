@@ -7,8 +7,9 @@ import s from './productInfo.module.scss';
 import { ProductPrice } from '../../utils/product-price/ProductPrice';
 import { getProductType } from '../../../libs/helpers/getProductType';
 import { useFavoriteToggle } from '../../../libs/hooks/useFavoriteToggle';
-import { useAddItemToCartMutation, useGetCartQuery } from '../../../redux/cart/cartApi';
+import { useAddItemToCartMutation } from '../../../redux/cart/cartApi';
 import { CustomError } from '../../../libs/types/CustomError';
+import { toastService } from '../../../libs/helpers/ToastNotificationService';
 
 type Props = {
   slug: string;
@@ -51,8 +52,10 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
     try {
       await addToCart(cartItem).unwrap();
       setServerError('');
+      toastService.successToast('Item added to the cart');
     } catch (err) {
       setServerError((err as CustomError).data);
+      toastService.errorToast((err as CustomError).data[0]);
     }
   };
 
