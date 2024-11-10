@@ -17,8 +17,6 @@ export const ProductPage = () => {
   const { setIsViewerOpen, isViewerOpen } = useOutletContext<OutletContextType>();
   const { data, isLoading } = useGetReviewsQuery(slug);
   const reviews = !!data?.length ? data : reviewsData;
-  console.log(data);
-  console.log(reviews);
 
   return (
     <div className={`${s.productPage} ${s.container}`}>

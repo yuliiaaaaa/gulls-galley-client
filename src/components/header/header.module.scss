@@ -261,7 +261,7 @@
     border: none;
     border-bottom: 1px solid #19191b;
     outline: none;
-    background: url(/public/header/search.png) no-repeat scroll;
+    background: url(/header/search.png) no-repeat scroll;
     padding: 0 0 0 36px;
     background-position: left center;
     background-size: 20px 20px;
@@ -332,6 +332,11 @@
     gap: 8px;
   }
 
+  &__not_found_no_grid {
+    grid-template-columns: none;
+    display: block;
+  }
+
   &__error {
     @include font(16px, 2vw, 16px, 700, 24px);
   }
@@ -364,6 +369,10 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+    }
+
+    &__not_found_no_grid {
+      grid-template-columns: none;
     }
 
     &__error {
@@ -409,6 +418,10 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+    }
+
+    &__not_found_no_grid {
+      grid-template-columns: none;
     }
 
     &__error {

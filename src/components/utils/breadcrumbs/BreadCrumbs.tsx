@@ -20,7 +20,6 @@ export const BreadCrumbs = () => {
 
         {pathnames.map((value, index) => {
           const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-          console.log('to', to);
 
           if (value === 'products' && index === 0) {
             return (

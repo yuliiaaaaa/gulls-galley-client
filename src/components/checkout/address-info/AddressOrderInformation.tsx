@@ -30,7 +30,6 @@ export const AddressOrderInformation: React.FC<Props> = ({ onAddressSelect, addr
   const handleAddressSelect = (address: UserAddress) => {
     onAddressSelect(address?.id as number);
   };
-  console.log(editingAddress);
 
   return (
     <div className={`${s.contacts} ${s.container}`}>
@@ -114,7 +113,6 @@ export const AddressOrderInformation: React.FC<Props> = ({ onAddressSelect, addr
         ) : (
           <AddressForm
             setIsOpened={setIsOpened}
-            onNameChange={onNameChange}
             initialValues={
               editingAddress || {
                 address: '',

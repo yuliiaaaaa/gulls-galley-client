@@ -58,9 +58,6 @@ export const Catalog = () => {
     isLoading,
   } = category ? useGetCategoryProductsQuery({ slug: category, ...filterOption }) : useGetProductsQuery(filterOption);
 
-  console.log(productsData);
-  console.log(filterOption);
-
   const products = productsData || [];
   const allProductsLoaded = products.length < (limit || DEFAULT_LIMIT_PRODUCTS);
 

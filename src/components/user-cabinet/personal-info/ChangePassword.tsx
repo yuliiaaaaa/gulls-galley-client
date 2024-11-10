@@ -6,9 +6,7 @@ import cn from 'classnames';
 export const ChangePassword = () => {
   const handleSubmit = async () => {
     try {
-    } catch (e) {
-      console.log('Error during registration:', e);
-    }
+    } catch (e) {} //to do
   };
 
   const initialValues = { current_password: '', new_password: '', new_password_confirm: '' };

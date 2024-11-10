@@ -13,7 +13,6 @@ export const ContactInformation = () => {
   const { data, isLoading } = useGetUserProfileQuery();
   const [updateUserData] = usePatchUserProfileMutation();
 
-  console.log(data);
   const [orderContactData, setOrderContactData] = useState({
     name: '',
     email: '',
@@ -36,7 +35,6 @@ export const ContactInformation = () => {
 
   const handleSaveOrderContactData = (values: { name: string; email: string; phone_number: string }) => {
     const [first_name, last_name] = values.name.split(' ');
-    console.log(first_name, last_name);
 
     const updateUserValues = {
       first_name: first_name,

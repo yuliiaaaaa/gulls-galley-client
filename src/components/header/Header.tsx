@@ -5,7 +5,7 @@ import SvgIcon from '../utils/svg-icon/SvgIcon';
 import { AppRoute } from '../../libs/enum/app-route-enum';
 import useScrollingUp from '../../libs/hooks/useScrollingUp';
 import cn from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useGetFavoritesQuery, useGetProductsQuery } from '../../redux/products/productsApi';
 import { Product } from '../../libs/types/products/Product';
 import { ItemCard } from '../utils/ItemCard.tsx/ItemCard';
@@ -18,9 +18,7 @@ import { useIsHeaderStyledPAge } from '../../libs/hooks/useIsHeaderStyledPages';
 import { styledHeaderRoutes } from '../../libs/consts/app';
 import { CartPage } from '../../pages/cart/CartPage';
 import { useIsNotFoundPage } from '../../libs/hooks/useIsNotFoundPage';
-import { useLocation, useSearchParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useAppSelector } from '../../redux/hooks/useAppSelector';
+import { useSearchParams } from 'react-router-dom';
 import { useGetCartQuery } from '../../redux/cart/cartApi';
 import { CountCircle } from '../utils/countCircle/CountCircle';
 
@@ -28,6 +26,7 @@ export const Header = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [isSearchBarOpened, setIsSearchBarOpened] = useState(false);
   const [isCategoriesMenuOpened, setIsCategoriesMenuOpened] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -57,6 +56,12 @@ export const Header = () => {
 
   useScrollToHash('about-us');
 
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   const handleCartOpen = () => {
     setIsCartOpen((prev) => !prev);
   };
@@ -71,6 +76,7 @@ export const Header = () => {
 
   const handleSearchBarOpen = () => {
     setIsSearchBarOpened((prev) => !prev);
+    focusInput();
     setQuery('');
   };
 
@@ -195,7 +201,7 @@ export const Header = () => {
       </div>
 
       <div className={cn(s.search, { [s.search__open]: isSearchBarOpened })}>
-        <input className={s.search__input} onChange={handleQuery} value={query} placeholder="Search" />
+        <input ref={inputRef} className={s.search__input} onChange={handleQuery} value={query} placeholder="Search" />
         <SvgIcon className={s.search__close} id="close" onClick={handleSearchBarOpen} />
       </div>
 
@@ -209,9 +215,11 @@ export const Header = () => {
             </div>
           )}
 
-          <div className={s.result__items}>
+          <div className={cn(s.result__items, { [s.result__not_found_no_grid]: products?.length === 0 })}>
             {products?.length > 0 ? (
-              products.map((product: Product) => <ItemCard item={product} onSearchBarClose={()=>setIsSearchBarOpened(false)}/>)
+              products.map((product: Product) => (
+                <ItemCard item={product} onSearchBarClose={() => setIsSearchBarOpened(false)} />
+              ))
             ) : (
               <div className={s.result__not_found}>
                 <p className={s.result__error}>No matching results for {query}</p>

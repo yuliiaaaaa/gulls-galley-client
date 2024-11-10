@@ -9,22 +9,19 @@ import { UserAddress } from '../../../libs/types/Addresses';
 
 type Props = {
   setIsOpened: (value: boolean | ((prev: boolean) => boolean)) => void;
-  onNameChange: (firstName: string, lastName: string) => void;
   initialValues: UserAddress | null;
 };
 
-export const AddressForm: React.FC<Props> = ({ setIsOpened, onNameChange, initialValues }) => {
+export const AddressForm: React.FC<Props> = ({ setIsOpened, initialValues }) => {
   const [addAddress] = useAddAddressMutation();
   const { refetch } = useGetUserProfileQuery();
   const [updateAddress] = usePatchAddressMutation();
 
-  const initValues = { firstName: '', lastName: '', ...initialValues };
+  const initValues = { ...initialValues };
 
   const handleSaveData = async (values: typeof initValues) => {
     try {
       const newAddress = {
-        first_name: values.firstName,
-        last_name: values.lastName,
         address: values.address,
         country: values.country,
         region: values.region,
@@ -35,18 +32,13 @@ export const AddressForm: React.FC<Props> = ({ setIsOpened, onNameChange, initia
 
       if (initialValues?.id) {
         await updateAddress({ id: initialValues.id, data: newAddress }).unwrap();
-        console.log('Address updated successfully!');
       } else {
         await addAddress(newAddress).unwrap();
-        console.log('Address added successfully!');
       }
 
-      onNameChange(values.firstName, values.lastName);
       setIsOpened(false);
       refetch();
-    } catch (error) {
-      console.error('Failed to save address:', error);
-    }
+    } catch (error) {}
   };
 
   return (
@@ -64,44 +56,23 @@ export const AddressForm: React.FC<Props> = ({ setIsOpened, onNameChange, initia
               {errors.address && touched.address && <div className={s.error}>{errors.address}</div>}
             </div>
 
-            <div className={`${s.input__row} ${s.input__row_names}`}>
-              <div className={s.input__block}>
-                <Field
-                  className={cn(s.input, { [s.error__input]: errors.firstName && touched.firstName })}
-                  type="text"
-                  name="firstName"
-                  placeholder="First name"
-                />
-                {errors.firstName && touched.firstName && <div className={s.error}>{errors.firstName}</div>}
-              </div>
-
-              <div className={s.input__block}>
-                <Field
-                  className={cn(s.input, { [s.error__input]: errors.lastName && touched.lastName })}
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                />
-                {errors.lastName && touched.lastName && <div className={s.error}>{errors.lastName}</div>}
-              </div>
-            </div>
-
             <div className={s.input__row}>
               <div className={s.input__block}>
                 <Field
                   as="select"
                   name="country"
                   value={values.country}
-                  className={cn(s.input, s.input__select, { [s.error__input]: errors.country && touched.country })}
+                  className={cn(s.input, s.input__select, {
+                    [s.error__input]: errors.country && touched.country,
+                  })}
                   onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                     const selectedCountry = e.target.value;
-                    console.log('Selected Country:', selectedCountry);
                     setFieldValue('country', selectedCountry);
                     setFieldValue('region', '');
                     setFieldValue('city', '');
                   }}
                 >
-                  <option value="" className={s.input__placeholder}>
+                  <option value="" disabled selected hidden className={s.placeholderOption}>
                     Country (Ukraine)
                   </option>
                   {countries.map((country) => (
@@ -118,14 +89,19 @@ export const AddressForm: React.FC<Props> = ({ setIsOpened, onNameChange, initia
                   as="select"
                   name="region"
                   value={values.region}
-                  className={cn(s.input, s.input__select, { [s.error__input]: errors.region && touched.region })}
+                  className={cn(s.input, s.input__select, {
+                    [s.error__input]: errors.region && touched.region,
+                    [s.input__select__placeholder]: !values.region,
+                  })}
                   onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                     const selectedRegion = e.target.value;
                     setFieldValue('region', selectedRegion);
                     setFieldValue('city', '');
                   }}
                 >
-                  <option value="">Region (state/province/region)</option>
+                  <option value="" disabled hidden>
+                    Region (state/province/region)
+                  </option>
                   {regions[values.country as CountryKey]?.map((region) => (
                     <option key={region.value} value={region.value}>
                       {region.label}
@@ -142,9 +118,14 @@ export const AddressForm: React.FC<Props> = ({ setIsOpened, onNameChange, initia
                   as="select"
                   name="city"
                   value={values.city}
-                  className={cn(s.input, s.input__select, { [s.error__input]: errors.city && touched.city })}
+                  className={cn(s.input, s.input__select, {
+                    [s.error__input]: errors.city && touched.city,
+                    [s.input__select__placeholder]: !values.city,
+                  })}
                 >
-                  <option value="">City (Kharkiv)</option>
+                  <option value="" disabled selected hidden>
+                    City (Kharkiv)
+                  </option>
                   {cities[values.region as RegionKey]?.map((city) => (
                     <option key={city.value} value={city.value}>
                       {city.label}

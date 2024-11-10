@@ -14,7 +14,6 @@ export const FavoritePage = () => {
   const [favorites, setFavorites] = useState<FavoriteProduct[]>(data || []);
 
   const buttonWrapperStyle = favorites.length > 0 ? s.fav__btn_wrapper : s.fav__btn_emptyWrapper;
-  console.log(favorites);
 
   useEffect(() => {
     if (data) {

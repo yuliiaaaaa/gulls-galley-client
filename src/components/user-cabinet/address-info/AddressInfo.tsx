@@ -73,7 +73,7 @@ export const AddressInfo = () => {
       )}
 
       {isOpenedNewPage && (
-        <AddressForm setIsOpened={setIsOpendNewPage} onNameChange={() => {}} initialValues={addressToEdit} />
+        <AddressForm setIsOpened={setIsOpendNewPage} initialValues={addressToEdit} />
       )}
     </div>
   );

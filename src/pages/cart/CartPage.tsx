@@ -20,8 +20,6 @@ export const CartPage: React.FC<Props> = ({ isCartOpen, onClick, setCartOpen }) 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [serverError, setServerError] = useState('');
 
-  console.log('dataCart', cart);
-
   useEffect(() => {
     if (cart?.items) {
       setCartItems(cart.items);

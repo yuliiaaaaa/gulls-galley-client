@@ -52,3 +52,38 @@
     cursor: pointer;
   }
 }
+
+.btn {
+  width: 166px;
+  height: 56px;
+  background-color: $main-font-text-color;
+  color: #fff;
+  @include font(24px, 2vw, 24px, 500, 24px);
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include hover(
+    (
+      background-color: #fff,
+      color: $main-font-text-color,
+    )
+  );
+
+  &:disabled {
+    background-color: $disabled-background-color;
+    color: $placeholder-text-color;
+    border: none;
+  }
+
+  @include onTablet {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+
+  @include onPhone {
+    width: 168px;
+    height: 50px;
+    @include font(16px, 2vw, 16px, 400, 24px);
+  }
+}

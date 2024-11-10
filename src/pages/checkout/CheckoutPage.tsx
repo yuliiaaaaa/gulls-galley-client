@@ -23,8 +23,6 @@ export const CheckoutPage = () => {
   const [serverError, setServerError] = useState('');
   const [validationError, setValidationError] = useState('');
 
-  console.log(shippingAddressId);
-
   const handleNameChange = (firstName: string, lastName: string) => {
     setRecipientFirstName(firstName);
     setRecipientLastName(lastName);
@@ -78,8 +76,6 @@ export const CheckoutPage = () => {
       contact_phone: contactPhone,
       shipping_address_id: shippingAddressId,
     };
-
-    console.log(orderData);
 
     try {
       const { id, ...orderDetails } = await createOrderFromCart(orderData).unwrap();

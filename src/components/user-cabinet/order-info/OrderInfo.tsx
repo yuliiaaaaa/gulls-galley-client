@@ -8,7 +8,6 @@ import s from './orderInfo.module.scss';
 export const OrderInfo = () => {
   const { data, isError, isLoading } = useGetOrdersQuery({ limit: 100 });
   const orders = data || [];
-  console.log(orders);
 
   return (
     <div className={s.orders}>
