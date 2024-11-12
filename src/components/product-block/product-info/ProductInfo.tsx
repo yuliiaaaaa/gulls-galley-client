@@ -54,7 +54,7 @@ export const ProductInfo: React.FC<Props> = ({ slug }) => {
       setServerError('');
       toastService.successToast('Item added to the cart');
     } catch (err) {
-      setServerError((err as CustomError).data);
+      // setServerError((err as CustomError).data);
       toastService.errorToast((err as CustomError).data[0]);
     }
   };
