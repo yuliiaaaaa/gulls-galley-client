@@ -47,20 +47,20 @@ export const PersonalInfo = () => {
             <Form className={s.info__inputs} onSubmit={handleSubmit}>
               <div>
                 <Field className={s.info__input} name="fullName" placeholder="Full Name" />
-                {errors.fullName && touched.fullName && <div>{errors.fullName}</div>}
+                {errors.fullName && touched.fullName && <div className={s.err}>{errors.fullName}</div>}
               </div>
 
               <div>
                 <Field className={s.info__input} name="email" placeholder="Email" type="email" />
-                {errors.email && touched.email && <div>{errors.email}</div>}
+                {errors.email && touched.email && <div className={s.err}>{errors.email}</div>}
               </div>
 
               <div>
                 <Field className={s.info__input} name="phone_number" placeholder="Phone number" />
-                {errors.phone_number && touched.phone_number && <div>{errors.phone_number}</div>}
+                {errors.phone_number && touched.phone_number && <div className={s.err}>{errors.phone_number}</div>}
               </div>
 
-              {serverError && <p>{serverError}</p>}
+              {serverError && <p className={s.err}>{serverError}</p>}
 
               <Button className={s.btn} title="Save" type="submit" isDisabled={false} />
             </Form>
