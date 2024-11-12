@@ -5,12 +5,12 @@ import { useGetUserProfileQuery, usePatchUserProfileMutation } from '../../../re
 import { Field, Form, Formik } from 'formik';
 import { PersonalInfoInCabinetValidationSchema } from '../../../libs/validation-schemas/personal-info-in-user-cabinet-validation-schema';
 import { Button } from '../../utils/button/Button';
+import { toastService } from '../../../libs/helpers/ToastNotificationService';
 
 export const PersonalInfo = () => {
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
   const { data: user, isLoading, isError } = useGetUserProfileQuery();
   const [updateUserDate] = usePatchUserProfileMutation();
-  const [serverError, setServerError] = useState('');
 
   const initialValues = {
     fullName: `${user?.first_name || ''} ${user?.last_name || ''}`,
@@ -26,9 +26,9 @@ export const PersonalInfo = () => {
     const [firstName, lastName] = values.fullName.split(' ');
     try {
       await updateUserDate({ ...values, first_name: firstName, last_name: lastName }).unwrap();
-      setServerError('');
+      toastService.successToast('User data updated successfully');
     } catch (error) {
-      setServerError('Failed to update profile');
+      toastService.errorToast('Failed to update profile');
     }
   };
 
@@ -59,8 +59,6 @@ export const PersonalInfo = () => {
                 <Field className={s.info__input} name="phone_number" placeholder="Phone number" />
                 {errors.phone_number && touched.phone_number && <div className={s.err}>{errors.phone_number}</div>}
               </div>
-
-              {serverError && <p className={s.err}>{serverError}</p>}
 
               <Button className={s.btn} title="Save" type="submit" isDisabled={false} />
             </Form>
