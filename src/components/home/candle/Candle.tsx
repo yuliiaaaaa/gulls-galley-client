@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import s from './Candle.module.scss';
 import { ExploreButton } from '../../utils/explore-button/ExploreButton';
+import { AppRoute } from '../../../libs/enum/app-route-enum';
 
 export const Candle = () => {
+  const navigate = useNavigate();
+
   return (
     <section className={s.candle}>
       <div className={`${s.container} ${s.candle__container}`}>
@@ -14,13 +17,14 @@ export const Candle = () => {
           <img src="/candles/candle1.png" className={s.candle__img1} alt="candle" />
           <div className={s.candle__info}>
             <div className={s.candle__exploreBtn}>
-              <Link to="#" className={s.candle__exploreBtn_block}>
+              <Link to={`${AppRoute.CATALOG}/seaweed-candle`} className={s.candle__exploreBtn_block}>
                 <h6 className={s.candle__exploreBtnText}>Explore</h6>
                 <ExploreButton
                   width={17}
                   height={17}
                   classNameIcon={s.candle__explore_icon}
                   className={s.candle__explore_btn}
+                  onClick={() => navigate(`${AppRoute.CATALOG}/seaweed-candle`)}
                 />
               </Link>
             </div>
