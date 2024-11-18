@@ -3,6 +3,28 @@ $main-font-text-color: #19191b;
 $text-color-grey: #686a71;
 $text-link-grey-hover: #7d7d7d;
 
+$price-discount-color: #686a71;
+$price-discount-color-red: #ff3e24;
+
+$error-color: #ff3e24;
+
+$placeholder-text-color: #b5b5c3;
+$disabled-background-color: #ecedf2;
+
+$yellow-star-color: #ffcd1d;
+$star-unactive-color: #f3f3f7;
+$review-text-gray-color: #686a71;
+$favorites-subtext-color: #b5b5c3;
+$green-success-color: #0ed261;
+$text-spliter-color: #eaeaf1;
+
 $transition-time: 0.3s;
 
-$min-screen-size-desktop: 1024px;
+$min-screen-size-desktop: 1023px;
+$min-screen-size-tablet: 640px;
+$max-screen-size-tablet: 1024px;
+$min-screen-size-phone: 320px;
+$max-screen-size-phone: 639px;
+$max-screen-size-small-desktop: 1439px;
+$min-screen-size-small-desktop: 641px;
+$min-screen-size-median-desktop: 1025px;

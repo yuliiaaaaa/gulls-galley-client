@@ -1,0 +1,35 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.star_rating {
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.star_background {
+  color: $star-unactive-color;
+}
+
+.star_foreground {
+  color: $yellow-star-color;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+}
+
+.star {
+  width: 24px; 
+  height: 24px;
+  line-height: 24px;
+  font-size: 24px;
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: 2px;
+  }
+}

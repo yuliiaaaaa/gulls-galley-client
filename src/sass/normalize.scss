@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 h1 {
   margin: 0;
   padding: 0;
@@ -32,4 +34,24 @@ p {
 
 html {
   font-family: 'Nunito Sans', sans-serif;
+  color: $main-font-text-color;
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
 }

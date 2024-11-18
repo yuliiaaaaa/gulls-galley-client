@@ -1,0 +1,161 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.card {
+  width: 336px;
+  @include hover(
+    (
+      transform: scale(1.03),
+    )
+  );
+
+  &__img_wrapper {
+    position: relative;
+    margin-bottom: 12px;
+    width: 336px;
+  }
+
+  &__img {
+    height: 350px;
+    width: 336px;
+  }
+
+  &__heart {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+    fill: none;
+    stroke: $main-font-text-color;
+    z-index: 2;
+    padding: 10px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-font-text-color;
+  }
+
+  &__title {
+    @include font(16px, 2vw, 16px, 700, 24px);
+    text-align: left;
+    margin-bottom: 4px;
+  }
+
+  &__description {
+    @include font(16px, 2vw, 16px, 400, 24px);
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    @include font(20px, 2vw, 20px, 500, 30px);
+    color: $price-discount-color;
+  }
+
+  &__label {
+    position: absolute;
+    left: 15px;
+    top: 16px;
+  }
+
+  &__price_block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__price_discount {
+    @include font(24px, 2vw, 24px, 300, 30px);
+    color: $price-discount-color-red;
+    text-align: left;
+  }
+
+  &__price_discount_style {
+    text-decoration: line-through;
+    @include font(20px, 2vw, 20px, 300, 26px);
+    text-align: left;
+  }
+
+  @include onTablet {
+    width: 187px;
+
+    &__img {
+      height: 212px;
+      width: 187px;
+    }
+
+    &__heart {
+      width: 20px;
+      height: 18px;
+      top: 17px;
+      right: 15px;
+    }
+
+    &__title {
+      @include font(16px, 2vw, 16px, 500, 21px);
+    }
+
+    &__description {
+      @include font(13px, 2vw, 13px, 300, 18px);
+      margin-bottom: 4px;
+    }
+
+    &__price {
+      @include font(16px, 2vw, 16px, 400, 24px);
+    }
+
+    &__label {
+      left: 14px;
+      top: 13px;
+    }
+
+    &__img_wrapper {
+      height: 212px;
+      width: 187px;
+    }
+
+    &__price_block {
+      gap: 8px;
+    }
+
+    &__price_discount {
+      @include font(18px, 2vw, 18px, 300, 23px);
+      color: $price-discount-color-red;
+      text-align: left;
+    }
+
+    &__price_discount_style {
+      @include font(16px, 2vw, 16px, 300, 20px);
+    }
+  }
+
+  @include onPhone {
+    width: 167px;
+
+    &__img {
+      height: 212px;
+      width: 167px;
+    }
+
+    &__img_wrapper {
+      height: 212px;
+      width: 167px;
+    }
+
+    &__price_block {
+      gap: 8px;
+    }
+
+    &__price_discount {
+      @include font(18px, 2vw, 18px, 300, 23px);
+      color: $price-discount-color-red;
+      text-align: left;
+    }
+
+    &__price_discount_style {
+      @include font(16px, 2vw, 16px, 300, 20px);
+    }
+  }
+}

@@ -1,0 +1,171 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.candle {
+  &__container {
+    margin-bottom: 104px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__img1 {
+    width: 688px;
+    height: 577px;
+  }
+
+  &__firstSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  &__info {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  &__exploreBtn {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-right: 16px;
+    justify-content: end;
+  }
+
+  &__exploreBtn_block {
+    text-decoration: none;
+    gap: 16px;
+    align-items: center;
+    color: $main-font-text-color;
+    display: flex;
+    
+    &:hover {
+      .candle__exploreBtnText::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+  }
+
+  &__exploreBtnText {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+
+    padding-bottom: 5px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: $main-font-text-color;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__title {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 60px;
+    text-align: left;
+  }
+
+  &__text {
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 86.4px;
+    text-align: left;
+    width: 688px;
+    margin-bottom: 24px;
+  }
+
+  &__text_container {
+    display: flex;
+    justify-content: end;
+  }
+
+  @include onTablet {
+    &__text {
+      font-size: 43px;
+      font-weight: 500;
+      line-height: 60px;
+      width: 396px;
+    }
+
+    &__title {
+      font-size: 37px;
+      font-weight: 500;
+      line-height: 48.1px;
+    }
+
+    &__img1 {
+      content: url('/candles/candle1-tablet.png');
+      width: 288px;
+      height: 357px;
+    }
+  }
+
+  @include onPhone {
+    &__container {
+      margin-bottom: 80px;
+      gap: 8px;
+    }
+
+    &__text {
+      font-size: 29px;
+      font-weight: 500;
+      line-height: 34.8px;
+      margin-bottom: 16px;
+      width: 255px;
+    }
+
+    &__title {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: right;
+    }
+
+    &__img1 {
+      content: url('/candles/candle1-tablet.png');
+      width: 288px;
+      height: 357px;
+    }
+
+    &__exploreBtn {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: end;
+      padding-right: 0;
+    }
+
+    &__exploreBtnText {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 18px;
+    }
+
+    &__img1 {
+      content: url('/candles/candle1-phone.png');
+      width: 167px;
+      height: 147px;
+    }
+
+    &__explore_btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid $main-font-text-color;
+    }
+  }
+}

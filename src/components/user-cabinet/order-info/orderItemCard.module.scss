@@ -1,0 +1,36 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.card {
+  display: flex;
+  gap: 12px;
+
+  &__title {
+    @include font(16px, 2vw, 16px, 700, 24px);
+  }
+
+  &__header {
+  }
+
+  &__left {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__price {
+    @include font(20px, 2vw, 20px, 500, 30px);
+  }
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+
+  &__wrapper {
+    width: 100px;
+    height: 128px;
+  }
+}

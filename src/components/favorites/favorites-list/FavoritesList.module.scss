@@ -1,0 +1,20 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.list {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, 336px);
+  justify-content: center;
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, 187px);
+  }
+
+  @include onPhone {
+    gap: 8px;
+
+    grid-template-columns: repeat(auto-fit, 167px);
+  }
+}

@@ -1,0 +1,20 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  @include onTablet {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  @include onPhone {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+}

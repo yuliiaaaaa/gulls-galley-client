@@ -1,0 +1,110 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.cushion {
+  &__container {
+    margin-bottom: 104px;
+    display: flex;
+    gap: 48px;
+    flex-direction: column;
+  }
+
+  &__explore_section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__exploreBtn_block {
+    text-decoration: none;
+    gap: 16px;
+    align-items: center;
+    color: $main-font-text-color;
+    display: flex;
+    &:hover {
+      .cushion__exploreBtnText::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+  }
+
+  &__exploreBtn {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-right: 16px;
+    justify-content: end;
+  }
+
+  &__title {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 60px;
+    text-align: right;
+  }
+
+  &__exploreBtnText {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    padding-bottom: 5px;
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: $main-font-text-color;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    &__exploreLink {
+      text-decoration: none;
+    }
+  }
+
+  @include onPhone {
+    &__container {
+      margin-bottom: 80px;
+      display: flex;
+      gap: 24px;
+      flex-direction: column;
+    }
+
+    &__explore_section {
+      gap: 8px;
+    }
+
+    &__title {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    &__exploreBtnText {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 18px;
+    }
+
+    &__explore_btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid $main-font-text-color;
+    }
+
+    &__explore_icon {
+      width: 13px;
+      height: 13px;
+    }
+  }
+}

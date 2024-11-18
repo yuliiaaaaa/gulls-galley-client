@@ -1,0 +1,9 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
+@import '../../../sass/container.scss';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}

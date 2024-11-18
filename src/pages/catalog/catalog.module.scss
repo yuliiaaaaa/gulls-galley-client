@@ -1,0 +1,113 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+@import '../../sass/normalize.scss';
+@import '../../sass/container.scss';
+
+.catalog {
+  margin-top: 110px;
+
+  &__header {
+    margin-bottom: 80px;
+  }
+
+  &__dropdown {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__list {
+    margin-top: 32px;
+    margin-bottom: 104px;
+  }
+
+  &__linkBlock {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include onTablet {
+    margin-top: 110px;
+
+    &__header {
+      margin-bottom: 76px;
+    }
+
+    &__list {
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+  }
+
+  @include mediaMaxQueryBetween(640px, 950px) {
+    &__header {
+      margin-bottom: 86px;
+    }
+  }
+
+  @include onPhone {
+    margin-top: 76px;
+
+    &__header {
+      margin-bottom: 75px;
+    }
+
+    &__list {
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.breadcrumbs {
+  &__container {
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+
+  @include onTablet {
+    &__container {
+      margin-bottom: 20px;
+      margin-top: 8px;
+    }
+  }
+
+  @include onPhone {
+    &__container {
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+  }
+}
+
+.link {
+  @include font(24px, 2vw, 24px, 500, 24px);
+  text-decoration: none;
+  color: $main-font-text-color;
+  position: relative;
+  padding-block: 10px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $main-font-text-color;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform $transition-time ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  @include onPhone {
+    @include font(20px, 2vw, 20px, 500, 30px);
+  }
+}
